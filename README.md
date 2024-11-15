@@ -1,0 +1,15 @@
+# TODO
+
+- make responsive website
+- multiple drive accs / apis
+- if block to check storage remaining in each drive accs and push files to the one with most storage
+- delete file option after uploading
+- password protection of the file
+- shorten url
+- input key
+- 7 gigs storage
+- admin dashboard
+- active user count in admin dash
+- filter bots
+- (get 200gb discount offer once)
+- (create multiple accs and get the discount after a few users)
