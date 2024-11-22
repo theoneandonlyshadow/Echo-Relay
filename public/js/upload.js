@@ -8,6 +8,7 @@ button.onclick = () => {
   input.click(); 
 };
 
+
 input.addEventListener("change", function (e) {
   files = Array.from(e.target.files);
 
