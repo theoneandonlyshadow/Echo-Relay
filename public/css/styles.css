@@ -21,8 +21,8 @@
   
   /* Fonts */
   :root {
-    --heading-font: "Cormorant Upright", serif;
-    --body-font: "Sora", sans-serif;
+    --heading-font: "Roboto", serif;
+    --body-font: "Roboto", serif;
   }
   
   *,
@@ -262,7 +262,7 @@
   h4,
   h5,
   h6 {
-    color: var(--black-color);
+    color: #fff);
     font-family: var(--heading-font);
     text-transform: capitalize;
     font-weight: 400;
@@ -715,6 +715,11 @@
     transform: scale(1);
     -webkit-transition: .3s ease-in-out;
     transition: all 0.5s ease-in-out;
+  }
+
+  .echogif {
+    height: 700px;
+    width: 750px;
   }
   
   .room-item:hover img.post-image {

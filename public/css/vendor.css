@@ -11,7 +11,7 @@
 div.datetime-container,
 div.datetime-container * {
   box-sizing: border-box;
-  font-family: arial, sans-serif
+  font-family: "Roboto", serif;
 }
 
 .fix-float:after {

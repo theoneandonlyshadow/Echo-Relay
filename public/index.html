@@ -2,7 +2,7 @@
 <html>
 
 <head>
-  <title>Mellow - Hotel HTML Website Template</title>
+  <title>Echo Relay</title>
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -17,6 +17,9 @@
   <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
   <link rel="stylesheet" type="text/css" href="css/styles.css">
   <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap" rel="stylesheet">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link
     href="https://fonts.googleapis.com/css2?family=Cormorant+Upright:wght@300;400;500;600;700&family=Sora:wght@100..800&display=swap"
@@ -34,7 +37,7 @@
       <div class="container-fluid padding-side">
         <div class="d-flex justify-content-between align-items-center w-100">
           <a class="navbar-brand" href="index.html">
-            <img src="assets/images/main-logo.png" class="logo img-fluid">
+            <img src="assets/images/echorelay.png" class="logo img-fluid">
           </a>
           <button class="navbar-toggler border-0 d-flex d-lg-none order-3 p-2 shadow-none" type="button"
             data-bs-toggle="offcanvas" data-bs-target="#bdNavbar" aria-controls="bdNavbar" aria-expanded="false">
@@ -72,7 +75,7 @@
         <div class="container">
             <div class="card">
                 <form class="drop_box" action="/upload" method="POST" enctype="multipart/form-data">
-                    <p>All Files Supported. Max: 1GB</p>
+                    <p>All Files Supported. Max: 3GB</p>
                     <input type="file" id="fileID" name="files" style="display:none;" multiple required>
                     <button type="button" class="btn" onclick="document.getElementById('fileID').click()">Choose Files</button>
                     <div id="fileNames"></div>
@@ -85,334 +88,47 @@
 
   <section id="about-us" class="padding-large">
     <div class="container-fluid padding-side" data-aos="fade-up">
-      <h3 class="display-3 text-center fw-normal col-lg-4 offset-lg-4">Mellow: Your Gateway to Serenity</h3>
+      <div class="p-5">
+      </div>
       <div class="row align-items-start mt-3 mt-lg-5">
         <div class="col-lg-6">
           <div class="p-5">
-            <p style="font-size: 50px;">Echo Relay</p>
-            <p>Is a file sharing web app.</p>
-            <a href="index.html" class="btn btn-arrow btn-primary mt-3">
+            <p style="font-size: 45px;">Echo Relay</p>
+            <p>Uplod. Share. Download</p>
+            <br>
+            <br>
+            <p style="font-size: 50px;">You get:</p>
+            <br>
+            <p>
+              - 3GB upload limit per file
+              <br>
+              - Security by Cloudflare and Google Cloud
+              <br>
+              - Password Protection
+              <br>
+              - Automatic Deletion after 7 Days
+              <br>
+              - Unlimited File Upload
+            </p>
+            <br>
+            <br>
+            <a href="https://github.com/theoneandonlyshadow/echo-relay" class="btn btn-arrow btn-primary mt-3">
               <span>This is Open Source<svg width="18" height="18">
                   <use xlink:href="#arrow-right"></use>
                 </svg></span>
             </a>
           </div>
-          <img src="assets/images/upload.png" alt="img" class="img-fluid rounded-4 mt-4">
         </div>
         <div class="col-lg-6 mt-5 mt-lg-0">
-          <img src="assets/images/share.png" alt="img" class="img-fluid rounded-4">
-          <img src="assets/images/download.png" alt="img" class="img-fluid rounded-4 mt-4">
-
+      <!--    <img src="assets/images/echorelay.gif" alt="img" class="echogif rounded-4 mt-4"> -->
         </div>
-      </div>
-    </div>
-  </section>
-
-  <section id="info">
-    <div class="container" data-aos="fade-up">
-      <div class="row">
-        <div class="col-md-3 text-center mb-4 mb-lg-0">
-          <h3 class="display-1 fw-normal text-primary position-relative">25K <span
-              class="position-absolute top-50 end-50 translate-middle z-n1 ps-lg-4 pt-lg-4"><img
-                src="assets/images/pattern1.png" alt="pattern" class="img-fluid"></span></h3>
-          <p class="text-capitalize">Happy Customer</p>
-        </div>
-        <div class="col-md-3 text-center mb-4 mb-lg-0">
-          <h3 class="display-1 fw-normal text-primary position-relative">160 <span
-              class="position-absolute top-50 translate-middle z-n1"><img src="images/pattern1.png" alt="pattern"
-                class="img-fluid"></span></h3>
-          <p class="text-capitalize">Total Rooms</p>
-        </div>
-        <div class="col-md-3 text-center mb-4 mb-lg-0">
-          <h3 class="display-1 fw-normal text-primary position-relative">25 <span
-              class="position-absolute top-100 pb-5 translate-middle z-n1"><img src="images/pattern1.png" alt="pattern"
-                class="img-fluid"></span></h3>
-          <p class="text-capitalize">award wins</p>
-        </div>
-        <div class="col-md-3 text-center mb-4 mb-lg-0">
-          <h3 class="display-1 fw-normal text-primary position-relative">200 <span
-              class="position-absolute top-50 end-50 pb-lg-4 pe-lg-2 translate-middle z-n1"><img
-                src="assets/images/pattern1.png" alt="pattern" class="img-fluid"></span></h3>
-          <p class="text-capitalize">Total Members</p>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <section id="room" class="padding-medium">
-    <div class="container-fluid padding-side" data-aos="fade-up">
-      <div class="d-flex flex-wrap align-items-center justify-content-between">
-        <div>
-          <h3 class="display-3 fw-normal text-center">Explore our rooms</h3>
-        </div>
-        <a href="index.html" class="btn btn-arrow btn-primary mt-3">
-          <span>Explore rooms<svg width="18" height="18">
-              <use xlink:href="#arrow-right"></use>
-            </svg></span>
-        </a>
-      </div>
-
-      <div class="swiper room-swiper mt-5">
-        <div class="swiper-wrapper">
-          <div class="swiper-slide">
-            <div class="room-item position-relative bg-black rounded-4 overflow-hidden">
-              <img src="assets/images/room1.jpg" alt="img" class="post-image img-fluid rounded-4">
-              <div class="product-description position-absolute p-5 text-start">
-                <h4 class="display-6 fw-normal text-white">Grand deluxe rooms</h4>
-                <p class="product-paragraph text-white">Lorem ipsum dolor sit amet, consectetur adipisicing elit.
-                  Molestiae at illum ipsum similique doloribus.</p>
-                <table>
-                  <tbody>
-                    <tr class="text-white">
-                      <td class="pe-2">Price:</td>
-                      <td class="price">299$ /Pernight</td>
-                    </tr>
-                    <tr class="text-white">
-                      <td class="pe-2">Size:</td>
-                      <td>10 ft</td>
-                    </tr>
-                    <tr class="text-white">
-                      <td class="pe-2">Capacity:</td>
-                      <td>Max persion 2</td>
-                    </tr>
-                    <tr class="text-white">
-                      <td class="pe-2">Bed:</td>
-                      <td>Normal Beds</td>
-                    </tr>
-                    <tr class="text-white">
-                      <td class="pe-2">Services:</td>
-                      <td>Wifi, Television, Bathroom,...</td>
-                    </tr>
-                  </tbody>
-                </table>
-                <a href="index.html">
-                  <p class="text-decoration-underline text-white m-0 mt-2">Browse Now</p>
-                </a>
-              </div>
-            </div>
-            <div class="room-content text-center mt-3">
-              <h4 class="display-6 fw-normal"><a href="index.html">Grand deluxe rooms</a></h4>
-              <p><span class="text-primary fs-4">$269</span>/night</p>
-            </div>
-          </div>
-          <div class="swiper-slide">
-            <div class="room-item position-relative bg-black rounded-4 overflow-hidden">
-              <img src="assets/images/room3.jpg" alt="img" class="post-image img-fluid rounded-4">
-              <div class="product-description position-absolute p-5 text-start">
-                <h4 class="display-6 fw-normal text-white">Sweet Family room</h4>
-                <p class="product-paragraph text-white">Lorem ipsum dolor sit amet, consectetur adipisicing elit.
-                  Molestiae at illum ipsum similique doloribus.</p>
-                <table>
-                  <tbody>
-                    <tr class="text-white">
-                      <td class="pe-2">Price:</td>
-                      <td class="price">299$ /Pernight</td>
-                    </tr>
-                    <tr class="text-white">
-                      <td class="pe-2">Size:</td>
-                      <td>10 ft</td>
-                    </tr>
-                    <tr class="text-white">
-                      <td class="pe-2">Capacity:</td>
-                      <td>Max persion 4</td>
-                    </tr>
-                    <tr class="text-white">
-                      <td class="pe-2">Bed:</td>
-                      <td>Normal Beds</td>
-                    </tr>
-                    <tr class="text-white">
-                      <td class="pe-2">Services:</td>
-                      <td>Wifi, Television, Bathroom,...</td>
-                    </tr>
-                  </tbody>
-                </table>
-                <a href="index.html">
-                  <p class="text-decoration-underline text-white m-0 mt-2">Browse Now</p>
-                </a>
-              </div>
-            </div>
-            <div class="room-content text-center mt-3">
-              <h4 class="display-6 fw-normal"><a href="index.html">Sweet Family room</a></h4>
-              <p><span class="text-primary fs-4">$360</span>/night</p>
-            </div>
-          </div>
-          <div class="swiper-slide">
-            <div class="room-item position-relative bg-black rounded-4 overflow-hidden">
-              <img src="assets/images/room2.jpg" alt="img" class="post-image img-fluid rounded-4">
-              <div class="product-description position-absolute p-5 text-start">
-                <h4 class="display-6 fw-normal text-white">Perfect Double Room</h4>
-                <p class="product-paragraph text-white">Lorem ipsum dolor sit amet, consectetur adipisicing elit.
-                  Molestiae at illum ipsum similique doloribus.</p>
-                <table>
-                  <tbody>
-                    <tr class="text-white">
-                      <td class="pe-2">Price:</td>
-                      <td class="price">299$ /Pernight</td>
-                    </tr>
-                    <tr class="text-white">
-                      <td class="pe-2">Size:</td>
-                      <td>10 ft</td>
-                    </tr>
-                    <tr class="text-white">
-                      <td class="pe-2">Capacity:</td>
-                      <td>Max persion 2</td>
-                    </tr>
-                    <tr class="text-white">
-                      <td class="pe-2">Bed:</td>
-                      <td>Normal Beds</td>
-                    </tr>
-                    <tr class="text-white">
-                      <td class="pe-2">Services:</td>
-                      <td>Wifi, Television, Bathroom,...</td>
-                    </tr>
-                  </tbody>
-                </table>
-                <a href="index.html">
-                  <p class="text-decoration-underline text-white m-0 mt-2">Browse Now</p>
-                </a>
-              </div>
-            </div>
-            <div class="room-content text-center mt-3">
-              <h4 class="display-6 fw-normal"><a href="index.html">Perfect Double Room</a></h4>
-              <p><span class="text-primary fs-4">$450</span>/night</p>
-            </div>
-          </div>
-          <div class="swiper-slide">
-            <div class="room-item position-relative bg-black rounded-4 overflow-hidden">
-              <img src="assets/images/room1.jpg" alt="img" class="post-image img-fluid rounded-4">
-              <div class="product-description position-absolute p-5 text-start">
-                <h4 class="display-6 fw-normal text-white">Grand deluxe rooms</h4>
-                <p class="product-paragraph text-white">Lorem ipsum dolor sit amet, consectetur adipisicing elit.
-                  Molestiae at illum ipsum similique doloribus.</p>
-                <table>
-                  <tbody>
-                    <tr class="text-white">
-                      <td class="pe-2">Price:</td>
-                      <td class="price">299$ /Pernight</td>
-                    </tr>
-                    <tr class="text-white">
-                      <td class="pe-2">Size:</td>
-                      <td>10 ft</td>
-                    </tr>
-                    <tr class="text-white">
-                      <td class="pe-2">Capacity:</td>
-                      <td>Max persion 2</td>
-                    </tr>
-                    <tr class="text-white">
-                      <td class="pe-2">Bed:</td>
-                      <td>Normal Beds</td>
-                    </tr>
-                    <tr class="text-white">
-                      <td class="pe-2">Services:</td>
-                      <td>Wifi, Television, Bathroom,...</td>
-                    </tr>
-                  </tbody>
-                </table>
-                <a href="index.html">
-                  <p class="text-decoration-underline text-white m-0 mt-2">Browse Now</p>
-                </a>
-              </div>
-            </div>
-            <div class="room-content text-center mt-3">
-              <h4 class="display-6 fw-normal"><a href="index.html">Grand deluxe rooms</a></h4>
-              <p><span class="text-primary fs-4">$269</span>/night</p>
-            </div>
-          </div>
-          <div class="swiper-slide">
-            <div class="room-item position-relative bg-black rounded-4 overflow-hidden">
-              <img src="assets/images/room3.jpg" alt="img" class="post-image img-fluid rounded-4">
-              <div class="product-description position-absolute p-5 text-start">
-                <h4 class="display-6 fw-normal text-white">Sweet Family room</h4>
-                <p class="product-paragraph text-white">Lorem ipsum dolor sit amet, consectetur adipisicing elit.
-                  Molestiae at illum ipsum similique doloribus.</p>
-                <table>
-                  <tbody>
-                    <tr class="text-white">
-                      <td class="pe-2">Price:</td>
-                      <td class="price">299$ /Pernight</td>
-                    </tr>
-                    <tr class="text-white">
-                      <td class="pe-2">Size:</td>
-                      <td>10 ft</td>
-                    </tr>
-                    <tr class="text-white">
-                      <td class="pe-2">Capacity:</td>
-                      <td>Max persion 4</td>
-                    </tr>
-                    <tr class="text-white">
-                      <td class="pe-2">Bed:</td>
-                      <td>Normal Beds</td>
-                    </tr>
-                    <tr class="text-white">
-                      <td class="pe-2">Services:</td>
-                      <td>Wifi, Television, Bathroom,...</td>
-                    </tr>
-                  </tbody>
-                </table>
-                <a href="index.html">
-                  <p class="text-decoration-underline text-white m-0 mt-2">Browse Now</p>
-                </a>
-              </div>
-            </div>
-            <div class="room-content text-center mt-3">
-              <h4 class="display-6 fw-normal"><a href="index.html">Sweet Family room</a></h4>
-              <p><span class="text-primary fs-4">$360</span>/night</p>
-            </div>
-          </div>
-        </div>
-        <div class="swiper-pagination room-pagination position-relative mt-5"></div>
-      </div>
-    </div>
-  </section>
-
-  <section id="gallery" data-aos="fade-up">
-    <h3 class="display-3 fw-normal text-center">our gallery</h3>
-    <p class="text-center col-lg-4 offset-lg-4 mb-5">Explore images of our well-appointed accommodations, featuring
-      modern amenities and stylish decor designed to make your stay a memorable one. Admire the stunning views of the
-      city skyline from our rooftop pool, where you can relax and unwind after a day of exploring the city.</p>
-    <div class="container position-relative">
-      <div class="row">
-        <div class="swiper gallery-swiper offset-1 col-10">
-          <div class="swiper-wrapper">
-            <div class="swiper-slide">
-              <img src="assets/images/item3.jpg" alt="img" class="img-fluid rounded-4">
-            </div>
-            <div class="swiper-slide">
-              <img src="assets/images/item2.jpg" alt="img" class="img-fluid rounded-4">
-            </div>
-            <div class="swiper-slide">
-              <img src="assets/images/item1.jpg" alt="img" class="img-fluid rounded-4">
-            </div>
-          </div>
-        </div>
-      </div>
-      <div class="position-absolute top-50 start-0 translate-middle-y main-slider-button-prev d-none d-md-block">
-        <svg class="bg-secondary rounded-circle p-3" width="70" height="70">
-          <use xlink:href="#arrow-left"></use>
-        </svg>
-      </div>
-      <div class="position-absolute top-50 end-0 translate-middle-y main-slider-button-next d-none d-md-block">
-        <svg class="bg-secondary rounded-circle p-3" width="70" height="70">
-          <use xlink:href="#arrow-right"></use>
-        </svg>
-      </div>
-      <div class="position-absolute top-100 end-50 translate-middle main-slider-button-prev mt-5 d-md-none d-block">
-        <svg class="bg-secondary rounded-circle p-2" width="50" height="50">
-          <use xlink:href="#arrow-left"></use>
-        </svg>
-      </div>
-      <div
-        class="position-absolute top-100 start-50 translate-middle main-slider-button-next mt-5 ms-4 d-md-none d-block">
-        <svg class="bg-secondary rounded-circle p-2" width="50" height="50">
-          <use xlink:href="#arrow-right"></use>
-        </svg>
       </div>
     </div>
   </section>
 
   <section id="services" class="padding-medium">
     <div class="container-fluid padding-side" data-aos="fade-up">
-      <h3 class="display-3 text-center fw-normal col-lg-4 offset-lg-4">Our services & facilities</h3>
+      <h3 class="display-3 text-center fw-normal col-lg-4 offset-lg-4" style="color: #fff;">Creators of Echo Relay</h3>
       <div class="row mt-5">
         <div class="col-md-6 col-xl-4">
           <div class="service mb-4 text-center rounded-4 p-5">
@@ -420,311 +136,129 @@
               <svg class="color" width="70" height="70">
                 <use xlink:href="#meditation"></use>
               </svg>
-              <img src="assets/images/pattern2.png" alt="img"
-                class="position-absolute top-100 start-50 translate-middle z-n1 pe-5">
+              <br>
+              <br>
+              <br>
+              <img src="assets/images/madhav.png" alt="img"
+                class="position-absolute top-100 start-50 translate-middle z-n1 pe-5 madhav">
             </div>
-            <h4 class="display-6 fw-normal my-3">Yoga & Meditation</h4>
-            <p>Rejuvenate your body and mind with our yoga and meditation classes, led by experienced instructors.
-              Whether you're a beginner or an advanced practitioner, our classes cater to all levels and offer a
-              peaceful retreat from the hustle and bustle of the city. With serene surroundings and expert guidance.</p>
+            <br>
+            <br>
+            <br>
+            <br>
+            <h4 class="display-6 fw-normal my-3">Madhav Nair</h4>
+            <p></p>
             <a href="index.html" class="btn btn-arrow">
-              <span class="text-decoration-underline">Read More<svg width="18" height="18">
+              <span class="text-decoration-underline">LinkedIn<svg width="18" height="18">
                   <use xlink:href="#arrow-right"></use>
                 </svg></span>
             </a>
+            <br>
+            <br>
           </div>
         </div>
         <div class="col-md-6 col-xl-4">
           <div class="service mb-4 text-center rounded-4 p-5">
             <div class="position-relative">
               <svg class="color" width="70" height="70">
-                <use xlink:href="#chef-hat"></use>
+                <use xlink:href="#meditation"></use>
               </svg>
-              <img src="assets/images/pattern2.png" alt="img"
-                class="position-absolute top-100 start-50 translate-middle z-n1 pe-5">
+              <br>
+              <br>
+              <br>
+              <img src="assets/images/madhav.png" alt="img"
+                class="position-absolute top-100 start-50 translate-middle z-n1 pe-5 madhav">
             </div>
-            <h4 class="display-6 fw-normal my-3">Dining</h4>
-            <p>Rejuvenate your body and mind with our yoga and meditation classes, led by experienced instructors.
-              Whether you're a beginner or an advanced practitioner, our classes cater to all levels and offer a
-              peaceful retreat from the hustle and bustle of the city. With serene surroundings and expert guidance.</p>
+            <br>
+            <br>
+            <br>
+            <br>
+            <h4 class="display-6 fw-normal my-3">Madhav Nair</h4>
+            <p></p>
             <a href="index.html" class="btn btn-arrow">
-              <span class="text-decoration-underline">Read More<svg width="18" height="18">
+              <span class="text-decoration-underline">LinkedIn<svg width="18" height="18">
                   <use xlink:href="#arrow-right"></use>
                 </svg></span>
             </a>
+            <br>
+            <br>
           </div>
         </div>
-        <div class="col-md-6 col-xl-4">
-          <div class="service mb-4 text-center rounded-4 p-5">
-            <div class="position-relative">
-              <svg class="color" width="70" height="70">
-                <use xlink:href="#swimming"></use>
-              </svg>
-              <img src="assets/images/pattern2.png" alt="img"
-                class="position-absolute top-100 start-50 translate-middle z-n1 pe-5">
-            </div>
-            <h4 class="display-6 fw-normal my-3">Rooftop Pool</h4>
-            <p>Rejuvenate your body and mind with our yoga and meditation classes, led by experienced instructors.
-              Whether you're a beginner or an advanced practitioner, our classes cater to all levels and offer a
-              peaceful retreat from the hustle and bustle of the city. With serene surroundings and expert guidance.</p>
-            <a href="index.html" class="btn btn-arrow">
-              <span class="text-decoration-underline">Read More<svg width="18" height="18">
-                  <use xlink:href="#arrow-right"></use>
-                </svg></span>
-            </a>
-          </div>
-        </div>
-        <div class="col-md-6 col-xl-4">
-          <div class="service mb-4 text-center rounded-4 p-5">
-            <div class="position-relative">
-              <svg class="color" width="70" height="70">
-                <use xlink:href="#dumbbells"></use>
-              </svg>
-              <img src="assets/images/pattern2.png" alt="img"
-                class="position-absolute top-100 start-50 translate-middle z-n1 pe-5">
-            </div>
-            <h4 class="display-6 fw-normal my-3">Fitness Center</h4>
-            <p>Rejuvenate your body and mind with our yoga and meditation classes, led by experienced instructors.
-              Whether you're a beginner or an advanced practitioner, our classes cater to all levels and offer a
-              peaceful retreat from the hustle and bustle of the city. With serene surroundings and expert guidance.</p>
-            <a href="index.html" class="btn btn-arrow">
-              <span class="text-decoration-underline">Read More<svg width="18" height="18">
-                  <use xlink:href="#arrow-right"></use>
-                </svg></span>
-            </a>
-          </div>
-        </div>
-        <div class="col-md-6 col-xl-4">
-          <div class="service mb-4 text-center rounded-4 p-5">
-            <div class="position-relative">
-              <svg class="color" width="70" height="70">
-                <use xlink:href="#armchair"></use>
-              </svg>
-              <img src="assets/images/pattern2.png" alt="img"
-                class="position-absolute top-100 start-50 translate-middle z-n1 pe-5">
-            </div>
-            <h4 class="display-6 fw-normal my-3">Event Spaces</h4>
-            <p>Rejuvenate your body and mind with our yoga and meditation classes, led by experienced instructors.
-              Whether you're a beginner or an advanced practitioner, our classes cater to all levels and offer a
-              peaceful retreat from the hustle and bustle of the city. With serene surroundings and expert guidance.</p>
-            <a href="index.html" class="btn btn-arrow">
-              <span class="text-decoration-underline">Read More<svg width="18" height="18">
-                  <use xlink:href="#arrow-right"></use>
-                </svg></span>
-            </a>
-          </div>
-        </div>
-        <div class="col-md-6 col-xl-4">
-          <div class="service mb-4 text-center rounded-4 p-5">
-            <div class="position-relative">
-              <svg class="color" width="70" height="70">
-                <use xlink:href="#wifi"></use>
-              </svg>
-              <img src="assets/images/pattern2.png" alt="img"
-                class="position-absolute top-100 start-50 translate-middle z-n1 pe-5">
-            </div>
-            <h4 class="display-6 fw-normal my-3">Free Wi-Fi</h4>
-            <p>Rejuvenate your body and mind with our yoga and meditation classes, led by experienced instructors.
-              Whether you're a beginner or an advanced practitioner, our classes cater to all levels and offer a
-              peaceful retreat from the hustle and bustle of the city. With serene surroundings and expert guidance.</p>
-            <a href="index.html" class="btn btn-arrow">
-              <span class="text-decoration-underline">Read More<svg width="18" height="18">
-                  <use xlink:href="#arrow-right"></use>
-                </svg></span>
-            </a>
-          </div>
-        </div>
-      </div>
     </div>
   </section>
-
-  <section id="blog" class="padding-medium pt-0">
+  <section id="services" class="padding-medium">
     <div class="container-fluid padding-side" data-aos="fade-up">
-      <div class="d-flex flex-wrap align-items-center justify-content-between">
-        <div>
-          <h3 class="display-3 fw-normal text-center">Our Blogs & events</h3>
-        </div>
-        <a href="index.html" class="btn btn-arrow btn-primary mt-3">
-          <span>More Blog<svg width="18" height="18">
-              <use xlink:href="#arrow-right"></use>
-            </svg></span>
-        </a>
-      </div>
+      <h3 class="display-3 text-center fw-normal col-lg-4 offset-lg-4" style="color: #fff;">other FOSS Services</h3>
       <div class="row mt-5">
-        <div class="col-md-6 col-lg-4 mb-4">
-          <div class="blog-post position-relative overflow-hidden rounded-4">
-            <img src="assets/images/post3.jpg" class="blog-img img-fluid rounded-4" alt="img">
-            <div class="position-absolute bottom-0 p-5">
-              <a href="#"><span class="bg-secondary text-body m-0 px-2 py-1 rounded-2 fs-6">Hotels</span></a>
-              <h4 class="display-6 fw-normal mt-2"><a href="index.html">A Day in the Life of a Hotel Mellow
-                  Guest</a></h4>
-              <p class="m-0 align-items-center"><svg width="19" height="19">
-                  <use xlink:href="#clock"></use>
-                </svg> 22 Feb, 2024</p>
+        <div class="col-md-6 col-xl-4">
+          <div class="service mb-4 text-center rounded-4 p-5">
+            <div class="position-relative">
+              <svg class="color" width="70" height="70">
+                <use xlink:href="#meditation"></use>
+              </svg>
+              <br>
+              <br>
+              <br>
+              <img src="assets/images/madhav.png" alt="img"
+                class="position-absolute top-100 start-50 translate-middle z-n1 pe-5 madhav">
             </div>
+            <br>
+            <br>
+            <br>
+            <br>
+            <h4 class="display-6 fw-normal my-3">Madhav Nair</h4>
+            <p></p>
+            <a href="index.html" class="btn btn-arrow">
+              <span class="text-decoration-underline">LinkedIn<svg width="18" height="18">
+                  <use xlink:href="#arrow-right"></use>
+                </svg></span>
+            </a>
+            <br>
+            <br>
           </div>
         </div>
-        <div class="col-md-6 col-lg-4 mb-4">
-          <div class="blog-post position-relative overflow-hidden rounded-4">
-            <img src="assets/images/post2.jpg" class="blog-img img-fluid rounded-4" alt="img">
-            <div class="position-absolute bottom-0 p-5">
-              <a href="#"><span class="bg-secondary text-body m-0 px-2 py-1 rounded-2 fs-6">Activites</span></a>
-              <h4 class="display-6 fw-normal mt-2"><a href="index.html">Guide to Seasonal Activities in the
-                  City</a></h4>
-              <p class="m-0 align-items-center"><svg width="19" height="19">
-                  <use xlink:href="#clock"></use>
-                </svg> 22 Feb, 2024</p>
+        <div class="col-md-6 col-xl-4">
+          <div class="service mb-4 text-center rounded-4 p-5">
+            <div class="position-relative">
+              <svg class="color" width="70" height="70">
+                <use xlink:href="#meditation"></use>
+              </svg>
+              <br>
+              <br>
+              <br>
+              <img src="assets/images/madhav.png" alt="img"
+                class="position-absolute top-100 start-50 translate-middle z-n1 pe-5 madhav">
             </div>
+            <br>
+            <br>
+            <br>
+            <br>
+            <h4 class="display-6 fw-normal my-3">Madhav Nair</h4>
+            <p></p>
+            <a href="index.html" class="btn btn-arrow">
+              <span class="text-decoration-underline">LinkedIn<svg width="18" height="18">
+                  <use xlink:href="#arrow-right"></use>
+                </svg></span>
+            </a>
+            <br>
+            <br>
           </div>
         </div>
-        <div class="col-md-6 col-lg-4 mb-4">
-          <div class="blog-post position-relative overflow-hidden rounded-4">
-            <img src="assets/images/post1.jpg" class="blog-img img-fluid rounded-4" alt="img">
-            <div class="position-absolute bottom-0 p-5">
-              <a href="#"><span class="bg-secondary text-body m-0 px-2 py-1 rounded-2 fs-6">Rooms</span></a>
-              <h4 class="display-6 fw-normal mt-2"><a href="index.html">A Look Inside Hotel Mellow's Suites</a>
-              </h4>
-              <p class="m-0 align-items-center"><svg width="19" height="19">
-                  <use xlink:href="#clock"></use>
-                </svg> 22 Feb, 2024</p>
-            </div>
-          </div>
-        </div>
-        <div class="col-md-6 col-lg-8 mb-4">
-          <div class="blog-post position-relative overflow-hidden rounded-4">
-            <img src="assets/images/post5.jpg" class="blog-img img-fluid rounded-4" alt="img">
-            <div class="position-absolute bottom-0 p-4">
-              <a href="#"><span class="bg-secondary text-body m-0 px-2 py-1 rounded-2 fs-6">Activites</span></a>
-              <h4 class="display-6 fw-normal mt-2"><a href="index.html">Why Hotel Mellow Is the Perfect Staycation
-                  Destination</a></h4>
-              <p class="m-0 align-items-center"><svg width="19" height="19">
-                  <use xlink:href="#clock"></use>
-                </svg> 22 Feb, 2024</p>
-            </div>
-          </div>
-        </div>
-        <div class="col-md-6 col-lg-4 mb-4">
-          <div class="blog-post position-relative overflow-hidden rounded-4">
-            <img src="assets/images/post4.jpg" class="blog-img img-fluid rounded-4" alt="img">
-            <div class="position-absolute bottom-0 p-5">
-              <a href="#"><span class="bg-secondary text-body m-0 px-2 py-1 rounded-2 fs-6">Rooms</span></a>
-              <h4 class="display-6 fw-normal mt-2"><a href="index.html">The Benefits of Booking Directly with
-                  Hotel Mellow</a>
-              </h4>
-              <p class="m-0 align-items-center"><svg width="19" height="19">
-                  <use xlink:href="#clock"></use>
-                </svg> 22 Feb, 2024</p>
-            </div>
-          </div>
-        </div>
-      </div>
     </div>
   </section>
-
-  <section id="footer">
-    <div class="container-fluid padding-side padding-small pt-0" data-aos="fade-up">
-      <footer class="row">
-        <div class="col-md-6 col-lg-3 mb-4 mb-lg-0">
-          <img src="assets/images/main-logo-footer.png" alt="logo-footer" class="img-fluid">
-          <p class="mt-3">Welcome to Hotel Mellow, where comfort meets tranquility. Nestled in the heart of a bustling
-            city, our
-            hotel offers a peaceful retreat for both.</p>
-          <ul class="social-links d-flex flex-wrap list-unstyled mt-4 mb-0">
-            <li>
-              <a href="#">
-                <svg class="social me-4" width="20" height="20">
-                  <use xlink:href="#facebook"></use>
-                </svg>
-              </a>
-            </li>
-            <li>
-              <a href="#">
-                <svg class="social me-4" width="20" height="20">
-                  <use xlink:href="#twitter"></use>
-                </svg>
-              </a>
-            </li>
-            <li>
-              <a href="#">
-                <svg class="social me-4" width="20" height="20">
-                  <use xlink:href="#linkedin"></use>
-                </svg>
-              </a>
-            </li>
-            <li>
-              <a href="#">
-                <svg class="social me-4" width="20" height="20">
-                  <use xlink:href="#instagram"></use>
-                </svg>
-              </a>
-            </li>
-            <li>
-              <a href="#">
-                <svg class="social me-4" width="20" height="20">
-                  <use xlink:href="#youtube"></use>
-                </svg>
-              </a>
-            </li>
-          </ul>
-        </div>
-        <div class="col-md-6 col-lg-3 offset-lg-1 mb-4 mb-lg-0">
-          <h4 class="display-6 fw-normal">Join Our Newsletter</h4>
-          <p>Sign up to our newsletter to receive latest news.</p>
-          <form class=" position-relative">
-            <input type="text" class="form-control px-4 py-3 bg-transparent mb-3" placeholder="Your Name">
-            <input type="email" class="form-control px-4 py-3 bg-transparent" placeholder="Your email">
-            <div class="d-grid">
-              <button href="#" class="btn btn-arrow btn-primary mt-3">
-                <span>Subscribe Now<svg width="18" height="18">
-                    <use xlink:href="#arrow-right"></use>
-                  </svg></span>
-              </button>
-            </div>
-          </form>
-        </div>
-        <div class="col-md-6 col-lg-3 offset-lg-1 mb-4 mb-lg-0">
-          <h4 class="display-6 fw-normal">Our Info</h4>
-          <ul class="nav flex-column">
-            <li class="location text-capitalize d-flex align-items-center">
-              <svg class="color me-1" width="20" height="20">
-                <use xlink:href="#location"></use>
-              </svg>Mellow hotel & resort
-            </li>
-            <li class="text-capitalize ms-4">
-              123 Serenity Avenue
-            </li>
-            <li class="text-capitalize ms-4">
-              Tranquil City, Peaceful State
-            </li>
-            <li class="text-capitalize ms-4">
-              Relaxingland
-            </li>
-            <li class="phone text-capitalize d-flex align-items-center mt-2">
-              <svg class="color me-1" width="20" height="20">
-                <use xlink:href="#phone"></use>
-              </svg>+666 333 9999, +444 777 666
-            </li>
-            <li class="email text-capitalize d-flex align-items-center mt-2">
-              <svg class="color me-1" width="20" height="20">
-                <use xlink:href="#email"></use>
-              </svg>yourdomain@email.com
-            </li>
-          </ul>
-        </div>
-      </footer>
+  
     </div>
-    <hr class="text-black">
+    <hr class="text-white">
     <div class="container-fluid padding-side padding-small" data-aos="fade-up">
       <footer class="row">
         <div class="col-md-6 col-lg-3 mb-4 mb-lg-0">
           <h4 class="display-6 fw-normal">Quick links</h4>
           <ul class="nav flex-column">
             <li class="nav-item"><a href="#" class="p-0 "> Home </a></li>
-            <li class="nav-item"><a href="#" class="p-0 "> About us </a></li>
-            <li class="nav-item"><a href="#" class="p-0 "> Our Services </a></li>
+            <li class="nav-item"><a href="#" class="p-0 "> About </a></li>
+            <li class="nav-item"><a href="#" class="p-0 "> Creators </a></li>
             <li class="nav-item"><a href="#" class="p-0 "> Privacy Policy</a></li>
-            <li class="nav-item"><a href="#" class="p-0 "> Contact us </a></li>
-            <li class="nav-item"><a href="#" class="p-0 "> Support </a></li>
+            <li class="nav-item"><a href="#" class="p-0 "> MaxTac </a></li>
           </ul>
         </div>
         <div class="col-md-6 col-lg-3 offset-lg-1 mb-4 mb-lg-0">
@@ -739,10 +273,9 @@
           </ul>
         </div>
         <div class="col-md-6 col-lg-3 offset-lg-1 mb-4 mb-lg-0">
-          <p class="m-0">© Copyright 2024 Hotel Mellow. </p>
-          <p>Free Website Template:<a href="https://templatesjungle.com/" class="text-decoration-underline"
-              target="_blank">TemplatesJungle</a><br> Distributed By: <a href="https://themewagon.com" class="text-decoration-underline"
-            target="blank">ThemeWagon</a></p>
+          <p class="m-0"><b>MIT License</b></p>
+          <p>madhav@maxtac.tech</p>
+          <p>Distributed under <b>MaxTac</b></p>
         </div>
       </footer>
     </div>
