@@ -113,5 +113,5 @@ app.post('/upload', upload.array('files'), async (req, res) => {
 
 
 app.listen(PORT, () => {
-    console.log(`nigga is running at http://localhost:${PORT}`);
+    console.log(`a black man is running at http://localhost:${PORT}`);
 });

@@ -101,18 +101,38 @@
   
   .btn {
     text-decoration: none;
-    background-color: #005af0;
+    background-color: #000;
     color: #ffffff;
     padding: 10px 20px;
     border: none;
     outline: none;
     transition: 0.3s;
   }
+
+  .upload {
+    height: 50px;
+    width: 150px; 
+  }
+
+  .uprec .upload{
+    margin-right: 10px;
+    margin-left: -10px;
+  }
+
+  .uprec .receive{
+    margin-right: -10px;
+    margin-left: 10px;
+  }
+
+  .receive {
+    height: 50px;
+    width: 150px;
+  }
   
   .btn:hover{
     text-decoration: none;
     background-color: #ffffff;
-    color: #005af0;
+    color: #000;
     padding: 10px 20px;
     border: none;
     outline: 1px solid #010101;
@@ -334,8 +354,8 @@
   /* - Primary Buttons
   --------------------------------------------------------------*/
   .btn-primary {
-    --bs-btn-color: var(--dark-color);
-    --bs-btn-bg: var(--secondary-color);
+    --bs-btn-color: #1a1a1a;
+    --bs-btn-bg: #1a1a1a;
     --bs-btn-border-color: var(--secondary-color);
     --bs-btn-hover-color: var(--dark-color);
     --bs-btn-hover-bg: var(--secondary-color);
@@ -717,9 +737,10 @@
     transition: all 0.5s ease-in-out;
   }
 
-  .echogif {
-    height: 700px;
-    width: 750px;
+  .echoimg {
+    
+    height: 500px;
+    width: 550px;
   }
   
   .room-item:hover img.post-image {

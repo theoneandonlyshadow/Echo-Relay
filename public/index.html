@@ -75,9 +75,12 @@
         <div class="container">
             <div class="card">
                 <form class="drop_box" action="/upload" method="POST" enctype="multipart/form-data">
-                    <p>All Files Supported. Max: 3GB</p>
+                    <p>All Files Supported. Max: 7GB</p>
                     <input type="file" id="fileID" name="files" style="display:none;" multiple required>
-                    <button type="button" class="btn" onclick="document.getElementById('fileID').click()">Choose Files</button>
+                    <div class="uprec">
+                      <button type="button" class="btn upload" onclick="document.getElementById('fileID').click()">Upload</button>
+                      <button type="button" class="btn receive" id="receive">Receive</button>
+                    </div>
                     <div id="fileNames"></div>
                 </form>
             </div>
@@ -100,7 +103,7 @@
             <p style="font-size: 50px;">You get:</p>
             <br>
             <p>
-              - 3GB upload limit per file
+              - 7GB upload limit per file
               <br>
               - Security by Cloudflare and Google Cloud
               <br>
@@ -109,6 +112,8 @@
               - Automatic Deletion after 7 Days
               <br>
               - Unlimited File Upload
+              <br>
+              - Secure chat interface
             </p>
             <br>
             <br>
@@ -120,7 +125,7 @@
           </div>
         </div>
         <div class="col-lg-6 mt-5 mt-lg-0">
-      <!--    <img src="assets/images/echorelay.gif" alt="img" class="echogif rounded-4 mt-4"> -->
+          <img src="assets/images/echorelay.png" alt="img" class="echoimg rounded-4 mt-4"> 
         </div>
       </div>
     </div>
@@ -128,7 +133,7 @@
 
   <section id="services" class="padding-medium">
     <div class="container-fluid padding-side" data-aos="fade-up">
-      <h3 class="display-3 text-center fw-normal col-lg-4 offset-lg-4" style="color: #fff;">Creators of Echo Relay</h3>
+      <h3 class="display-3 text-center fw-normal col-lg-4 offset-lg-4" style="color: #fff; font-size: 50px;">Creators of Echo Relay</h3>
       <div class="row mt-5">
         <div class="col-md-6 col-xl-4">
           <div class="service mb-4 text-center rounded-4 p-5">
@@ -149,7 +154,7 @@
             <h4 class="display-6 fw-normal my-3">Madhav Nair</h4>
             <p></p>
             <a href="index.html" class="btn btn-arrow">
-              <span class="text-decoration-underline">LinkedIn<svg width="18" height="18">
+              <span class="">LinkedIn<svg width="18" height="18">
                   <use xlink:href="#arrow-right"></use>
                 </svg></span>
             </a>
@@ -157,38 +162,12 @@
             <br>
           </div>
         </div>
-        <div class="col-md-6 col-xl-4">
-          <div class="service mb-4 text-center rounded-4 p-5">
-            <div class="position-relative">
-              <svg class="color" width="70" height="70">
-                <use xlink:href="#meditation"></use>
-              </svg>
-              <br>
-              <br>
-              <br>
-              <img src="assets/images/madhav.png" alt="img"
-                class="position-absolute top-100 start-50 translate-middle z-n1 pe-5 madhav">
-            </div>
-            <br>
-            <br>
-            <br>
-            <br>
-            <h4 class="display-6 fw-normal my-3">Madhav Nair</h4>
-            <p></p>
-            <a href="index.html" class="btn btn-arrow">
-              <span class="text-decoration-underline">LinkedIn<svg width="18" height="18">
-                  <use xlink:href="#arrow-right"></use>
-                </svg></span>
-            </a>
-            <br>
-            <br>
           </div>
         </div>
-    </div>
   </section>
   <section id="services" class="padding-medium">
     <div class="container-fluid padding-side" data-aos="fade-up">
-      <h3 class="display-3 text-center fw-normal col-lg-4 offset-lg-4" style="color: #fff;">other FOSS Services</h3>
+      <h3 class="display-3 text-center fw-normal col-lg-4 offset-lg-4" style="color: #fff; font-size: 50px;">Other FOSS Services</h3>
       <div class="row mt-5">
         <div class="col-md-6 col-xl-4">
           <div class="service mb-4 text-center rounded-4 p-5">
@@ -209,42 +188,47 @@
             <h4 class="display-6 fw-normal my-3">Madhav Nair</h4>
             <p></p>
             <a href="index.html" class="btn btn-arrow">
-              <span class="text-decoration-underline">LinkedIn<svg width="18" height="18">
+              <span class="">LinkedIn<svg width="18" height="18">
                   <use xlink:href="#arrow-right"></use>
                 </svg></span>
             </a>
             <br>
             <br>
           </div>
+          
         </div>
-        <div class="col-md-6 col-xl-4">
-          <div class="service mb-4 text-center rounded-4 p-5">
-            <div class="position-relative">
-              <svg class="color" width="70" height="70">
-                <use xlink:href="#meditation"></use>
-              </svg>
-              <br>
-              <br>
-              <br>
-              <img src="assets/images/madhav.png" alt="img"
-                class="position-absolute top-100 start-50 translate-middle z-n1 pe-5 madhav">
+          </div>
+          <div class="row mt-5">
+            <div class="col-md-6 col-xl-4">
+              <div class="service mb-4 text-center rounded-4 p-5">
+                <div class="position-relative">
+                  <svg class="color" width="70" height="70">
+                    <use xlink:href="#meditation"></use>
+                  </svg>
+                  <br>
+                  <br>
+                  <br>
+                  <img src="assets/images/madhav.png" alt="img"
+                    class="position-absolute top-100 start-50 translate-middle z-n1 pe-5 madhav">
+                </div>
+                <br>
+                <br>
+                <br>
+                <br>
+                <h4 class="display-6 fw-normal my-3">Madhav Nair</h4>
+                <p></p>
+                <a href="index.html" class="btn btn-arrow">
+                  <span class="">LinkedIn<svg width="18" height="18">
+                      <use xlink:href="#arrow-right"></use>
+                    </svg></span>
+                </a>
+                <br>
+                <br>
+              </div>
+              
             </div>
-            <br>
-            <br>
-            <br>
-            <br>
-            <h4 class="display-6 fw-normal my-3">Madhav Nair</h4>
-            <p></p>
-            <a href="index.html" class="btn btn-arrow">
-              <span class="text-decoration-underline">LinkedIn<svg width="18" height="18">
-                  <use xlink:href="#arrow-right"></use>
-                </svg></span>
-            </a>
-            <br>
-            <br>
-          </div>
+              </div>
         </div>
-    </div>
   </section>
   
     </div>
@@ -275,7 +259,7 @@
         <div class="col-md-6 col-lg-3 offset-lg-1 mb-4 mb-lg-0">
           <p class="m-0"><b>MIT License</b></p>
           <p>madhav@maxtac.tech</p>
-          <p>Distributed under <b>MaxTac</b></p>
+          <p>FOSS by <b>MaxTac</b></p>
         </div>
       </footer>
     </div>
