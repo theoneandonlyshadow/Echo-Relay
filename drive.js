@@ -1,3 +1,5 @@
+const { Model } = require('./model.js');
+const { connect } = require('./dbCon.js')
 const express = require('express');
 const multer = require('multer');
 const { google } = require('googleapis');
@@ -7,14 +9,18 @@ const archiver = require('archiver');
 const bodyParser = require('body-parser');
 const app = express();
 
-const PORT = 3000; //put in env later
+const PORT = 3000;
+const Size = 7 * 1024 * 1024 * 1024; //just use a variable bruh
+
+connect('mongodb://127.0.0.1:27017/user?directConnection=true&serverSelectionTimeoutMS=2000');
 
 app.use(express.static('public'));
 app.use(bodyParser.urlencoded({ extended: true }));
 
-const upload = multer({ 
+//Use camelCase instead of naming variables like a barbarian
+const upload = multer({
     dest: 'uploads/',
-    limits: { fileSize: 1 * 1024 * 1024 * 1024 } // this limits upload size to 1gb. remember that this is byte conversion. like 1 byte to 1kb to 1mb to 1gb (thats why 1024s are there).
+    limits: { fileSize: Size, }
 });
 
 const auth = new google.auth.GoogleAuth({
@@ -24,7 +30,7 @@ const auth = new google.auth.GoogleAuth({
 
 const drive = google.drive({ version: 'v3', auth });
 
-async function yeettodrive(filePath, fileName) {
+async function driveUpload(filePath, fileName) {
     const fileMetadata = {
         name: fileName,
     };
@@ -54,13 +60,13 @@ async function yeettodrive(filePath, fileName) {
     return fileId;
 }
 
-async function zip(files, outputpath) {
+async function zip(files, outputPath) {
     return new Promise((resolve, reject) => {
-        const output = fs.createWriteStream(outputpath);
+        const output = fs.createWriteStream(outputPath);
         const archive = archiver('zip', { zlib: { level: 9 } });
 
         output.on('close', () => {
-            console.log(`files compressed to zip: ${outputpath}`);
+            console.log(`files compressed to zip: ${outputPath}`);
             resolve();
         });
 
@@ -74,10 +80,10 @@ async function zip(files, outputpath) {
 
         files.forEach((file) => {
             console.log(`checking: ${file.path}`);
-            
+
             if (fs.existsSync(file.path)) {
-                console.log(`adding file to zip: ${file.originalname} from ${file.path}`);
-                archive.file(file.path, { name: file.originalname });
+                console.log(`adding file to zip: ${file.originalName} from ${file.path}`);
+                archive.file(file.path, { name: file.originalName });
             } else {
                 console.error(`file not found: ${file.path}`);
             }
@@ -88,23 +94,30 @@ async function zip(files, outputpath) {
 }
 
 app.post('/upload', upload.array('files'), async (req, res) => {
-    console.log('files uploaded:', req.files); 
+    console.log('files uploaded:', req.files);
 
     if (!req.files || req.files.length === 0) {
         console.error('no files uploaded. error.');
-        return res.redirect('/error.html'); 
+        return res.redirect('/error.html');
     }
 
     try {
         const files = req.files;
-        const uploadedfile = `ERMNJP_${Date.now()}.zip`;
-        const uploadedfilepath = path.join(__dirname, 'uploads', uploadedfile);
-        await zip(files, uploadedfilepath);
-        const uploadedfileid = await yeettodrive(uploadedfilepath, uploadedfile);
-        const downloadlink = `https://drive.google.com/uc?id=${uploadedfileid}&export=download`;
-        fs.unlinkSync(uploadedfilepath);
-        files.forEach((file) => fs.unlinkSync(file.path));
-        res.redirect(`/success.html?link=${encodeURIComponent(downloadlink)}`);
+        const uploadedFile = `ERMNJP_${Date.now()}.zip`;
+        const uploadedFilePath = path.join(__dirname, 'uploads', uploadedFile);
+        await zip(files, uploadedFilePath);
+        const uploadedFileId = await driveUpload(uploadedFilePath, uploadedFile);
+        const downloadLink = `https://drive.google.com/uc?id=${uploadedFileId}&export=download`;
+        const file = new Model({ name: uploadedFile, size: Size, fileid: uploadedFileId, url: downloadLink });
+        try {
+            await file.save();
+            fs.unlinkSync(uploadedFilePath);
+            files.forEach((file) => fs.unlinkSync(file.path));
+            res.redirect(`/success.html?link=${encodeURIComponent(downloadLink)}`);
+        } catch (err) {
+            console.error('error deleting uploaded file from local system:', err);
+            res.redirect('/error.html');
+        }
     } catch (error) {
         console.error('upload failed:', error);
         res.redirect('/error.html');
@@ -113,5 +126,6 @@ app.post('/upload', upload.array('files'), async (req, res) => {
 
 
 app.listen(PORT, () => {
-    console.log(`a black man is running at http://localhost:${PORT}`);
+    console.log(`the server is running at http://localhost:${PORT}`);
 });
+
