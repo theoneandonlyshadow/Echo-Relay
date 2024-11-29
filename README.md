@@ -7,7 +7,7 @@
 - password protection of the file
 - shorten url
 - input key
-- 7 gigs storage    `1 gigs given for now`
+- 7 gigs storage `Done`
 - admin dashboard
 - active user count in admin dash
 - filter bots
