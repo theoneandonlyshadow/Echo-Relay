@@ -981,3 +981,7 @@
     background-color: transparent;
     box-shadow: none;
   }
+
+  .cent {
+    justify-content: center;
+  }

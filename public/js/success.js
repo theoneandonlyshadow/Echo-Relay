@@ -1,14 +1,11 @@
-function myFunction() {
-    var copyText = document.getElementById("myInput");
-    copyText.select();
-    document.execCommand("copy");
-  var tooltip = document.getElementById("myTooltip");
-    tooltip.innerHTML = "URL Copied: " + copyText.value;
-  }
-  
-  function outFunc() {
-    var tooltip = document.getElementById("myTooltip");
-    tooltip.innerHTML = "Copy URL to clipboard";
-  }
+async function copyshi() {
+    try {
+        const text = document.getElementById('dlink').innerHTML;
+        await navigator.clipboard.writeText(text);
+    } catch (err) {
+        alert(err);
+    }
+}
 
-  
+
+// not workin. gotta fix.

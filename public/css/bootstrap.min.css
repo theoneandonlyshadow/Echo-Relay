@@ -7569,7 +7569,9 @@ textarea.form-control-lg {
     border-radius: var(--bs-border-radius-lg)!important;
 }
 .rounded-4 {
-    border-radius: var(--bs-border-radius-xl)!important;
+    border-radius: 7px;
+    justify-content: center;
+    width: 500px;
 }
 .rounded-5 {
     border-radius: var(--bs-border-radius-xxl)!important;
