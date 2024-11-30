@@ -1,5 +1,6 @@
 # TODO
 
+- make success and error pages in ejs
 - make responsive website    `partial done`
 - multiple drive accs / apis
 - if block to check storage remaining in each drive accs and push files to the one with most storage

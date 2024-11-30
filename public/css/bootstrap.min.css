@@ -2325,6 +2325,11 @@ textarea.form-control-lg {
     width: 250px;
 }
 
+.jay {
+    height: 200px;
+    weight: 250px;
+}
+
 .invalid-tooltip {
     position: absolute;
     top: 100%;
@@ -6915,6 +6920,7 @@ textarea.form-control-lg {
     padding: 1.5rem!important;
 }
 .p-5 {
+    margin-
 }
 .px-0 {
     padding-right: 0!important;
@@ -7563,7 +7569,9 @@ textarea.form-control-lg {
     border-radius: var(--bs-border-radius-lg)!important;
 }
 .rounded-4 {
-    border-radius: var(--bs-border-radius-xl)!important;
+    border-radius: 7px;
+    justify-content: center;
+    width: 500px;
 }
 .rounded-5 {
     border-radius: var(--bs-border-radius-xxl)!important;
