@@ -454,3 +454,181 @@ body.chocolat-open>.chocolat-image-wrapper {
 .chocolat-zoomable.chocolat-zooming-out .chocolat-img {
   transition: margin .2s ease;
 }
+
+/* optimize later from here */
+
+.center{
+  text-align: center;
+}
+
+.contact {
+  padding-top: 10vh;
+  padding-bottom: 30vh;
+}
+
+.contact-form{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-top: 4.2rem;
+  font-size: 15px;
+}
+.contact-form form{
+  position: relative;
+  width: 850px;
+}
+
+form .send-btn{
+  background-color: #1a1a1a;
+  color: #fff;
+  box-shadow: 4px 4px #555;
+  line-height: 42px;
+  display:inline-block;
+  border: 1px solid transparent;
+  font-size: 14px;
+  font-weight: 400;
+  letter-spacing: 2px;
+  transition: ease all 0.35s;
+  cursor:pointer;
+}
+form .send-btn:hover{
+  background-color: #1a1a1a;
+  color: #fff;
+  box-shadow: 4px 4px #00ff00;
+}
+
+form input,
+form textarea{
+  width: 100%;
+  padding: 20px;
+  border: none;
+  outline: none;
+  background: #000000;
+  color: var(--white);
+  margin-bottom: 0.5rem;
+  border-radius: 5px;
+}
+
+.widget-centered {
+  text-align: center;
+    margin: 100px;
+  }
+  .widget-centered input {
+    font-size: 16px;
+  color: #00ff00;
+  background-color: #1e1e1e;
+  width: auto;
+  padding-top: 10px;
+  padding-right: auto;
+  padding-bottom: 10px;
+  padding-left: 15px;
+  text-align: left;
+  }
+
+  .inlinin {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    justify-content: center;
+  }
+
+  input.downloadlink, textarea {
+  width: auto;
+  padding: 10px;
+  padding-left: 15px;
+  padding-right: 15px;
+  border: none;
+  outline: none;
+  background-color: #222;
+  color: #00ff00;
+  margin-bottom: 0.5rem;
+  border-radius: 7px;
+  }
+
+  button.widget-urlcopybtn {
+    background-color: #2e96cd;
+    font-family: arial;
+    border: none;
+    color: #ffffff;
+    margin: 0 0 20px 0;
+    padding: 17px 20px 20px 20px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+  }
+  button.widget-urlcopybtn:hover {
+    background-color: #2374A0;
+    color: #ffffff;
+  }
+  .widget-tooltip {
+    position: relative;
+    display: inline-block;
+  }
+  
+  .widget-tooltip .widget-tooltiptext {
+    visibility: hidden;
+    width: 200px;
+    background-color: #555;
+    color: #fff;
+    text-align: center;
+    padding: 15px;
+    position: absolute;
+    z-index: 1;
+    bottom: 120%;
+    left: 50%;
+    margin-left: -115px;
+    opacity: 0;
+    transition: opacity 0.3s;
+  }
+  
+  .widget-tooltip .widget-tooltiptext::after {
+    content: "";
+    position: absolute;
+    top: 100%;
+    left: 50%;
+    margin-left: -5px;
+    border-width: 5px;
+    border-style: solid;
+    border-color: #555 transparent transparent transparent;
+  }
+  
+  .widget-tooltip:hover .widget-tooltiptext {
+    visibility: visible;
+    opacity: 1;
+  }
+
+  .copy-btn {
+    height: 47px;
+  }
+  .buttcont {
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  
+  button {
+    cursor: pointer;
+    background: #222;
+    color: #fff;
+    font-size: 16px;
+    font-family: "Helvetica", sans-serif;
+    font-weight: 700;
+    letter-spacing: 0.5px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    margin: auto;
+    padding: 10px 10px;
+    min-width: 70px;
+    border: none;
+    border-radius: 8px;
+    transition: 250ms background ease;
+  }
+  
+  button:hover {
+    background: #000;
+  }
+  
