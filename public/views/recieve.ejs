@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title>Success | Echo Relay</title>
+  <title>Recieve | Echo Relay</title>
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -69,27 +69,25 @@
   </header>
 
   <section id="about-us" class="padding-large">
-    <script src="./js/success.js"></script>
+    <script src="./js/recieve.js"></script>
     <div class="container-fluid padding-side" data-aos="fade-up">
           <center>
-            <p style="font-size: 60px;">File Uploaded</p>
+            <p style="font-size: 60px;">Recieve</p>
           </center>
             <div class="widget-centered">
-                <div class="inlinin">
+            <div class="inlinin">
                 <div>
-                  <input class="downloadlink" type="text" value="<%= shortLink || 'Short link not found' %>" id="dlink" readonly />
+                  <input class="enterid" type="text" placeholder="Enter ID" id="recid" />
                 </div>
-                <div class="buttcont">
-                    <button onclick="copyshi()" class="copy-btn">
-                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                            <g opacity="0.7">
-                              <path d="M3 10C3 8.11438 3 7.17157 3.58579 6.58579C4.17157 6 5.11438 6 7 6H13C14.8856 6 15.8284 6 16.4142 6.58579C17 7.17157 17 8.11438 17 10V18C17 19.8856 17 20.8284 16.4142 21.4142C15.8284 22 14.8856 22 13 22H7C5.11438 22 4.17157 22 3.58579 21.4142C3 20.8284 3 19.8856 3 18V10Z" fill="white"/>
-                              <path opacity="0.5" d="M7.00439 5.00172C7.31535 5 7.64667 5 8.00007 5H12.0001C14.8285 5 16.2427 5 17.1214 5.87868C18.0001 6.75736 18.0001 8.17157 18.0001 11V17C18.0001 17.3534 18.0001 17.6847 17.9984 17.9957C19.2392 17.9778 19.9425 17.886 20.4143 17.4142C21.0001 16.8284 21.0001 15.8856 21.0001 14V6C21.0001 4.11438 21.0001 3.17157 20.4143 2.58579C19.8285 2 18.8857 2 17.0001 2H11.0001C9.11446 2 8.17165 2 7.58586 2.58579C7.1141 3.05755 7.02227 3.76086 7.00439 5.00172Z" fill="white"/>
-                            </g>
-                          </svg>
-                </button>
-                </div>
+                <p>OR</p>
+                <div>
+                    <input class="enterid" type="text" placeholder="Enter URL" id="recurl" />
+                  </div>
             </div>
+            <br>
+            <button id="recievebtn" class="recievebtn">
+              Recieve
+            </button>
               </div>              
             <br>
           </div>

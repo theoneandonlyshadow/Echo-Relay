@@ -15,11 +15,16 @@ const schema = mongoose.Schema({
     },
     url: {
         type: String,
+        required: true
+    },
+    shorty: {
+        type: String,
+        required: true
     },
     uploadedAt: {
         type: Date,
         default: Date.now,
-        expires: timePeriod,
+        expires: timePeriod
     }
 });
 

@@ -985,3 +985,110 @@
   .cent {
     justify-content: center;
   }
+
+  .row {
+    display: -ms-flexbox;
+    display: flex;
+    -ms-flex-wrap: wrap;
+    flex-wrap: wrap;
+    margin-right: -15px;
+    margin-left: -15px;
+  }
+
+  .mt-5,
+.my-5 {
+  margin-top: 3rem !important;
+}
+
+.col-md-10,
+.cold-md-6 {
+  position: relative;
+  width: 100%;
+  min-height: 1px;
+  padding-right: 15px;
+  padding-left: 15px;
+}
+
+.mx-auto {
+  margin-right: auto !important;
+}
+
+.feature-boxes {
+  text-align: center;
+}
+.feature-boxes .box {
+  padding: 3rem;
+}
+
+.icon-box {
+  position: relative;
+  border-radius: 50%;
+  display: inline-block;
+  vertical-align: middle;
+  background-color: #ffffff;
+  margin: 1rem;
+}
+.icon-box.box-primary {
+  color: #00e5ff;
+  background-color: rgba(0, 229, 255, 0.1);
+}
+.icon-box.box-secondary {
+  color: #ffffff;
+  background-color: rgba(255, 255, 255, 0.1);
+}
+.icon-box.box-success {
+  color: #00e676;
+  background-color: rgba(0, 230, 118, 0.1);
+}
+.icon-box.box-info {
+  color: #1de9b6;
+  background-color: rgba(29, 233, 182, 0.1);
+}
+.icon-box.box-warning {
+  color: #ffea00;
+  background-color: rgba(255, 234, 0, 0.1);
+}
+.icon-box.box-danger {
+  color: #ff1744;
+  background-color: rgba(255, 23, 68, 0.1);
+}
+.icon-box.box-light {
+  color: #eceff1;
+  background-color: rgba(236, 239, 241, 0.1);
+}
+.icon-box.box-dark {
+  color: #11171a;
+  background-color: rgba(17, 23, 26, 0.1);
+}
+.icon-box .icon-box-inner {
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-direction: row;
+  flex-direction: row;
+  -ms-flex-align: center;
+  align-items: center;
+  padding: 1.5rem;
+}
+.icon-box .icon-box-inner.small {
+  padding: 1.25rem;
+}
+.icon-box .icon-box-inner.small-xs {
+  padding: 1rem;
+}
+
+.text-muted {
+  padding-left: 50px;
+  padding-right: 50px;
+  color: #78909c !important;
+}
+
+.tios {
+  text-align: center;
+  justify-content: center;
+  display: flex;
+  justify-content: center;
+  align-items: center; 
+  height: 70px;
+  width: 250px;
+}
+

@@ -12,12 +12,16 @@
   <meta name="keywords" content="">
   <meta name="description" content="">
   <link rel="stylesheet" type="text/css" href="css/bootstrap.min.css">
+  <link rel="stylesheet" type="text/css" href="css/heart.scss">
   <link rel="stylesheet" type="text/css" href="css/vendor.css">
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@9/swiper-bundle.min.css" />
   <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
   <link rel="stylesheet" type="text/css" href="css/styles.css">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.8.1/slick.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.8.1/slick-theme.min.css">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap" rel="stylesheet">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -78,8 +82,10 @@
                     <p>All Files Supported. Max: 7GB</p>
                     <input type="file" id="fileID" name="files" style="display:none;" multiple required>
                     <div class="uprec">
-                      <button type="button" class="btn upload" onclick="document.getElementById('fileID').click()">Upload</button>
-                      <button type="button" class="btn receive" id="receive">Receive</button>
+                      <button type="button" class="btn upload" tabindex="0" onclick="document.getElementById('fileID').click()">Upload</button>
+                      <a href="/recieve">
+                      <button type="button" class="btn receive" tabindex="0" id="receive">Receive</button>
+                    </a>
                     </div>
                     <div id="fileNames"></div>
                 </form>
@@ -93,69 +99,81 @@
     <div class="container-fluid padding-side" data-aos="fade-up">
           <center>
             <p style="font-size: 60px;">Echo Relay</p>
-            <p>Upload. Share. Download</p>
+            <p style="font-size: 17px;">Upload. Share. Download</p>
+            <p>&#x1F5A4; FOSS by MaxTac</p>
           </center>
+            <br>
+            <div class="row mt-5">
+              <div class="col-md-10 mx-auto">
+                  <div class="row feature-boxes">
+                      <div class="col-md-6 box">
+                          <div class="icon-box box-primary">
+                              <div class="icon-box-inner">
+                                  <span data-feather="edit-3" width="35" height="35"></span>
+                              </div>
+                          </div>
+                          <h5>7GB Upload Size per File</h5>
+                          <p class="text-muted">For each file, you get a maximum of <b>7GB</b> upload size.</p>
+                      </div>
+                      <div class="col-md-6 box">
+                          <div class="icon-box box-success">
+                              <div class="icon-box-inner">
+                                  <span data-feather="monitor" width="35" height="35"></span>
+                              </div>
+                          </div>
+                          <h5>Upload Security & Privacy</h5>
+                          <p class="text-muted">We provide security from <b>Cloudflare</b> and <b>Google Cloud</b>. Our broker doesn't use any other services.</p>
+                      </div>
+                      <div class="col-md-6 box">
+                          <div class="icon-box box-danger">
+                              <div class="icon-box-inner">
+                                  <span data-feather="layout" width="35" height="35"></span>
+                              </div>
+                          </div>
+                          <h5>Password Security</h5>
+                          <p class="text-muted">Do you still need extra security? Your uploads that are password protected is encrypted by <b>AES - 256b</b>. Its near impossible to crack it!</p>
+                      </div>
+                      <div class="col-md-6 box">
+                          <div class="icon-box box-info">
+                              <div class="icon-box-inner">
+                                  <span data-feather="globe" width="35" height="35"></span>
+                              </div>
+                          </div>
+                          <h5>Secure Chat Interface</h5>
+                          <p class="text-muted">Chat with the people you upload! And our chatting framework is secure and fast.</p>
+                      </div>
+                      <br>
+                      <div class="col-md-8 col-12 divider top-divider mx-auto pt-5 text-center"> </div>
+                      <br>
+                      <div class="col-md-6 box">
+                          <div class="icon-box box-info">
+                              <div class="icon-box-inner">
+                                  <span data-feather="globe" width="35" height="35"></span>
+                              </div>
+                          </div>
+                          <h5>N0 Data Tracking</h5>
+                          <p class="text-muted">All services marked under MaxTac Services do not collect user data and sell to any third party services.</p>
+                      </div>
+                      <div class="col-md-6 box">
+                          <div class="icon-box box-info">
+                              <div class="icon-box-inner">
+                                  <span data-feather="globe" width="35" height="35"></span>
+                              </div>
+                          </div>
+                          <h5>Unlimited File Upload</h5>
+                          <p class="text-muted">You can upload as many as files you need, but with a 7GB limit of course.</p>
+                      </div>
+                  </div>
+              </div>
+          </div>
             <br>
             <br>
             <center>
-            <p style="font-size: 40px;">Benefits</p>
-          </center>
-            <br>
-            <div class="projects__grid">
-              <div class="project">
-                <p class="project__description">
-                  • 7GB upload limit per file        
-                </p>
-                <div>
-              </div>
-              </div>
-        
-                 <div class="project">
-                 <p class="project__description">
-                   • Security by Cloudflare and Google Cloud
-                  </p>
-                 <div>
-                </div>
-               </div>
-        
-               <div class="project">
-                 <p class="project__description">
-                  • Password Protection
-                </p>
-                 <div>
-               </div>
-              </div>
-        
-                <div class="project">
-                  <p class="project__description">
-                    • Automatic Deletion after 7 Days
-                  </p>
-                  <div>
-                </div>
-                </div>
-        
-                <div class="project">
-                  <p class="project__description">
-                    • Unlimited File Upload
-                  </p>
-                  <div>
-              </div>
-              </div>
-        
-              <div class="project">
-                <p class="project__description">
-                  • Secure chat interface
-                </p>
-                <div>
-            </div>
-            </div>
-            </div>
-            <br>
-            <br>
-            <a href="https://github.com/theoneandonlyshadow/echo-relay" class="btn btn-arrow btn-primary mt-3">
-              <span>This is Open Source<svg width="18" height="18">
+            <a href="https://github.com/theoneandonlyshadow/echo-relay" class="tios btn btn-arrow btn-primary mt-3">
+              <div>This is Open Source<svg>
                   <use xlink:href="#arrow-right"></use>
-                </svg></span>
+                </svg></div>
+                
             </a>
           </div>
   </section>
@@ -235,10 +253,10 @@
 
   <!-- Other FOSS Services-->
    <!-- Gonna need to make some icons and put there below -->
-  <section id="services" class="padding-medium">
+   <section id="services" class="padding-medium">
     <div class="container-fluid padding-side" data-aos="fade-up">
       <h3 class="display-3 text-center fw-normal col-lg-4 offset-lg-4" style="color: #fff; font-size: 50px;">Other FOSS Services</h3>
-      <div class="row mt-5">
+      <div class="cent row mt-5 flex">
         <div class="col-md-6 col-xl-4">
           <div class="service mb-4 text-center rounded-4 p-5">
             <div class="position-relative">
@@ -248,7 +266,7 @@
               <br>
               <br>
               <br>
-              <img src="assets/images/madhav.png" alt="img"
+              <img src="assets/images/madhav_red.png" alt="img"
                 class="position-absolute top-100 start-50 translate-middle z-n1 pe-5 madhav">
             </div>
             <br>
@@ -262,42 +280,48 @@
                   <use xlink:href="#arrow-right"></use>
                 </svg></span>
             </a>
+            <a href="https://maxtac.tech" class="btn btn-arrow">
+              <span class="">Portfolio<svg width="18" height="18">
+                  <use xlink:href="#arrow-right"></use>
+                </svg></span>
+            </a>
             <br>
             <br>
           </div>
-          
         </div>
+
+        <div class="col-md-6 col-xl-4">
+          <div class="service mb-4 text-center rounded-4 p-5">
+            <div class="position-relative">
+              <svg class="color" width="70" height="70">
+                <use xlink:href="#meditation"></use>
+              </svg>
+              <br>
+              <br>
+              <br>
+              <center>
+              <img src="assets/images/jay.jpg" alt="img"
+                class="position-absolute top-100 start-50 translate-middle z-n1 pe-5 jay">
+              </center>
+              </div>
+            <br>
+            <br>
+            <br>
+            <br>
+            <h4 class="display-6 fw-normal my-3">NetProbe</h4>
+            <p></p>
+            <a href="https://LinkedIn.com" class="btn btn-arrow">
+              <span class="">GitHub<svg width="18" height="18"></svg></span>
+            </a>
+            <a href="https://jaydotjs.netlify.app" class="btn btn-arrow">
+              <span class="">Portfolio<svg width="18" height="18"></svg></span>
+            </a>
+            <br>
+            <br>
           </div>
-          <div class="row mt-5">
-            <div class="col-md-6 col-xl-4">
-              <div class="service mb-4 text-center rounded-4 p-5">
-                <div class="position-relative">
-                  <svg class="color" width="70" height="70">
-                    <use xlink:href="#meditation"></use>
-                  </svg>
-                  <br>
-                  <br>
-                  <br>
-                  <img src="assets/images/madhav.png" alt="img"
-                    class="position-absolute top-100 start-50 translate-middle z-n1 pe-5 madhav">
-                </div>
-                <br>
-                <br>
-                <br>
-                <br>
-                <h4 class="display-6 fw-normal my-3"></h4>
-                <p></p>
-                <a href="index.html" class="btn btn-arrow">
-                  <span class="">GitHub<svg width="18" height="18">
-                      <use xlink:href="#arrow-right"></use>
-                    </svg></span>
-                </a>
-                <br>
-                <br>
-              </div>
-              
-            </div>
-              </div>
+        </div>
+
+          </div>
         </div>
   </section>
   
@@ -313,17 +337,17 @@
             <li class="nav-item"><a href="#" class="p-0 "> Creators </a></li>
             <li class="nav-item"><a href="#" class="p-0 "> Privacy Policy</a></li>
             <li class="nav-item"><a href="#" class="p-0 "> MaxTac </a></li>
+            <li class="nav-item"><a href="#" class="p-0 "> Terms & Conditions </a></li>
           </ul>
         </div>
         <div class="col-md-6 col-lg-3 offset-lg-1 mb-4 mb-lg-0">
-          <h4 class="display-6 fw-normal">Services</h4>
+          <h4 class="display-6 fw-normal">Connect With Us</h4>
           <ul class="nav flex-column">
             <li class="nav-item"><a href="#" class="p-0 "> Spa </a></li>
             <li class="nav-item"><a href="#" class="p-0 "> Pool </a></li>
             <li class="nav-item"><a href="#" class="p-0 "> Yoga </a></li>
             <li class="nav-item"><a href="#" class="p-0 "> Gym</a></li>
             <li class="nav-item"><a href="#" class="p-0 "> News </a></li>
-            <li class="nav-item"><a href="#" class="p-0 "> Terms & Conditions </a></li>
           </ul>
         </div>
         <div class="col-md-6 col-lg-3 offset-lg-1 mb-4 mb-lg-0">
@@ -342,6 +366,11 @@
   <script src="https://cdn.jsdelivr.net/npm/swiper/swiper-bundle.min.js"></script>
   <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
   <script type="text/javascript" src="js/script.js"></script>
+<script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/feather-icons/4.7.3/feather.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.8.1/slick.min.js"></script>
   <script src="https://code.iconify.design/iconify-icon/1.0.7/iconify-icon.min.js"></script>
   <script data-name="BMC-Widget" data-cfasync="false" src="https://cdnjs.buymeacoffee.com/1.0.0/widget.prod.min.js" data-id="maxtac" data-description="Support me on Buy me a coffee!" data-message="Donate?." data-color="#40DCA5" data-position="Right" data-x_margin="18" data-y_margin="18"></script>
 </body>

@@ -545,6 +545,25 @@ form textarea{
   border-radius: 7px;
   }
 
+  .recievebtn {
+    padding-left: 30px;
+    padding-right: 30px;
+    
+  }
+
+  .enterid {
+    width: auto;
+    padding: 10px;
+    padding-left: 15px;
+    padding-right: 15px;
+    border: none;
+    outline: none;
+    background-color: #000;
+    color: #00ff00;
+    margin-bottom: 0.5rem;
+    border-radius: 7px;
+    }
+
   button.widget-urlcopybtn {
     background-color: #2e96cd;
     font-family: arial;

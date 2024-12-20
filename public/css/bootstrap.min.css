@@ -383,6 +383,9 @@ button {
 button:focus:not(:focus-visible) {
     outline: 0;
 }
+button:focus {
+    outline-offset: 2px;
+}
 button, input, optgroup, select, textarea {
     margin: 0;
     font-family: inherit;
