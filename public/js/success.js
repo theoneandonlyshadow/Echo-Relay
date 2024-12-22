@@ -1,6 +1,6 @@
 async function copyshi() {
     try {
-        const text = document.getElementById('dlink').innerHTML;
+        const text = document.getElementById('dlink').value;
         await navigator.clipboard.writeText(text);
     } catch (err) {
         alert(err);
@@ -9,7 +9,7 @@ async function copyshi() {
 
 async function deleteFile() {
     try {
-        const fileLink = document.getElementById('dlink').innerHTML;
+        const fileLink = document.getElementById('dlink').value;
         const url = new URL(fileLink);
         const fileId = url.searchParams.get('id');
 
