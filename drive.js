@@ -90,11 +90,8 @@ function restDelete() {
 }
 
 async function deleteMongo() {
-    const files = await Model.find({});
-    for (const file of files) {
-        await driveDelete(file.fileId);
-        await Model.findByIdAndDelete(file._id);
-    }
+    const file = await Model.findByIdAndDelete(file._id);
+    await driveDelete(file.fileId);
 }
 
 async function zip(files, outputPath) {
@@ -158,7 +155,7 @@ app.post('/upload', upload.array('files'), async (req, res) => {
     }
 });
 
-//app.delete('/delete', driveDelete, deleteMongo, restDelete);
+app.delete('/delete', driveDelete, deleteMongo);
 
 app.get('/success', (req, res) => {
     const downloadLink = req.query.link;
