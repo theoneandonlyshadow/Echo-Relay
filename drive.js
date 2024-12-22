@@ -89,11 +89,6 @@ function restDelete() {
     }
 }
 
-async function deleteMongo() {
-    const file = await Model.findByIdAndDelete(file._id);
-    await driveDelete(file.fileId);
-}
-
 async function zip(files, outputPath) {
     return new Promise((resolve, reject) => {
         const output = fs.createWriteStream(outputPath);
@@ -155,7 +150,20 @@ app.post('/upload', upload.array('files'), async (req, res) => {
     }
 });
 
-app.delete('/delete', driveDelete, deleteMongo);
+app.delete('/delete/:fileId', async (req, res) => {
+    const { fileId } = req.params;
+    try {
+        await driveDelete(fileId);
+        const fileRecord = await Model.findOneAndDelete({ fileid: fileId });
+        if (!fileRecord) {
+            return res.status(404).json({ message: 'File not found in database.' });
+        }
+        res.status(200).json({ message: 'File deleted successfully.' });
+    } catch (error) {
+        console.error('Error deleting file:', error);
+        res.status(500).json({ message: 'Error deleting file.', error: error.message });
+    }
+});
 
 app.get('/success', (req, res) => {
     const downloadLink = req.query.link;
