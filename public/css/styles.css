@@ -985,3 +985,8 @@
   .cent {
     justify-content: center;
   }
+
+  .delBtn {
+    margin-top: 5px;
+    padding: 10px;
+  }

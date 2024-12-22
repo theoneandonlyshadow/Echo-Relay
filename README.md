@@ -1,10 +1,10 @@
 # TODO
 
-- make success and error pages in ejs
-- make responsive website    `partial done`
+- make success and error pages in ejs `Done`
+- make responsive website `Partially done`
 - multiple drive accs / apis
 - if block to check storage remaining in each drive accs and push files to the one with most storage
-- delete file option after uploading
+- delete file option after uploading `on it`
 - password protection of the file
 - shorten url
 - input key

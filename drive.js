@@ -64,6 +64,39 @@ async function driveUpload(filePath, fileName) {
     return fileId;
 }
 
+async function driveDelete(fileId) {
+    try {
+        return await drive.files.delete({
+            fileId: fileId,
+        });
+    }
+    catch (error) {
+        console.error('Error deleting file:', error);
+        throw error;
+    }
+}
+
+function restDelete() {
+    try {
+    const hashDir = path.join(__dirname, 'uploads');
+    const files = fs.readdirSync(hashDir);
+    files.forEach(file => fs.unlinkSync(path.join(hashDir, file)));
+    console.log('files deleted');
+    }
+    catch (error) {
+        console.error('Error deleting files:', error);
+        throw error;
+    }
+}
+
+async function deleteMongo() {
+    const files = await Model.find({});
+    for (const file of files) {
+        await driveDelete(file.fileId);
+        await Model.findByIdAndDelete(file._id);
+    }
+}
+
 async function zip(files, outputPath) {
     return new Promise((resolve, reject) => {
         const output = fs.createWriteStream(outputPath);
@@ -74,7 +107,7 @@ async function zip(files, outputPath) {
             resolve();
         });
 
-        // if zipping encounters error. debugging
+        // if zipping encounters error debugging
         archive.on('error', (err) => {
             console.error('archiving error:', err);
             reject(err);
@@ -116,6 +149,8 @@ app.post('/upload', upload.array('files'), async (req, res) => {
         fs.unlinkSync(zipFilePath);
         files.forEach((file) => fs.unlinkSync(file.path));
 
+        restDelete();
+
         res.redirect(`/success?link=${encodeURIComponent(downloadLink)}`);
     } catch (error) {
         console.error('Upload error:', error);
@@ -123,6 +158,7 @@ app.post('/upload', upload.array('files'), async (req, res) => {
     }
 });
 
+//app.delete('/delete', driveDelete, deleteMongo, restDelete);
 
 app.get('/success', (req, res) => {
     const downloadLink = req.query.link;
@@ -132,8 +168,6 @@ app.get('/success', (req, res) => {
 
     res.render('success', { downloadLink });
 });
-
-
 
 app.listen(PORT, () => {
     console.log(`the server is running at http://localhost:${PORT}`);
