@@ -17,6 +17,13 @@ async function deleteFile() {
             method: 'DELETE',
         });
 
+        if (response.ok) {
+            window.location.href = '/deleted' ;
+        }
+        else {
+            const err = await response.json();
+            alert(`Error: ${err.message || 'Failed to delete file'}`);
+        }
     } catch (error) {
         alert(`Error: ${error.message}`);
     }

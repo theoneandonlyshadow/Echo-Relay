@@ -48,7 +48,7 @@ app.post('/upload', upload.array('files'), async (req, res) => {
         res.redirect(`/success?link=${encodeURIComponent(downloadLink)}`);
     } catch (error) {
         console.error('Upload error:', error);
-        res.render('error');
+        res.render('error', { message: error.message});
     }
 });
 
@@ -58,21 +58,25 @@ app.delete('/delete/:fileId', async (req, res) => {
         await driveDelete(fileId);
         const fileRecord = await Model.findOneAndDelete({ fileid: fileId });
         if (!fileRecord) {
-            return res.status(404).json({ message: 'File not found in database.' });
+            res.render('error', { message: 'File not found' });
         }
-        res.status(200).json({ message: 'File deleted successfully.' });
+        res.render('deleted');
     } catch (error) {
         console.error('Error deleting file:', error);
-        res.status(500).json({ message: 'Error deleting file.', error: error.message });
+        res.render('error', { message: 'Error deleting file' });
     }
 });
 
 app.get('/success', (req, res) => {
     const downloadLink = req.query.link;
     if (!downloadLink) {
-        return res.render('error');
+        return res.render('error', { message: 'Some error occurred while uploading the files' });
     }
     res.render('success', { downloadLink });
+});
+
+app.get('/deleted', (req, res) => {
+    return res.render('deleted');
 });
 
 app.listen(PORT, () => {
