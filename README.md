@@ -4,7 +4,7 @@
 - make responsive website `Partially done`
 - multiple drive accs / apis
 - if block to check storage remaining in each drive accs and push files to the one with most storage
-- delete file option after uploading `on it`
+- delete file option after uploading `Done`
 - password protection of the file
 - shorten url
 - input key
