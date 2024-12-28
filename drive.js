@@ -65,10 +65,13 @@ async function driveUpload(filePath, fileName) {
 }
 
 async function driveDelete(fileId) {
+    console.log(`File ID: ${fileId}`);
     try {
-        return await drive.files.delete({
+        const resp = await drive.files.delete({
             fileId: fileId,
         });
+        console.log(`File deleted: ${fileId}`);
+        return resp;
     }
     catch (error) {
         console.error('Error deleting file:', error);
@@ -81,10 +84,10 @@ function restDelete() {
     const hashDir = path.join(__dirname, 'uploads');
     const files = fs.readdirSync(hashDir);
     files.forEach(file => fs.unlinkSync(path.join(hashDir, file)));
-    console.log('files deleted');
+    console.log('Temporary files deleted');
     }
     catch (error) {
-        console.error('Error deleting files:', error);
+        console.error('Error deleting temporary files:', error);
         throw error;
     }
 }

@@ -17,8 +17,7 @@ async function deleteFile() {
             method: 'DELETE',
         });
 
-    } catch (err) {
-        alert(`Error: ${err.message}`);
+    } catch (error) {
+        alert(`Error: ${error.message}`);
     }
 }
-// not workin. gotta fix.
