@@ -1,3 +1,4 @@
+@import url("https://fonts.googleapis.com/css?family=Shadows+Into+Light");
 
 :root {
     --primary-color: #fff;
@@ -989,4 +990,8 @@
   .delBtn {
     margin-top: 5px;
     padding: 10px;
+  }
+
+  .tit404 {
+    font-family: "Shadows Into Light", cursive;
   }

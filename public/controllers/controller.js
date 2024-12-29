@@ -1,7 +1,9 @@
 const path = require('path');
 const fs = require('fs');
 const { google } = require('googleapis');
+const crypto = require('crypto');
 const archiver = require('archiver');
+const { Model } = require('../monkeese/model');
 
 const auth = new google.auth.GoogleAuth({
     keyFile: 'creds/serviceacc.json',
@@ -10,6 +12,7 @@ const auth = new google.auth.GoogleAuth({
 
 const drive = google.drive({ version: 'v3', auth });
 
+// [function declaration] upload files to drive
 async function driveUpload(filePath, fileName) {
     const fileMetadata = {
         name: fileName,
@@ -40,6 +43,7 @@ async function driveUpload(filePath, fileName) {
     return fileId;
 }
 
+// [function declaration] delete files from drive after time period
 async function driveDelete(fileId) {
     console.log(`File ID: ${fileId}`);
     try {
@@ -55,6 +59,7 @@ async function driveDelete(fileId) {
     }
 }
 
+// [function declaration] delete hashed files after successful upload
 function restDelete(hashDir) {
     try {
         const files = fs.readdirSync(hashDir);
@@ -67,6 +72,7 @@ function restDelete(hashDir) {
     }
 }
 
+//[function declaration] zip the uploaded files
 async function zip(files, outputPath) {
     return new Promise((resolve, reject) => {
         const output = fs.createWriteStream(outputPath);
@@ -100,4 +106,19 @@ async function zip(files, outputPath) {
     });
 }
 
-module.exports = { driveUpload, driveDelete, restDelete, zip };
+// [function declaration] meet shorty, it midgets the url
+async function shorty(req) {
+    let code;
+    let isUnique = false;
+    const base_url = `${req.protocol}://${req.get('host')}`;
+    while (!isUnique) {
+        code = crypto.randomBytes(20).toString('hex').substring(0, 6);
+        const shortUrl = `${base_url}/${code}`;
+        const existing = await Model.findOne({ shorty: shortUrl });
+        if (!existing) isUnique = true;
+    }
+    const shortUrl = `${base_url}/${code}`;
+    return shortUrl;
+}
+
+module.exports = { driveUpload, driveDelete, restDelete, zip, shorty };
