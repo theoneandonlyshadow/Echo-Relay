@@ -15,7 +15,8 @@ const upload = multer({
     limits: { fileSize: sizeLimit }
 });
 
-connect('mongodb+srv://madhavnair700:devatheking7@echorelay.jaedn.mongodb.net/');
+connect('mongodb://127.0.0.1:27017/user?directConnection=true&serverSelectionTimeoutMS=2000');
+//connect('mongodb+srv://madhavnair700:devatheking7@echorelay.jaedn.mongodb.net/');
 // JP: connect('mongodb://127.0.0.1:27017/user?directConnection=true&serverSelectionTimeoutMS=2000');
 // MN: connect('mongodb+srv://<username>:<password>@echorelay.jaedn.mongodb.net/');
 
@@ -89,8 +90,8 @@ app.get('/deleted', (req, res) => {
     return res.render('deleted');
 });
 
-app.get('/recieve', (req, res) => {
-    return res.render('recieve');
+app.get('/receive', (req, res) => {
+    return res.render('receive');
 });
 
 app.get('/', (req, res) => {
