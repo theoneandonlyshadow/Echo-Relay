@@ -9,9 +9,17 @@ async function copyshi() {
 
 async function deleteFile() {
     try {
-        const fileLink = document.getElementById('dlink').value;
-        const url = new URL(fileLink);
-        const fileId = url.searchParams.get('id');
+        const currentURL = window.location.href;
+        const url = new URL(currentURL);
+        const fileLink = url.searchParams.get('link');
+
+        if(!fileLink) {
+            alert('No file link provided');
+            return;
+        }
+        
+        const linkURL = new URL(fileLink);
+        const fileId = linkURL.searchParams.get('id');
 
         const response = await fetch(`/delete/${fileId}`, {
             method: 'DELETE',
