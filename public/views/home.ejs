@@ -81,12 +81,13 @@
                   <p>All Files Supported. Max: 7GB</p>
                   <input type="file" id="fileID" name="files" style="display:none;" multiple required>
                   <div class="uprec">
-                      <button type="button" class="btn upload" tabindex="0" onclick="document.getElementById('fileID').click()">Upload</button>
+                      <button type="button" class="upload" tabindex="0" onclick="document.getElementById('fileID').click()">Upload</button>
                       <a href="/recieve">
-                          <button type="button" class="btn receive" tabindex="0" id="receive">Receive</button>
+                          <button type="button" class= "receive" tabindex="0" id="receive">Receive</button>
                       </a>
                   </div>
-                  <div id="fileNames"></div>
+                  <div id="fileNames" class="file-names-container">
+                </div>
               </form>
           </div>
       </div>
@@ -111,8 +112,10 @@
                                   <span data-feather="edit-3" width="35" height="35"></span>
                               </div>
                           </div>
-                          <h5>7GB Upload Size per File</h5>
-                          <p class="text-muted">For each file, you get a maximum of <b>7GB</b> upload size.</p>
+                          <h3>7GB Upload Size per File</h3>
+                          <hr>
+                          <p class="">For each file, you get a maximum of <b>7GB</b> upload size.</p>
+                          <br>
                       </div>
                       <div class="col-md-6 box">
                           <div class="icon-box box-success">
@@ -120,27 +123,33 @@
                                   <span data-feather="monitor" width="35" height="35"></span>
                               </div>
                           </div>
-                          <h5>Upload Security & Privacy</h5>
-                          <p class="text-muted">We provide security from <b>Cloudflare</b> and <b>Google Cloud</b>. Our broker doesn't use any other services.</p>
-                      </div>
+                          <h3>Upload Security & Privacy</h3>
+                          <hr>
+                          <p class="">We provide security from <b>Cloudflare</b> and <b>Google Cloud</b>. Our broker doesn't use any other services.</p>
+                          <br>
+                        </div>
                       <div class="col-md-6 box">
                           <div class="icon-box box-danger">
                               <div class="icon-box-inner">
                                   <span data-feather="layout" width="35" height="35"></span>
                               </div>
                           </div>
-                          <h5>Password Security</h5>
-                          <p class="text-muted">Do you still need extra security? Your uploads that are password protected is encrypted by <b>AES - 256b</b>. Its near impossible to crack it!</p>
-                      </div>
+                          <h3>Password Security</h5>
+                          <hr>
+                          <p class="">Do you still need extra security? Your uploads that are password protected is encrypted by <b>AES - 256b</b>. Its near impossible to crack it!</p>
+                          <br>
+                        </div>
                       <div class="col-md-6 box">
                           <div class="icon-box box-info">
                               <div class="icon-box-inner">
                                   <span data-feather="globe" width="35" height="35"></span>
                               </div>
                           </div>
-                          <h5>Secure Chat Interface</h5>
-                          <p class="text-muted">Chat with the people you upload! And our chatting framework is secure and fast.</p>
-                      </div>
+                          <h3>Secure Chat Interface</h3>
+                          <hr>
+                          <p class="">Chat with the people you upload! And our chatting framework is secure and fast.</p>
+                          <br>
+                        </div>
                       <br>
                       <div class="col-md-8 col-12 divider top-divider mx-auto pt-5 text-center"> </div>
                       <br>
@@ -150,29 +159,30 @@
                                   <span data-feather="globe" width="35" height="35"></span>
                               </div>
                           </div>
-                          <h5>N0 Data Tracking</h5>
-                          <p class="text-muted">All services marked under MaxTac Services do not collect user data and sell to any third party services.</p>
-                      </div>
+                          <h3>N0 Data Tracking</h3>
+                          <hr>
+                          <p class="">All services marked under MaxTac Services do not collect user data and sell to any third party services.</p>
+                          <br>
+                        </div>
                       <div class="col-md-6 box">
                           <div class="icon-box box-info">
                               <div class="icon-box-inner">
                                   <span data-feather="globe" width="35" height="35"></span>
                               </div>
                           </div>
-                          <h5>Unlimited File Upload</h5>
-                          <p class="text-muted">You can upload as many as files you need, but with a 7GB limit of course.</p>
-                      </div>
+                          <h3>Unlimited File Upload</h3>
+                          <hr>
+                          <p class="">You can upload as many as files you need, but with a 7GB limit of course.</p>
+                          <br>
+                        </div>
                   </div>
               </div>
           </div>
             <br>
             <br>
             <center>
-            <a href="https://github.com/theoneandonlyshadow/echo-relay" class="tios btn btn-arrow btn-primary mt-3">
-              <div>This is Open Source<svg>
-                  <use xlink:href="#arrow-right"></use>
-                </svg></div>
-                
+            <a href="https://github.com/theoneandonlyshadow/echo-relay" class="tios">
+              <div>This is Open Source</div>
             </a>
           </div>
   </section>
@@ -264,7 +274,7 @@
                         </div>
 
                         <div class="blog-content-wrapper">
-                            <h3><a href="#" class="h3">NetProbe Mk.II</a></h3>
+                            <h3 class="h3">NetProbe Mk.II</h3>
                             <p class="blog-text">NetProbe Mk.2 is a system tray application that monitors internet connectivity, logs connection status changes, and provides utility features like clearing DNS cache and viewing logs. Built using Node.js, it is designed to work seamlessly on Windows, macOS, and Linux.</p>
 
                             <div class="wrapper-flex">
@@ -290,286 +300,77 @@
 
                     <div class="blog-card">
                         <div class="blog-card-banner">
-                            <img src="https://i.postimg.cc/bNLmnJZS/blog-2.png" alt="blog image" class="blog-banner-img" width="250">
+                            <img src="../assets/images/floodsense.png" alt="blog image" class="blog-banner-img" width="250">
                         </div>
 
                         <div class="blog-content-wrapper">
-                            <button class="blog-topic text-tiny">Web Performance</button>
-                            <h3><a href="#" class="h3">Fast web page loading on a $20 feature phone</a></h3>
-                            <p class="blog-text">Feature phones are affordable (under $20-25), low-end services enabling 100s of millions of users in development countries to leverage the web. Think of them as a light version of a smart phone</p>
+                            <h3 class="h3">FloodSense</h3>
+                            <p class="blog-text">FloodSense is a Real-Time Flood Monitoring System Web App designed to provide communities with real-time flood data and alerts. It integrates IoT sensors and intuitive dashboards to empower users with actionable insights to prepare for and respond to flood events.</p>
 
                             <div class="wrapper-flex">
                                 <div class="profile-wrapper">
-                                    <img src="https://i.postimg.cc/8Cn8m4sW/author.png" alt="image" width="50">
+                                    <img src="https://i.postimg.cc/tg2PrWzN/jay.jpg" alt="image" width="50">
                                 </div>
 
                                 <div class="wrapper">
-                                    <a href="#" class="h4">Julia Walker</a>
+                                    <a href="https://jaydotjs.netlify.app" class="h4">Jayprakash Malik</a>
 
                                     <p class="text-small">
-                                        <time datetime="2023-20-12">Dec 20, 2023</time>
+                                        <time datetime="2024-01-11">Dec 12, 2024</time>
                                         <span class="separator"></span>
                                         <ion-icon name="time-outline"></ion-icon>
-                                        <time datetime="PT2M">2 min</time>
-                                    </p>
+                                        <button onClick="window.open('https://github.com/Tyler7x1/FloodSense');">GitHub</button>
+                                      </p>
                                     
                                 </div>
                             </div>
                         </div>
                     </div>
 
-                    <div class="blog-card">
-                        <div class="blog-card-banner">
-                            <img src="https://i.postimg.cc/ncLv61LM/blog-3.png" alt="blog image" class="blog-banner-img" width="250">
-                        </div>
-
-                        <div class="blog-content-wrapper">
-                            <button class="blog-topic text-tiny">Accessibility</button>
-                            <h3><a href="#" class="h3">Accessibility Tips for Web Developers</a></h3>
-                            <p class="blog-text">It's awesome to build sites that are inclusive and accessible to everyone. There are at least six key areas of disability we can optimize for: visual, hearing, mobility, cognition, speech and neural. Many tools and resources can help here, even if you're totally new to web accessibility</p>
-
-                            <div class="wrapper-flex">
-                                <div class="profile-wrapper">
-                                    <img src="https://i.postimg.cc/8Cn8m4sW/author.png" alt="image" width="50">
-                                </div>
-
-                                <div class="wrapper">
-                                    <a href="#" class="h4">Julia Walker</a>
-
-                                    <p class="text-small">
-                                        <time datetime="2023-30-11">Nov 30, 2023</time>
-                                        <span class="separator"></span>
-                                        <ion-icon name="time-outline"></ion-icon>
-                                        <time datetime="PT4M">4 min</time>
-                                    </p>
+                    <div class="blog-card-group">
+                        <div class="blog-card">
+                            <div class="blog-card-banner">
+                                <img src="../assets/images/erdbox.bmp" alt="blog image" class="blog-banner-img">
+                            </div>
+    
+                            <div class="blog-content-wrapper">
+                                <h3 class="h3">Echo Relay - Dbox</h3>
+                                <p class="blog-text">NetProbe Mk.II II is a system tray application that monitors internet connectivity, logs connection status changes, and provides utility features like clearing DNS cache and viewing logs. Built using Node.js, it is designed to work seamlessly on Windows, macOS, and Linux.</p>
+    
+                                <div class="wrapper-flex">
+                                    <div class="profile-wrapper">
+                                        <img src="https://i.postimg.cc/CLSG48wt/madhav.png" alt="madhav nair" width="50">
+                                    </div>
+                                    <div class="profile-wrapper">
+                                        <img src="https://i.postimg.cc/tg2PrWzN/jay.jpg" alt="jayprakash malik" width="50">
+                                    </div>
                                     
+                                    <div class="wrapper">
+                                        <div>
+                                            <p class="h4">Madhav Nair | Jayprakash Malik</p>
+                                    </div>
+                                            <p class="text-small">
+                                            <time datetime="2024-01-11">Nov 14, 2024</time>
+                                            <span class="separator"></span>
+                                            <ion-icon name="time-outline"></ion-icon>
+                                            <button onClick="window.open('https://github.com/theoneandonlyshadow/Echo-Relay-Dbox');">GitHub</button>
+                                          </p>
+                                        
+                                    </div>
                                 </div>
                             </div>
                         </div>
-                    </div>
-
-                    <div class="blog-card">
-                        <div class="blog-card-banner">
-                            <img src="https://i.postimg.cc/RZBnvQSc/blog-4.png" alt="blog image" class="blog-banner-img" width="250">
-                        </div>
-
-                        <div class="blog-content-wrapper">
-                            <button class="blog-topic text-tiny">Web Performance</button>
-                            <h3><a href="#" class="h3"></a>Dynamically Securing Databases using Hashicorp Vault</h3>
-                            <p class="blog-text">Nowadays, it's hard to profoundly talk about security in the IT industry, since it has to be considered on so many different levels: from security code chunks, securing containers, up to securing complex infrastructures and defining strong authorization and authentication policies accross the enterprise</p>
-
-                            <div class="wrapper-flex">
-                                <div class="profile-wrapper">
-                                    <img src="https://i.postimg.cc/8Cn8m4sW/author.png" alt="image" width="50">
-                                </div>
-
-                                <div class="wrapper">
-                                    <a href="#" class="h4">Julia Walker</a>
-
-                                    <p class="text-small">
-                                        <time datetime="2021-09-11">Nov 9, 2021</time>
-                                        <span class="separator"></span>
-                                        <ion-icon name="time-outline"></ion-icon>
-                                        <time datetime="PT4M">4 min</time>
-                                    </p>
-                                    
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="blog-card">
-                        <div class="blog-card-banner">
-                            <img src="https://i.postimg.cc/k5jVN0xc/blog-5.png" alt="blog image" class="blog-banner-img" width="250">
-                        </div>
-
-                        <div class="blog-content-wrapper">
-                            <button class="blog-topic text-tiny">Web Performance</button>
-                            <h3><a href="#" class="h3">Adapttive Loading - Improving Web Performance on low-end-devices</a></h3>
-                            <p class="blog-text">Adaptive Loading: Do not just respond based on screen size, adapt based on actual device hardware. Any user can have a slow experience. In a world with widely varying device capabilities, a "one-size" fits all experience may not always work. Sites that delight users on high-end devices can be unusable on low-end ones, particularly on median mobile and desktop hardware and in emerging markets</p>
-
-                            <div class="wrapper-flex">
-                                <div class="profile-wrapper">
-                                    <img src="https://i.postimg.cc/8Cn8m4sW/author.png" alt="image" width="50">
-                                </div>
-
-                                <div class="wrapper">
-                                    <a href="#" class="h4">Julia Walker</a>
-
-                                    <p class="text-small">
-                                        <time datetime="2021-03-11">Nov 3, 2021</time>
-                                        <span class="separator"></span>
-                                        <ion-icon name="time-outline"></ion-icon>
-                                        <time datetime="PT3M">3 min</time>
-                                    </p>
-                                    
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="blog-card">
-                        <div class="blog-card-banner">
-                            <img src="https://i.postimg.cc/kgGP6Lg9/blog-6.png" alt="blog image" class="blog-banner-img" width="250">
-                        </div>
-
-                        <div class="blog-content-wrapper">
-                            <button class="blog-topic text-tiny">Accessibility</button>
-                            <h3><a href="#" class="h3">Don't develop just dor yourself - A Developer's checklist to Accessibility</a></h3>
-                            <p class="blog-text">We, as developers, tend to develop sites unconsciously for people like ourselves. If we don't actively pay attention, the sites are often accessible only for certain types of people: Sighted mouse-users, who have good fine motor skills and are good at using computers</p>
-
-                            <div class="wrapper-flex">
-                                <div class="profile-wrapper">
-                                    <img src="https://i.postimg.cc/8Cn8m4sW/author.png" alt="image" width="50">
-                                </div>
-
-                                <div class="wrapper">
-                                    <a href="#" class="h4">Julia Walker</a>
-
-                                    <p class="text-small">
-                                        <time datetime="2023-20-10">Oct 20, 2023</time>
-                                        <span class="separator"></span>
-                                        <ion-icon name="time-outline"></ion-icon>
-                                        <time datetime="PT7M">7 min</time>
-                                    </p>
-                                    
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="blog-card">
-                        <div class="blog-card-banner">
-                            <img src="https://i.postimg.cc/FHYs5Ycj/blog-7.png" alt="blog image" class="blog-banner-img" width="250">
-                        </div>
-
-                        <div class="blog-content-wrapper">
-                            <button class="blog-topic text-tiny">Database</button>
-                            <h3><a href="#" class="h3">Building a Restful CRUD API with Node JS, Express and MongoDB</a></h3>
-                            <p class="blog-text">Application Programming Interface is the abbreviation for API. An API is a software interface that enables two apps to comunicate with one another. In other words, an API is a messenger thet sends your request to the provider and then return the response to you</p>
-
-                            <div class="wrapper-flex">
-                                <div class="profile-wrapper">
-                                    <img src="https://i.postimg.cc/8Cn8m4sW/author.png" alt="image" width="50">
-                                </div>
-
-                                <div class="wrapper">
-                                    <a href="#" class="h4">Julia Walker</a>
-
-                                    <p class="text-small">
-                                        <time datetime="2023-14-10">Oct 14, 2023</time>
-                                        <span class="separator"></span>
-                                        <ion-icon name="time-outline"></ion-icon>
-                                        <time datetime="PT5M">5 min</time>
-                                    </p>
-                                    
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="blog-card">
-                        <div class="blog-card-banner">
-                            <img src="https://i.postimg.cc/cCDZPWL9/blog-8.png" alt="blog image" class="blog-banner-img" width="250">
-                        </div>
-
-                        <div class="blog-content-wrapper">
-                            <button class="blog-topic text-tiny">Web Performance</button>
-                            <h3><a href="#" class="h3">Monitoring Performance with the PageSpeed Insights API</a></h3>
-                            <p class="blog-text">The PageSpeed Insights API provides free access to performance monitoring for web pages and returns data with suggestions for how to improve. The V5 API includes lab data from LightHouse and real-world data from the Chrome User Experience Report (CrUX)</p>
-
-                            <div class="wrapper-flex">
-                                <div class="profile-wrapper">
-                                    <img src="https://i.postimg.cc/8Cn8m4sW/author.png" alt="image" width="50">
-                                </div>
-
-                                <div class="wrapper">
-                                    <a href="#" class="h4">Julia Walker</a>
-
-                                    <p class="text-small">
-                                        <time datetime="2023-05-10">Oct 5, 2023</time>
-                                        <span class="separator"></span>
-                                        <ion-icon name="time-outline"></ion-icon>
-                                        <time datetime="PT5M">5 min</time>
-                                    </p>
-                                    
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="blog-card">
-                        <div class="blog-card-banner">
-                            <img src="https://i.postimg.cc/DfCTv275/blog-9.png" alt="blog image" class="blog-banner-img" width="250">
-                        </div>
-
-                        <div class="blog-content-wrapper">
-                            <button class="blog-topic text-tiny">Accessibility</button>
-                            <h3><a href="#" class="h3">The best web accessibility tools for developers in 2021</a></h3>
-                            <p class="blog-text">The quality of the tools you use defines the speed with which you can diagnose and resolve problems. Each year the landscape changes dramatically in web technologies, and of late the tooling for accessibility is no exception</p>
-
-                            <div class="wrapper-flex">
-                                <div class="profile-wrapper">
-                                    <img src="https://i.postimg.cc/8Cn8m4sW/author.png" alt="image" width="50">
-                                </div>
-
-                                <div class="wrapper">
-                                    <a href="#" class="h4">Julia Walker</a>
-
-                                    <p class="text-small">
-                                        <time datetime="2023-09-11">Sep 11, 2023</time>
-                                        <span class="separator"></span>
-                                        <ion-icon name="time-outline"></ion-icon>
-                                        <time datetime="PT7M">7 min</time>
-                                    </p>
-                                    
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="blog-card">
-                        <div class="blog-card-banner">
-                            <img src="https://i.postimg.cc/23pTkbyV/blog-10.png" alt="blog image" class="blog-banner-img" width="250">
-                        </div>
-
-                        <div class="blog-content-wrapper">
-                            <button class="blog-topic text-tiny">Accessibility</button>
-                            <h3><a href="#" class="h3">How to connect a React frontend with a NodeJS/Express backend</a></h3>
-                            <p class="blog-text">The MERN (MongoDB, Express, React, NodeJS) stack is very popular for making full applications, utilizing Javascript for both the backend and frontend as well as a document-oriented or non relational dataabase (MongoDB), meaning that it's structured like JSON rather than a large excel sheet like SQL dataabases are</p>
-
-                            <div class="wrapper-flex">
-                                <div class="profile-wrapper">
-                                    <img src="https://i.postimg.cc/8Cn8m4sW/author.png" alt="image" width="50">
-                                </div>
-
-                                <div class="wrapper">
-                                    <a href="#" class="h4">Julia Walker</a>
-
-                                    <p class="text-small">
-                                        <time datetime="2023-09-02">Sep 02, 2023</time>
-                                        <span class="separator"></span>
-                                        <ion-icon name="time-outline"></ion-icon>
-                                        <time datetime="PT4M">4 min</time>
-                                    </p>
-                                    
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    
                 </div>
-
-                <button class="btn load-more">Load More</button>
             </div>
         </div>
     </div>
         </div>
+    </div>
   </section>
   
-    </div>
-    <hr class="text-white">
-    <div class="container-fluid padding-side padding-small" data-aos="fade-up">
+  <section id="footer" class="padding-footer">
+    <div class="container-fluid" data-aos="fade-up">
+        <hr class="text-white">
       <footer class="row">
         <div class="col-md-6 col-lg-3 mb-4 mb-lg-0">
           <h4 class="display-6 fw-normal">Quick links</h4>

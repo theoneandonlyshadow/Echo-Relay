@@ -9,31 +9,47 @@ button.onclick = () => {
 };
 
 
+function formatFileSize(size) {
+  if (size >= 1024 * 1024 * 1024) {
+      return (size / (1024 * 1024 * 1024)).toFixed(2) + " GB";
+  } else if (size >= 1024 * 1024) {
+      return (size / (1024 * 1024)).toFixed(2) + " MB";
+  } else if (size >= 1024) {
+      return (size / 1024).toFixed(2) + " KB";
+  } else {
+      return size + " Bytes";
+  }
+}
+
 input.addEventListener("change", function (e) {
   files = Array.from(e.target.files);
 
   let fileList = files
-    .map(
-      (file) =>
-        `<li>
-          <h4>${file.name}</h4>
-        </li>`
-    )
-    .join("");
+      .map((file) => {
+          const fileSize = formatFileSize(file.size);
+          return `<li>
+                      <h4>${file.name} - ${fileSize}</h4>
+                  </li>`;
+      })
+      .join("");
 
   let filedata = `
-    <form action="/upload" method="POST" enctype="multipart/form-data">
-      <div class="form">
-        <ul>${fileList}</ul>
-        <input type="file" name="files" multiple style="display: none;" value="${files.map(file => file.name).join(', ')}">
-        <button type="submit" class="btn">Upload</button>
-      </div>
-    </form>`;
-  
+      <form action="/upload" method="POST" enctype="multipart/form-data">
+          <div class="form">
+              <ul>${fileList}</ul>
+              <input type="file" name="files" multiple style="display: none;" value="${files
+                  .map((file) => file.name)
+                  .join(', ')}">
+              <button type="submit" class="btn">Upload</button>
+          </div>
+      </form>`;
+
   droparea.innerHTML = filedata;
 
   const forminput = droparea.querySelector('input[type="file"]');
   forminput.files = e.target.files;
 });
+
+
 
 // password protection logic in this file please
