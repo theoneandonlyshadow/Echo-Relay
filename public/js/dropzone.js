@@ -1,14 +1,18 @@
+// this file is only for drag n drop feature.
+
 let selectedFiles = [];
 
+// drag n drop event to accept files to drop
 function handleDragOver(event) {
-    event.preventDefault();
-    event.stopPropagation();
+    event.preventDefault(); // prevents from opening the files in the browser
+    event.stopPropagation(); // i think this has somethin to do with firing events
 
     document.getElementById('dropArea').classList.add('hover');
 
     document.querySelector('.uprec').classList.add('fade');
 }
 
+// drop files to upload
 function handleDrop(event) {
     event.preventDefault();
     event.stopPropagation();
@@ -52,6 +56,7 @@ function addFiles(files) {
     updateFileInput();
 }
 
+// if files are in Kb, Mb, or Gb, it displays it instead of using Mb and having decimals and shi
 function formatFileSize(size) {
     if (size >= 1024 * 1024 * 1024) {
         return (size / (1024 * 1024 * 1024)).toFixed(2) + " GB";
@@ -64,6 +69,7 @@ function formatFileSize(size) {
     }
 }
 
+// remove files using the "❌"
 function removeFile(fileName) {
     selectedFiles = selectedFiles.filter((file) => file.name !== fileName);
     const fileNamesContainer = document.getElementById('fileNames');
