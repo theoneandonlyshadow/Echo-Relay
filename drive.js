@@ -1,6 +1,6 @@
 const { Model } = require('./public/monkeese/model.js');
 const { connect } = require('./public/monkeese/dbCon.js');
-const { driveUpload, restDelete, zip, driveDelete, shorty } = require('./public/controllers/controller.js');
+const { driveUpload, restDelete, monitorDeletion, zip, driveDelete, shorty } = require('./public/controllers/controller.js');
 const express = require('express');
 const multer = require('multer');
 const path = require('path');
@@ -101,6 +101,8 @@ app.get('/', (req, res) => {
 app.use((req, res, next) => { 
     res.status(404).render('404') 
 }) 
+
+monitorDeletion();
 
 app.listen(PORT, () => {
     console.log(`the server is running at http://localhost:${PORT}`);

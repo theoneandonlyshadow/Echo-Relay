@@ -5,9 +5,9 @@ let selectedFiles = [];
 // drag n drop event to accept files to drop
 function handleDragOver(event) {
     event.preventDefault(); // prevents from opening the files in the browser
-    event.stopPropagation(); // i think this has somethin to do with firing events
+    event.stopPropagation(); // i think this has somethin to do with firing events.
 
-    document.getElementById('dropArea').classList.add('hover');
+    document.getElementById('dropArea').classList.add('hover'); //I hope you know what you're doing.
 
     document.querySelector('.uprec').classList.add('fade');
 }
