@@ -43,7 +43,7 @@ async function driveUpload(filePath, fileName) {
     return fileId;
 }
 
-// [function declaration] delete files from drive after time period
+// [function declaration] delete files from drive on user's action 
 async function driveDelete(fileId) {
     console.log(`File ID: ${fileId}`);
     try {
@@ -57,6 +57,31 @@ async function driveDelete(fileId) {
         console.error('Error deleting file:', error);
         throw error;
     }
+}
+
+// [function declaration] delete files from drive after records expire from database
+async function monitorDeletion() {
+    const changeStream = Model.watch([{ $match: { operationType: 'delete' } }]);
+
+    changeStream.on('change', async (change) => {
+        try {
+            const deletedId = change.documentKey._id;
+            const deletedDoc = change.fullDocument;
+
+            if (deletedDoc && deletedDoc.fileid) {
+                await driveDelete(deletedDoc.fileid);
+                console.log(`File with ID ${deletedDoc.fileid} deleted from Google Drive.`);
+            } else {
+                console.log(`Deleted document with ID ${deletedId} has no associated fileid.`);
+            }
+        } catch (error) {
+            console.error('Error processing deletion:', error);
+        }
+    });
+
+    changeStream.on('error', (error) => {
+        console.error('Change stream error:', error);
+    });
 }
 
 // [function declaration] delete hashed files after successful upload
@@ -121,4 +146,4 @@ async function shorty(req) {
     return shortUrl;
 }
 
-module.exports = { driveUpload, driveDelete, restDelete, zip, shorty };
+module.exports = { driveUpload, driveDelete, restDelete, monitorDeletion, zip, shorty };
