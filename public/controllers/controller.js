@@ -30,6 +30,7 @@ async function driveUpload(filePath, fileName) {
     });
 
     const fileId = response.data.id;
+    console.log(`File ID: ${fileId}`);
 
     // change later
     await drive.permissions.create({
@@ -120,8 +121,8 @@ async function zip(files, outputPath) {
             console.log(`checking: ${file.path}`);
 
             if (fs.existsSync(file.path)) {
-                console.log(`adding file to zip: ${file.originalName} from ${file.path}`);
-                archive.file(file.path, { name: file.originalName });
+                console.log(`adding file to zip: ${file.originalname} from ${file.path}`);
+                archive.file(file.path, { name: file.originalname });
             } else {
                 console.error(`file not found: ${file.path}`);
             }
