@@ -497,6 +497,29 @@ form .send-btn:hover{
   box-shadow: 4px 4px #00ff00;
 }
 
+.button-big-ahh {
+  height: 100px;
+  width: 700px;
+  background-color: #1a1a1a;
+  color: #fff;
+  box-shadow: 3px 3px #555;
+  line-height: 42px;
+  display:inline-block;
+  border: 1px solid transparent;
+  font-size: 14px;
+  font-weight: 400;
+  letter-spacing: 2px;
+  transition: ease all 0.35s;
+  cursor:pointer;
+}
+
+.button-big-ahh:hover{
+  background-color: #1a1a1a;
+  color: #fff;
+  box-shadow: 4px 4px #00ff00;
+}
+
+
 form input,
 form textarea{
   width: 100%;
@@ -528,7 +551,7 @@ form textarea{
   .inlinin {
     display: flex;
     align-items: center;
-    gap: 15px;
+    gap: 45px;
     justify-content: center;
   }
 
@@ -546,9 +569,30 @@ form textarea{
   }
 
   .recievebtn {
-    padding-left: 30px;
-    padding-right: 30px;
-    font-weight: normal;
+    height: 90px;
+    width: 550px;
+    background-color: #1a1a1a;
+    color: #fff;
+    box-shadow: 3px 3px #555;
+    line-height: 42px;
+    display:inline-block;
+    border: 1px solid transparent;
+    font-size: 14px;
+    font-weight: 400;
+    letter-spacing: 2px;
+    transition: ease all 0.35s;
+    cursor:pointer;
+  }
+  
+  .recievebtn:hover{
+    background-color: #1a1a1a;
+    color: #fff;
+    box-shadow: 4px 4px #00ff00;
+  }
+
+  #services{
+
+    position: relative;
   }
 
   .enterid {

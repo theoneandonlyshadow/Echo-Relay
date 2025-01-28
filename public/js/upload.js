@@ -41,7 +41,6 @@ input.addEventListener("change", function (e) {
                   .map((file) => file.name)
                   .join(', ')}">
                   <br>
-                  <p>Enable password protection?</p>
                   <input type="password" placeholder="(Optional Password )" maxlength="12" name="password" style="background-color: transparent; max-width: 200px;">
                   <br>
               <button type="submit" class="btn">Upload</button>
