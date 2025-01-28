@@ -41,12 +41,7 @@ input.addEventListener("change", function (e) {
                   .map((file) => file.name)
                   .join(', ')}">
                   <br>
-<<<<<<< HEAD
                   <input type="password" placeholder="(Optional Password )" maxlength="12" name="password" style="background-color: transparent; max-width: 200px;">
-=======
-                  <p>Enable password protection?</p>
-                  <input type="password" placeholder="(Optional Password )" maxlength="12" minlength="6" name="password" style="background-color: transparent; max-width: 200px;">
->>>>>>> c4b6cba7dd3c7576ebe38f267018696fa6fa4553
                   <br>
               <button type="submit" class="btn">Upload</button>
           </div>
@@ -59,6 +54,7 @@ input.addEventListener("change", function (e) {
 });
 
 //I get depressed when I try to comprehend this function
+// wtf is content disposition
 async function downloadFile() {
     try {
         const fileId = document.getElementById('recid').value.trim();

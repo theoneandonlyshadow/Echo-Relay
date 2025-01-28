@@ -43,6 +43,8 @@ div.datetime-container button.time {
   width: 100%
 }
 
+
+
 div.datetime-container button.w-50 {
   float: left;
   width: 50%
@@ -591,9 +593,12 @@ form textarea{
   }
 
   #services{
-
     position: relative;
   }
+  #coer{
+    position: relative;
+  }
+
 
   .enterid {
     width: auto;
