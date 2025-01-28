@@ -54,10 +54,10 @@ input.addEventListener("change", function (e) {
 });
 
 //I get depressed when I try to comprehend this function
-// wtf is content disposition
+// wtf is content disposition (as if I know, stackoverflow + chatgpt is here to save me time)
 async function downloadFile() {
     try {
-        const fileId = document.getElementById('recid').value.trim();
+        const fileId = document.getElementById('recurl').value.trim(); //This happens when you try to do frontend as a backend dev and then forget to update element ids
         if (!fileId) {
             alert('Please enter a valid file ID.');
             return;
