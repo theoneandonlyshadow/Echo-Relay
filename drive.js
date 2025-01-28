@@ -1,24 +1,34 @@
 const { Model } = require('./public/monkeese/model.js');
 const { connect } = require('./public/monkeese/dbCon.js');
 const { driveUpload, restDelete, monitorDeletion, zip, driveDelete, shorty } = require('./public/controllers/controller.js');
+const { Readable } = require('stream')
 const express = require('express');
 const multer = require('multer');
 const path = require('path');
 const fs = require('fs');
+const bcrypt = require('bcrypt');
 const bodyParser = require('body-parser');
 const app = express();
-const crypto = require('crypto');
 const PORT = 3000;
 const sizeLimit = 7 * 1024 * 1024 * 1024;
+const storage = multer.diskStorage({
+    destination: (req, file, cb) => {
+        cb(null, 'uploads/');
+    },
+    filename: (req, file, cb) => {
+        cb(null, file.originalname);
+    },
+    limits: (req, file, cb) => {
+        cb(null, sizeLimit);
+}
+});
+
 const upload = multer({
-    dest: 'uploads/',
+    storage: storage,
     limits: { fileSize: sizeLimit }
 });
 
-//connect('mongodb://127.0.0.1:27017/user?directConnection=true&serverSelectionTimeoutMS=2000');
 connect('mongodb+srv://madhavnair700:devatheking7@echorelay.jaedn.mongodb.net/');
-// JP: connect('mongodb://127.0.0.1:27017/user?directConnection=true&serverSelectionTimeoutMS=2000');
-// MN: connect('mongodb+srv://<username>:<password>@echorelay.jaedn.mongodb.net/');
 
 app.use(express.static(path.join(__dirname, 'public')));
 app.use(bodyParser.urlencoded({ extended: true }));
@@ -55,7 +65,7 @@ app.post('/upload', upload.array('files'), async (req, res) => {
         const dir = path.join(__dirname, 'uploads');
         restDelete(dir);
 
-        res.redirect(`/success?link=${encodeURIComponent(downloadLink)}&shortUrl=${encodeURIComponent(shortUrl)}`); // Pass short URL to success route
+        res.redirect(`/success?link=${encodeURIComponent(downloadLink)}&shortUrl=${encodeURIComponent(shortUrl)}`); 
     } catch (error) {
         console.error('Upload error:', error);
         res.render('error', { message: error.message });
@@ -92,6 +102,53 @@ app.get('/deleted', (req, res) => {
 
 app.get('/receive', (req, res) => {
     return res.render('receive');
+});
+
+//This shit took a while to figure out
+app.get('/receive/:fileId', async (req, res) => {
+    try {
+        const fileId = req.params.fileId;
+        if (!/^[a-zA-Z0-9_-]+$/.test(fileId)) {
+            return res.status(400).send('Invalid file ID');
+        }
+
+        const downloadURL = `https://drive.google.com/uc?id=${fileId}&export=download`;
+        const response = await fetch(downloadURL);
+
+        if (!response.ok) {
+            console.error(`Failed to fetch file: ${response.statusText}`);
+            return res.status(response.status).send('Error fetching file from Google Drive');
+        }
+
+        let fileName = 'downloaded_file';
+        const contentDisposition = response.headers.get('content-disposition');
+        if (contentDisposition && contentDisposition.includes('filename=')) {
+            fileName = contentDisposition
+                .split('filename=')[1]
+                .replace(/"/g, '')
+                .trim();
+        } else {
+            const contentType = response.headers.get('content-type') || '';
+            const ext = contentType.split('/')[1];
+            if (ext) {
+                fileName += `.${ext}`;
+            }
+        }
+
+        res.set({
+            'Content-Disposition': `attachment; filename="${fileName}"`,
+            'Content-Type': response.headers.get('content-type') || 'application/octet-stream',
+        });
+
+        if (response.body) {
+            Readable.fromWeb(response.body).pipe(res);
+        } else {
+            res.status(500).send('Unable to retrieve file stream.');
+        }
+    } catch (error) {
+        console.error('Error downloading file:', error);
+        res.status(500).send('An error occurred while downloading the file.');
+    }
 });
 
 app.get('/', (req, res) => {
