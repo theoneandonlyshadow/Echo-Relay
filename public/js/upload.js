@@ -53,11 +53,10 @@ input.addEventListener("change", function (e) {
   forminput.files = e.target.files;
 });
 
-//I get depressed when I try to comprehend this function
-// wtf is content disposition (as if I know, stackoverflow + chatgpt is here to save me time)
+//Accepts the whole file ID, want to include the shortened version
 async function downloadFile() {
     try {
-        const fileId = document.getElementById('recurl').value.trim(); //This happens when you try to do frontend as a backend dev and then forget to update element ids
+        const fileId = document.getElementById('recurl').value.trim();
         if (!fileId) {
             alert('Please enter a valid file ID.');
             return;

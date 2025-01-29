@@ -21,6 +21,10 @@ const schema = mongoose.Schema({
         type: String,
         required: true
     },
+    shortCode: {
+        type: String,
+        required: true
+    },
     uploadedAt: {
         type: Date,
         default: Date.now,
