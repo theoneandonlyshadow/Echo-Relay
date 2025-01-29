@@ -106,8 +106,9 @@ app.get('/receive', (req, res) => {
 app.get('/receive/:fileId', async (req, res) => {
     try {
         const fileId = req.params.fileId;
-        if (!/^[a-zA-Z0-9_-]+$/.test(fileId)) {
-            return res.status(400).send('Invalid file ID');
+        
+        if (!fileId || !/^[a-zA-Z0-9_-]+$/.test(fileId)) {
+            return res.status(400).render('error', { message: `Invalid file url or id.` });
         }
 
         const fileRecord = await Model.findOne({ 
@@ -115,21 +116,28 @@ app.get('/receive/:fileId', async (req, res) => {
         });
 
         if (!fileRecord) {
-            return res.status(404).send('File not found');
+            return res.status(404).render('error' , { message: 'File not found.' });
         }
 
         const actualFileId = fileRecord.fileid;
-        
         const downloadURL = `https://drive.google.com/uc?id=${actualFileId}&export=download`;
         const response = await fetch(downloadURL);
 
         if (!response.ok) {
             console.error(`Failed to fetch file: ${response.statusText}`);
-            return res.status(response.status).send('Error fetching file from Google Drive');
+
+            if (response.status === 404) {
+                return res.status(404).render('404');
+            }
+
+            return res.status(500).render('error', { 
+                message: `Error fetching file` 
+            });
         }
 
         let fileName = 'downloaded_file';
         const contentDisposition = response.headers.get('content-disposition');
+
         if (contentDisposition && contentDisposition.includes('filename=')) {
             fileName = contentDisposition
                 .split('filename=')[1]
@@ -151,21 +159,30 @@ app.get('/receive/:fileId', async (req, res) => {
         if (response.body) {
             Readable.fromWeb(response.body).pipe(res);
         } else {
-            res.status(500).send('Unable to retrieve file stream.');
+            return res.status(500).render('error', { 
+                message: 'Unable to retrieve file stream.' 
+            });
         }
     } catch (error) {
         console.error('Error downloading file:', error);
-        res.status(500).send('An error occurred while downloading the file.');
+        return res.status(500).render('error', { 
+            message: 'An unexpected server error occurred while processing your request.' 
+        });
     }
+});
+
+app.get('/error', (req, res) => {
+    const errorMessage = req.query.message || 'An unexpected error occurred';
+    return res.render('error', { message: errorMessage });
 });
 
 app.get('/', (req, res) => {
     return res.render('home');
-})
+});
 
 app.use((req, res, next) => { 
     res.status(404).render('404') 
-}) 
+});
 
 monitorDeletion();
 
