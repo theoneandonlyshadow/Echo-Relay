@@ -18,9 +18,6 @@ const storage = multer.diskStorage({
     filename: (req, file, cb) => {
         cb(null, file.originalname);
     },
-    limits: (req, file, cb) => {
-        cb(null, sizeLimit);
-}
 });
 
 const upload = multer({
@@ -49,13 +46,15 @@ app.post('/upload', upload.array('files'), async (req, res) => {
         const fileId = await driveUpload(zipFilePath, zipFileName);
         const downloadLink = `https://drive.google.com/uc?id=${fileId}&export=download`;
         const shortUrl = await shorty(req);
+        const shortCode = shortUrl.split('/').pop();
 
         const fileRecord = new Model({ 
             name: zipFileName, 
             size: fileSizeinMB,
             fileid: fileId, 
             url: downloadLink, 
-            shorty: shortUrl
+            shorty: shortUrl,
+            shortCode: shortCode
         });
         await fileRecord.save();
 
@@ -104,7 +103,6 @@ app.get('/receive', (req, res) => {
     return res.render('receive');
 });
 
-//This shit took a while to figure out
 app.get('/receive/:fileId', async (req, res) => {
     try {
         const fileId = req.params.fileId;
@@ -112,7 +110,17 @@ app.get('/receive/:fileId', async (req, res) => {
             return res.status(400).send('Invalid file ID');
         }
 
-        const downloadURL = `https://drive.google.com/uc?id=${fileId}&export=download`;
+        const fileRecord = await Model.findOne({ 
+            $or: [{ shortCode: fileId }, { fileid: fileId }] 
+        });
+
+        if (!fileRecord) {
+            return res.status(404).send('File not found');
+        }
+
+        const actualFileId = fileRecord.fileid;
+        
+        const downloadURL = `https://drive.google.com/uc?id=${actualFileId}&export=download`;
         const response = await fetch(downloadURL);
 
         if (!response.ok) {
