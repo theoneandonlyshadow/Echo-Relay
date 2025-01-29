@@ -83,6 +83,7 @@ function removeFile(fileName) {
     updateFileInput();
     if (selectedFiles.length === 0) {
         fileNamesContainer.style.display = 'none';
+        document.querySelector('.uprec').classList.remove('fade');
     }
 }
 
