@@ -601,7 +601,7 @@ form textarea{
 
 
   .enterid {
-    width: auto;
+    width: 100px;
     padding: 10px;
     padding-left: 15px;
     padding-right: 15px;
