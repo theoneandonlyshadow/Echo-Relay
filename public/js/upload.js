@@ -65,27 +65,35 @@ input.addEventListener("change", function (e) {
   forminput.files = e.target.files;
 });
 
-//Accepts the whole file ID, want to include the shortened version
 async function downloadFile() {
     try {
         const fileId = document.getElementById('recurl').value.trim();
-        if (!fileId) {
-            alert('Please enter a valid file ID.');
+        if (!fileId || !/^[a-zA-Z0-9_-]+$/.test(fileId)) {
+            window.location.href = `/error?message=${encodeURIComponent(`Invalid file url or id`)}`;
             return;
         }
 
         const response = await fetch(`/receive/${encodeURIComponent(fileId)}`);
 
-        if (!response.ok) {
-            alert(`Failed to download the file. Status: ${response.status}`);
-            console.error('Response:', response);
+        if (response.status === 404) {
+            window.location.href = `/error?message=${encodeURIComponent('File not found')}`;
             return;
         }
 
+        if (!response.ok) {
+            window.location.href = `/error?message=${encodeURIComponent(`Internal server error. Status code: ${response.status}`)}`;
+            return;
+        }
+
+        let fileName = 'downloaded_file';
         const contentDisposition = response.headers.get('Content-Disposition');
-        const fileName = contentDisposition
-            ? contentDisposition.split('filename=')[1]?.replace(/"/g, '') || 'downloaded_file'
-            : 'downloaded_file';
+
+        if (contentDisposition) {
+            const match = contentDisposition.match(/filename\*?=(?:UTF-8'')?([^;]*)/);
+            if (match && match[1]) {
+                fileName = decodeURIComponent(match[1]).replace(/"/g, '');
+            }
+        }
 
         const fileBlob = await response.blob();
         const link = document.createElement('a');
@@ -98,6 +106,5 @@ async function downloadFile() {
 
     } catch (error) {
         console.error('Download failed:', error);
-        alert('An error occurred while downloading the file.');
     }
 }
