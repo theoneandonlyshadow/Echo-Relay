@@ -29,9 +29,21 @@ input.addEventListener("change", function (e) {
           const fileSize = formatFileSize(file.size);
           return `<li>
                       <h4>${file.name} - ${fileSize}</h4>
+                      <button class="delete-btn" onclick="removeFile('${file.name}')">❌</button>
                   </li>`;
       })
       .join("");
+
+      function removeFile(fileName) {
+        selectedFiles = selectedFiles.filter((file) => file.name !== fileName);
+        const fileNamesContainer = document.getElementById('fileNames');
+        const fileItems = fileNamesContainer.querySelectorAll('.file-item');
+        fileItems.forEach((item) => {
+            if (item.querySelector('.file-name').textContent === fileName) {
+                fileNamesContainer.removeChild(item);
+            }
+        });
+
 
   let filedata = `
       <form action="/upload" method="POST" enctype="multipart/form-data">
