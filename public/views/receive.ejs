@@ -73,26 +73,23 @@
 
   <section id="about-us" class="padding-large">
     <div class="container-fluid padding-side" data-aos="fade-up">
-          <center>
-            <p style="font-size: 60px;">Receive File</p>
-          </center>
-            <div class="widget-centered">
-            <div class="inlinin">
-                <div>
-                    <input class="enterid" type="text" placeholder="Enter URL or Code" id="recurl" required/>
-                  </div>
-                  <div>
-              <input class="enterid" type="password" placeholder="Password (Optional)" id="recpass" />
+      <center><p style="font-size: 60px;">Receive File</p></center>
+      <div class="widget-centered">
+        <form action="/receive" method="post">
+          <div class="inlinin">
+            <div>
+              <input class="enterid" type="text" placeholder="Enter URL or Code" name="fileId" required />
             </div>
+            <div>
+              <input class="enterid" type="password" placeholder="Password (Optional)" name="password" />
             </div>
-            <br>
-            <br>
-            <button id="recievebtn" class="recievebtn" onclick="downloadFile()">
-              Download
-            </button>
-              </div>              
-            <br>
           </div>
+          <br><br>
+          <button type="submit" class="recievebtn">Download</button>
+        </form>        
+      </div>
+      <br>
+    </div>
   </section>
 
   <section data-aos="fade-up" class="contact" id="contact">
@@ -146,14 +143,14 @@
     </div>
   </section>
 
-  <script src="js/jquery-1.11.0.min.js"></script>
-  <script type="text/javascript" src="js/bootstrap.bundle.min.js"></script>
-  <script type="text/javascript" src="js/plugins.js"></script>
+  <script src="../js/jquery-1.11.0.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
+  <script type="text/javascript" src="../js/plugins.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/swiper/swiper-bundle.min.js"></script>
   <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
-  <script type="text/javascript" src="js/script.js"></script>
-  <script type="text/javascript" src="js/success.js"></script>
-  <script type="text/javascript" src="js/upload.js"></script>
+  <script type="text/javascript" src="../js/script.js"></script>
+  <script type="text/javascript" src="../js/success.js"></script>
+  <script type="text/javascript" src="../js/upload.js"></script>
   <script src="https://code.iconify.design/iconify-icon/1.0.7/iconify-icon.min.js"></script>
 </body>
 
