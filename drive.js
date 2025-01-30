@@ -29,8 +29,14 @@ connect('mongodb+srv://madhavnair700:devatheking7@echorelay.jaedn.mongodb.net/')
 
 app.use(express.static(path.join(__dirname, 'public')));
 app.use(bodyParser.urlencoded({ extended: true }));
+app.use(express.json());
 app.set('views', path.join(__dirname, 'public/views'));
 app.set('view engine', 'ejs');
+
+app.use((req, res, next) => {
+    console.log(`requested: ${req.url}`);
+    next();
+});
 
 app.post('/upload', upload.array('files'), async (req, res) => {
     if (!req.files || req.files.length === 0) return res.render('error');
@@ -103,71 +109,55 @@ app.get('/receive', (req, res) => {
     return res.render('receive');
 });
 
-app.get('/receive/:fileId', async (req, res) => {
+app.post("/receive", async (req, res) => {
     try {
-        const fileId = req.params.fileId;
-        
-        if (!fileId || !/^[a-zA-Z0-9_-]+$/.test(fileId)) {
-            return res.status(400).render('error', { message: `Invalid file url or id.` });
+        let { fileId } = req.body;
+
+        if(fileId.startsWith('http://') || fileId.startsWith('https://')) {
+            fileId = fileId.split('/').pop();
         }
 
-        const fileRecord = await Model.findOne({ 
-            $or: [{ shortCode: fileId }, { fileid: fileId }] 
+        if (!fileId || !/^[a-zA-Z0-9_-]+$/.test(fileId)) {
+            return res.status(400).render("error", { message: "Invalid file URL or ID." });
+        }
+
+        const fileRecord = await Model.findOne({
+            $or: [{ shortCode: fileId }, { fileid: fileId }]
         });
 
         if (!fileRecord) {
-            return res.status(404).render('error' , { message: 'File not found.' });
+            return res.status(404).render("error", { message: "File not found" });
         }
 
-        const actualFileId = fileRecord.fileid;
-        const downloadURL = `https://drive.google.com/uc?id=${actualFileId}&export=download`;
+        const downloadURL = `https://drive.google.com/uc?id=${fileRecord.fileid}&export=download`;
         const response = await fetch(downloadURL);
 
         if (!response.ok) {
-            console.error(`Failed to fetch file: ${response.statusText}`);
-
-            if (response.status === 404) {
-                return res.status(404).render('404');
-            }
-
-            return res.status(500).render('error', { 
-                message: `Error fetching file` 
-            });
+            return res.status(response.status === 404 ? 404 : 500).render("error",
+                { message: response.status === 404 ? "File not found" : "Error fetching file" }
+            );
         }
 
-        let fileName = 'downloaded_file';
-        const contentDisposition = response.headers.get('content-disposition');
+        let fileName = "ER_DEFAULT";
+        const contentDisposition = response.headers.get("content-disposition");
+        const match = contentDisposition?.match(/filename\*?=(?:UTF-8'')?([^;]*)/);
 
-        if (contentDisposition && contentDisposition.includes('filename=')) {
-            fileName = contentDisposition
-                .split('filename=')[1]
-                .replace(/"/g, '')
-                .trim();
-        } else {
-            const contentType = response.headers.get('content-type') || '';
-            const ext = contentType.split('/')[1];
-            if (ext) {
-                fileName += `.${ext}`;
-            }
+        if (match?.[1]) {
+            fileName = decodeURIComponent(match[1]).replace(/"/g, "");
         }
 
         res.set({
-            'Content-Disposition': `attachment; filename="${fileName}"`,
-            'Content-Type': response.headers.get('content-type') || 'application/octet-stream',
+            "Content-Disposition": `attachment; filename="${fileName}"`,
+            "Content-Type": response.headers.get("content-type") || "application/octet-stream",
         });
 
-        if (response.body) {
-            Readable.fromWeb(response.body).pipe(res);
-        } else {
-            return res.status(500).render('error', { 
-                message: 'Unable to retrieve file stream.' 
-            });
-        }
+        return response.body
+            ? Readable.fromWeb(response.body).pipe(res)
+            : res.status(500).render("error", { message: "Unable to retrieve file stream." });
+
     } catch (error) {
-        console.error('Error downloading file:', error);
-        return res.status(500).render('error', { 
-            message: 'An unexpected server error occurred while processing your request.' 
-        });
+        console.error("Error downloading file:", error);
+        return res.status(500).render("error", { message: "An unexpected server error occurred while processing your request." });
     }
 });
 
@@ -180,8 +170,8 @@ app.get('/', (req, res) => {
     return res.render('home');
 });
 
- app.use((req, res, next) => { 
-    res.status(404).render('404') 
+app.use((req, res, next) => { 
+    res.status(404).render('404');
 });
 
 monitorDeletion();
