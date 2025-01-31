@@ -70,10 +70,13 @@ function formatFileSize(size) {
 }
 
 // remove files using the "❌"
-function removeFile(fileName) {
+function removeFile(fileName, event) {
+    if (event) event.preventDefault(); // Prevent unintended form submission
+
     selectedFiles = selectedFiles.filter((file) => file.name !== fileName);
     const fileNamesContainer = document.getElementById('fileNames');
     const fileItems = fileNamesContainer.querySelectorAll('.file-item');
+
     fileItems.forEach((item) => {
         if (item.querySelector('.file-name').textContent === fileName) {
             fileNamesContainer.removeChild(item);

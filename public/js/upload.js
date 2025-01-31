@@ -21,7 +21,7 @@ function formatFileSize(size) {
   }
 }
 
-input.addEventListener("change", function (e) {
+input.addEventListener("change", (e) => {
   files = Array.from(e.target.files);
 
   let fileList = files
@@ -33,17 +33,6 @@ input.addEventListener("change", function (e) {
                   </li>`;
       })
       .join("");
-
-      function removeFile(fileName) {
-        selectedFiles = selectedFiles.filter((file) => file.name !== fileName);
-        const fileNamesContainer = document.getElementById('fileNames');
-        const fileItems = fileNamesContainer.querySelectorAll('.file-item');
-        fileItems.forEach((item) => {
-            if (item.querySelector('.file-name').textContent === fileName) {
-                fileNamesContainer.removeChild(item);
-            }
-        });
-
 
   let filedata = `
       <form action="/upload" method="POST" enctype="multipart/form-data">
