@@ -272,6 +272,34 @@
     transition: 0.3s;
   }
 
+  #transitionToDaDelete {
+    display: none;
+  }
+
+  .deletesucc {
+    height: 70px;
+    width: 350px;
+    align-content: center;
+    align-items: center;
+    align-self: center;
+    box-shadow: 4px 4px #555;
+  line-height: 42px;
+  display:inline-block;
+  border: 1px solid transparent;
+  font-size: 15px;
+  font-weight: 400;
+  letter-spacing: 2px;
+  transition: ease all 0.35s;
+  cursor:pointer;
+  }
+
+  .deletesucc:hover{
+    background-color: #10101a;
+    align-content: center;
+  color: #fff;
+  box-shadow: 4px 4px red;
+  }
+
   .upload {
     height: 50px;
     width: 150px;
