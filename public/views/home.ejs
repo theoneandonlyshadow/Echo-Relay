@@ -1,0 +1,487 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Echo Relay | MaxTac</title>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="format-detection" content="telephone=no">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="author" content="MaxTac">
+  <meta name="keywords" content="file sharing, secure upload, MaxTac">
+  <meta name="description" content="Echo Relay - Upload and share files securely up to 7GB.">  
+  <link rel="stylesheet" type="text/css" href="../css/bootstrap.min.css">
+  <link rel="stylesheet" type="text/css" href="../css/vendor.css">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@9/swiper-bundle.min.css" />
+  <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+  <link rel="stylesheet" type="text/css" href="../css/styles.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.8.1/slick.min.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.8.1/slick-theme.min.css">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap" rel="stylesheet">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Cormorant+Upright:wght@300;400;500;600;700&family=Sora:wght@100..800&display=swap"
+    rel="stylesheet">
+</head>
+
+<body>
+<center>
+  <div class="preloader">
+    <div class="loader"></div>
+  </div>
+</center>
+<div class="allTheShit">
+  <header id="header">
+    <nav id="primary-header" class="navbar navbar-expand-lg py-4">
+      <div class="container-fluid padding-side">
+        <div class="d-flex justify-content-between align-items-center w-100">
+          <a class="navbar-brand" href="/">
+            <img src="../assets/images/echorelay.png" class="logo img-fluid">
+          </a>
+          <button class="navbar-toggler border-0 d-flex d-lg-none order-3 p-2 shadow-none" type="button"
+            data-bs-toggle="offcanvas" data-bs-target="#bdNavbar" aria-controls="bdNavbar" aria-expanded="false">
+            <svg class="navbar-icon" width="60" height="60">
+              <use xlink:href="#navbar-icon"></use>
+            </svg>
+          </button>
+          <div class="header-bottom offcanvas offcanvas-end " id="bdNavbar" aria-labelledby="bdNavbarOffcanvasLabel">
+            <div class="offcanvas-header px-4 pb-0">
+              <button type="button" class="btn-close btn-close-black mt-2" data-bs-dismiss="offcanvas"
+                aria-label="Close" data-bs-target="#bdNavbar"></button>
+            </div>
+            <div class="offcanvas-body align-items-center justify-content-center">
+              
+              <ul class="navbar-nav align-items-center mb-2 mb-lg-0">
+                <li class="nav-item px-3">
+                  <a class="nav-link active p-0" aria-current="page" href="/">Upload</a>
+                </li>
+                <li class="nav-item px-3">
+                  <a class="nav-link p-0" href="#ofosss">Other Services</a>
+                </li>
+                <li class="nav-item px-3">
+                  <a class="nav-link p-0" href="https://maxtac.tech/public/maxtac">MaxTac</a>
+                </li>
+                <li class="nav-item px-3">
+                  <a class="nav-link p-0" href="receive">Receive</a>
+                </li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+    </nav>
+  </header>
+<!-- upload container here-->
+<section id="slider" data-aos="fade-up">
+  <div class="container-fluid padding-side">
+      <div class="container drop-area" id="dropArea" ondrop="handleDrop(event)" ondragover="handleDragOver(event)" multiple required>
+          <div class="card">
+              <form class="drop_box" action="/upload" id="dropzone" method="POST" enctype="multipart/form-data">
+                  <p>All Files Supported. Max: 7GB</p>
+                  <input type="file" id="fileID" name="files" style="display:none;" multiple required>
+                  <div class="uprec">
+                      <button type="button" class="upload" tabindex="0" onclick="document.getElementById('fileID').click()">Upload</button>
+                      <a href="/receive">
+                          <button type="button" class= "receive" tabindex="0" id="receive">Receive</button>
+                      </a>
+                  </div>
+                  <div id="fileNames" class="file-names-container">
+                </div>
+              </form>
+          </div>
+      </div>
+  </div>
+</section>
+
+
+  <section id="features" class="padding-large">
+    <div class="container-fluid padding-side" data-aos="fade-up">
+          <center>
+            <p style="font-size: 60px;">Echo Relay</p>
+            <p style="font-size: 17px;">Upload. Share. Download</p>
+            <p>&#x1F5A4; FOSS by MaxTac</p>
+          </center>
+            <br>
+            <div class="row mt-5">
+              <div class="col-md-10 mx-auto">
+                  <div class="row feature-boxes">
+                      <div class="col-md-6 box">
+                          <div class="icon-box box-primary">
+                              <div class="icon-box-inner">
+                                  <span data-feather="edit-3" width="35" height="35"></span>
+                              </div>
+                          </div>
+                          <h3>7GB Upload Size per File</h3>
+                          <hr>
+                          <p class="">For each file, you get a maximum of <b>7GB</b> upload size.</p>
+                          <br>
+                      </div>
+                      <div class="col-md-6 box">
+                          <div class="icon-box box-success">
+                              <div class="icon-box-inner">
+                                  <span data-feather="monitor" width="35" height="35"></span>
+                              </div>
+                          </div>
+                          <h3>Upload Security & Privacy</h3>
+                          <hr>
+                          <p class="">We provide security from <b>Cloudflare</b> and <b>Google Cloud</b>. Our broker doesn't use any other services.</p>
+                          <br>
+                        </div>
+                      <div class="col-md-6 box">
+                          <div class="icon-box box-danger">
+                              <div class="icon-box-inner">
+                                  <span data-feather="layout" width="35" height="35"></span>
+                              </div>
+                          </div>
+                          <h3>Password Security</h3>
+                          <hr>
+                          <p class="">Do you still need extra security? Your uploads that are password protected is encrypted by <b>AES - 256b</b>. Its near impossible to crack it!</p>
+                          <br>
+                        </div>
+                      <div class="col-md-6 box">
+                          <div class="icon-box box-info">
+                              <div class="icon-box-inner">
+                                  <span data-feather="globe" width="35" height="35"></span>
+                              </div>
+                          </div>
+                          <h3>Secure Chat Interface</h3>
+                          <hr>
+                          <p class="">Chat with the people you upload! And our chatting framework is secure and fast.</p>
+                          <br>
+                        </div>
+                      <br>
+                      <div class="col-md-8 col-12 divider top-divider mx-auto pt-5 text-center"> </div>
+                      <br>
+                      <div class="col-md-6 box">
+                          <div class="icon-box box-info">
+                              <div class="icon-box-inner">
+                                  <span data-feather="globe" width="35" height="35"></span>
+                              </div>
+                          </div>
+                          <h3>N0 Data Tracking</h3>
+                          <hr>
+                          <p class="">All services marked under MaxTac Services do not collect user data and sell to any third party services.</p>
+                          <br>
+                        </div>
+                      <div class="col-md-6 box">
+                          <div class="icon-box box-info">
+                              <div class="icon-box-inner">
+                                  <span data-feather="globe" width="35" height="35"></span>
+                              </div>
+                          </div>
+                          <h3>Unlimited File Upload</h3>
+                          <hr>
+                          <p class="">You can upload as many as files you need, but with a 7GB limit of course.</p>
+                          <br>
+                        </div>
+                  </div>
+              </div>
+          </div>
+            <br>
+            <br>
+            <center>
+            <a href="https://github.com/theoneandonlyshadow/echo-relay" class="tios">
+              <div>This is Open Source</div>
+            </a>
+            </center>
+          </div>
+  </section>
+
+  <!-- Creators of Echo Relay-->
+  <section id="coer" class="padding-medium">
+    <div class="container-fluid padding-side" data-aos="fade-up">
+      <h3 class="display-3 text-center fw-normal col-lg-4 offset-lg-4" style="color: #fff; font-size: 50px;">Creators of Echo Relay</h3>
+      <div class="cent row mt-5 flex">
+        <div class="col-md-6 col-xl-4">
+          <div class="service mb-4 text-center rounded-4 p-5">
+            <div class="position-relative">
+              <svg class="color" width="70" height="70">
+                <use xlink:href="#meditation"></use>
+              </svg>
+              <br>
+              <br>
+              <br>
+              <img src="../assets/images/madhav_red.png" alt="img"
+                class="position-absolute top-100 start-50 translate-middle z-n1 pe-5 madhav">
+            </div>
+            <br>
+            <br>
+            <br>
+            <br>
+            <h4 class="display-6 fw-normal my-3">Madhav Nair</h4>
+            <p></p>
+            <a href="index.html" class="btn btn-arrow">
+              <span class="">LinkedIn<svg width="18" height="18">
+                  <use xlink:href="#arrow-right"></use>
+                </svg></span>
+            </a>
+            <a href="https://maxtac.tech" class="btn btn-arrow">
+              <span class="">Portfolio<svg width="18" height="18">
+                  <use xlink:href="#arrow-right"></use>
+                </svg></span>
+            </a>
+            <br>
+            <br>
+          </div>
+        </div>
+
+        <div class="col-md-6 col-xl-4">
+          <div class="service mb-4 text-center rounded-4 p-5">
+            <div class="position-relative">
+              <svg class="color" width="70" height="70">
+                <use xlink:href="#meditation"></use>
+              </svg>
+              <br>
+              <br>
+              <br>
+              <center>
+              <img src="../assets/images/jay.jpg" alt="img"
+                class="position-absolute top-100 start-50 translate-middle z-n1 pe-5 jay">
+              </center>
+              </div>
+            <br>
+            <br>
+            <br>
+            <br>
+            <h4 class="display-6 fw-normal my-3">Jayprakash Malik</h4>
+            <p></p>
+            <a href="https://LinkedIn.com" class="btn btn-arrow">
+              <span class="">LinkedIn<svg width="18" height="18"></svg></span>
+            </a>
+            <a href="https://jaydotjs.netlify.app" class="btn btn-arrow">
+              <span class="">Portfolio<svg width="18" height="18"></svg></span>
+            </a>
+            <br>
+            <br>
+          </div>
+        </div>
+
+          </div>
+        </div>
+  </section>
+
+  <!-- Other FOSS Services-->
+   <section id="ofosss" class="padding-medium">
+    <div class="container-fluid padding-side" data-aos="fade-up">
+      <h3 class="display-3 text-center fw-normal col-lg-4 offset-lg-4" style="color: #fff; font-size: 50px;">Other FOSS Services</h3>
+      <div class="main">
+        <div class="container">
+            <div class="blog">
+                <div class="blog-card-group">
+                    <div class="blog-card">
+                        <div class="blog-card-banner">
+                            <img src="../assets/images/NetProbe_Mk.2.png" alt="blog image" class="blog-banner-img">
+                        </div>
+
+                        <div class="blog-content-wrapper">
+                            <h3 class="h3">NetProbe Mk.II</h3>
+                            <p class="blog-text">NetProbe Mk.2 is a system tray application that monitors internet connectivity, logs connection status changes, and provides utility features like clearing DNS cache and viewing logs. Built using Node.js, it is designed to work seamlessly on Windows, macOS, and Linux.</p>
+
+                            <div class="wrapper-flex">
+                                <div class="profile-wrapper">
+                                    <img src="https://i.postimg.cc/CLSG48wt/madhav.png" alt="image" width="50">
+                                </div>
+
+                                <div class="wrapper">
+                                    <a href="https://maxtac.tech" class="h4">Madhav Nair</a>
+
+                                    <p class="text-small">
+                                        <time datetime="2024-01-11">Jan 17, 2025</time>
+                                        <span class="separator"></span>
+                                        <ion-icon name="time-outline"></ion-icon>
+                                        <button onClick="window.open('https://github.com/theoneandonlyshadow/NetProbe/releases/tag/Mk.2');">Download</button>
+                                        <button onClick="window.open('https://github.com/theoneandonlyshadow/NetProbe');">GitHub</button>
+                                      </p>
+                                    
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="blog-card">
+                        <div class="blog-card-banner">
+                            <img src="../assets/images/floodsense.png" alt="blog image" class="blog-banner-img" width="250">
+                        </div>
+
+                        <div class="blog-content-wrapper">
+                            <h3 class="h3">FloodSense</h3>
+                            <p class="blog-text">FloodSense is a Real-Time Flood Monitoring System Web App designed to provide communities with real-time flood data and alerts. It integrates IoT sensors and intuitive dashboards to empower users with actionable insights to prepare for and respond to flood events.</p>
+
+                            <div class="wrapper-flex">
+                                <div class="profile-wrapper">
+                                    <img src="https://i.postimg.cc/tg2PrWzN/jay.jpg" alt="image" width="50">
+                                </div>
+
+                                <div class="wrapper">
+                                    <a href="https://jaydotjs.netlify.app" class="h4">Jayprakash Malik</a>
+
+                                    <p class="text-small">
+                                        <time datetime="2024-01-11">Dec 12, 2024</time>
+                                        <span class="separator"></span>
+                                        <ion-icon name="time-outline"></ion-icon>
+                                        <button onClick="window.open('https://github.com/Tyler7x1/FloodSense');">GitHub</button>
+                                      </p>
+                                    
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="blog-card-group">
+                      <div class="blog-card">
+                        <div class="blog-card-banner">
+                          <img src="../assets/images/erdbox.bmp" alt="blog image" class="blog-banner-img">
+                        </div>
+                        <div class="blog-content-wrapper">
+                          <h3 class="h3">Echo Relay - Dbox</h3>
+                          <p class="blog-text">NetProbe Mk.II is a system tray application that monitors internet connectivity, logs connection status changes, and provides utility features like clearing DNS cache and viewing logs. Built using Node.js, it is designed to work seamlessly on Windows, macOS, and Linux.</p>
+                          <div class="wrapper-flex">
+                            <div class="profile-wrapper">
+                              <img src="https://i.postimg.cc/CLSG48wt/madhav.png" alt="madhav nair" width="50">
+                            </div>
+                            <div class="profile-wrapper">
+                              <img src="https://i.postimg.cc/tg2PrWzN/jay.jpg" alt="jayprakash malik" width="50">
+                            </div>
+                            <div class="wrapper">
+                              <div>
+                                <p class="h4">Madhav Nair | Jayprakash Malik</p>
+                              </div>
+                              <p class="text-small">
+                                <time datetime="2024-01-11">Nov 14, 2024</time>
+                                <span class="separator"></span>
+                                <ion-icon name="time-outline"></ion-icon>
+                                <button onClick="window.open('https://github.com/theoneandonlyshadow/Echo-Relay-Dbox');">GitHub</button>
+                              </p>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                    
+                    <div class="blog-card-group">
+                      <div class="blog-card">
+                        <div class="blog-card-banner">
+                          <img src="" alt="RelayDriver" class="blog-banner-img">
+                        </div>
+                        <div class="blog-content-wrapper">
+                          <p class="h4" style="color: #00ff00;">IN DEVELOPMENT</p>
+                          <h3 class="h3">RelayDriver</h3>
+                          <p class="blog-text">RelayDriver allows you to upload and receive files directly from your system's tray. This eliminates the need to visit Echo Relay website to do the same. RelayDriver supports Windows, Debian-based Linux distros, and macOS.</p>
+                          <div class="wrapper-flex">
+                            <div class="profile-wrapper">
+                              <img src="https://i.postimg.cc/CLSG48wt/madhav.png" alt="madhav nair" width="50">
+                            </div>
+                            <div class="profile-wrapper">
+                              <img src="https://i.postimg.cc/tg2PrWzN/jay.jpg" alt="jayprakash malik" width="50">
+                            </div>
+                            <div class="wrapper">
+                              <div>
+                                <p class="h4">Madhav Nair | Jayprakash Malik</p>
+                              </div>
+                              <p class="text-small">
+                                <time datetime="2024-01-11"></time>
+                                <span class="separator"></span>
+                                <ion-icon name="time-outline"></ion-icon>
+                                <button onClick="window.open('https://github.com/theoneandonlyshadow/RelayDriver');">GitHub</button>
+                              </p>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+
+                    <div class="blog-card-group">
+                      <div class="blog-card">
+                        <div class="blog-card-banner">
+                          <img src="" alt="NetDaemon" class="blog-banner-img">
+                        </div>
+                        <div class="blog-content-wrapper">
+                          <p class="h4" style="color: red;">YET TO BEGIN</p>
+                          <h3 class="h3">NetDaemon</h3>
+                          <p class="blog-text">NetDaemon is a DNS monitoring service. Detailed features are yet to be disclosed. NetDaemon supports Windows, Debian-based Linux distros, and macOS.</p>
+                          <div class="wrapper-flex">
+                            <div class="profile-wrapper">
+                              <img src="https://i.postimg.cc/CLSG48wt/madhav.png" alt="madhav nair" width="50">
+                            </div>
+                            <div class="profile-wrapper">
+                              <img src="https://i.postimg.cc/tg2PrWzN/jay.jpg" alt="jayprakash malik" width="50">
+                            </div>
+                            <div class="wrapper">
+                              <div>
+                                <p class="h4">Madhav Nair | Jayprakash Malik</p>
+                              </div>
+                              <p class="text-small">
+                                <time datetime="2024-01-11"></time>
+                                <span class="separator"></span>
+                                <ion-icon name="time-outline"></ion-icon>
+                                <button onClick="window.open('https://github.com/theoneandonlyshadow/RelayDriver');">GitHub</button>
+                              </p>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+            </div>
+        </div>
+    </div>
+        </div>
+    </div>
+  </section>
+  
+  <section id="footer" class="padding-footer">
+    <div class="container-fluid" data-aos="fade-up">
+        <hr class="text-white">
+      <footer class="row">
+        <div class="col-md-6 col-lg-3 mb-4 mb-lg-0">
+          <h4 class="display-6 fw-normal">Quick links</h4>
+          <ul class="nav flex-column">
+            <li class="nav-item"><a href="#" class="p-0 "> Home </a></li>
+            <li class="nav-item"><a href="#" class="p-0 "> About </a></li>
+            <li class="nav-item"><a href="#" class="p-0 "> Creators </a></li>
+            <li class="nav-item"><a href="#" class="p-0 "> Privacy Policy</a></li>
+            <li class="nav-item"><a href="#" class="p-0 "> MaxTac </a></li>
+            <li class="nav-item"><a href="#" class="p-0 "> Terms & Conditions </a></li>
+          </ul>
+        </div>
+        <div class="col-md-6 col-lg-3 offset-lg-1 mb-4 mb-lg-0">
+          <h4 class="display-6 fw-normal">Connect With Us</h4>
+          <ul class="nav flex-column">
+            <li class="nav-item"><a href="#" class="p-0 "> Spa </a></li>
+            <li class="nav-item"><a href="#" class="p-0 "> Pool </a></li>
+            <li class="nav-item"><a href="#" class="p-0 "> Yoga </a></li>
+            <li class="nav-item"><a href="#" class="p-0 "> Gym</a></li>
+            <li class="nav-item"><a href="#" class="p-0 "> News </a></li>
+          </ul>
+        </div>
+        <div class="col-md-6 col-lg-3 offset-lg-1 mb-4 mb-lg-0">
+          <p class="m-0"><b>MIT License</b></p>
+          <p>madhav@maxtac.tech</p>
+          <p>FOSS by <b>MaxTac</b></p>
+        </div>
+      </footer>
+    </div>
+  </section>
+  </div>
+
+  <script src="/js/jquery-1.11.0.min.js"></script>
+  <script src="/js/upload.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
+  <script type="text/javascript" src="/js/plugins.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/swiper/swiper-bundle.min.js"></script>
+  <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+  <script type="text/javascript" src="/js/script.js"></script>
+<script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/feather-icons/4.7.3/feather.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.8.1/slick.min.js"></script>
+  <script src="https://code.iconify.design/iconify-icon/1.0.7/iconify-icon.min.js"></script>
+  <script src="/js/dropzone.js"></script>
+  <script data-name="BMC-Widget" data-cfasync="false" src="https://cdnjs.buymeacoffee.com/1.0.0/widget.prod.min.js" data-id="maxtac" data-description="Support me on Buy me a coffee!" data-message="Donate?." data-color="#40DCA5" data-position="Right" data-x_margin="18" data-y_margin="18"></script>
+</body>
+
+</html>

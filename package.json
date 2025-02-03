@@ -1,0 +1,31 @@
+{
+  "dependencies": {
+    "@google-cloud/local-auth": "^2.1.1",
+    "archiver": "^7.0.1",
+    "bcrypt": "^5.1.1",
+    "body-parser": "^1.20.3",
+    "cors": "^2.8.5",
+    "crypto": "^1.0.1",
+    "dotenv": "^16.4.5",
+    "ejs": "^3.1.10",
+    "express": "^4.21.2",
+    "fs": "^0.0.1-security",
+    "googleapis": "^105.0.0",
+    "mongodb": "^6.11.0",
+    "mongoose": "^8.9.5",
+    "multer": "^1.4.5-lts.1",
+    "nodemon": "^3.1.7",
+    "openai": "^3.2.1",
+    "path": "^0.12.7"
+  },
+  "name": "echo-relay-drive",
+  "version": "1.0.0",
+  "main": "drive.js",
+  "scripts": {
+    "start": "nodemon drive.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "ISC",
+  "description": "- make responsive website    `partial done`\r - multiple drive accs / apis\r - if block to check storage remaining in each drive accs and push files to the one with most storage\r - delete file option after uploading\r - password protection of the file\r - shorten url\r - input key\r - 7 gigs storage    `1 gigs given for now`\r - admin dashboard\r - active user count in admin dash\r - filter bots\r - unique code to allow upload size upto 50GB\r - (get 200gb discount offer once)\r - (create multiple accs and get the discount after a few users)"
+}
