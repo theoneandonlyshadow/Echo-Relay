@@ -43,6 +43,7 @@ input.addEventListener("change", function (e) {
                 fileNamesContainer.removeChild(item);
             }
         });
+    }
 
 
   let filedata = `

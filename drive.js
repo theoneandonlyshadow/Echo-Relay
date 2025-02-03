@@ -92,13 +92,24 @@ app.delete('/delete/:fileId', async (req, res) => {
     }
 });
 
-app.get('/success', (req, res) => {
-    const downloadLink = req.query.link;
-    const shorty = req.query.shortUrl;
-    if (!downloadLink || !shorty) {
-        return res.render('error', { message: 'Some error occurred while fetching the URLs' });
+app.get('/success', async (req, res) => {
+    try {
+        const downloadLink = req.query.link;
+        const shorty = req.query.shortUrl;
+
+        if (!downloadLink || !shorty) {
+            return res.render('error', { message: 'ShortURL or download link was found invalid' });
+        }
+        const shortCode = shorty.slice(-6);
+        const file = await Model.findOne({ shortCode });
+        if (!file) {
+            return res.render('error', { message: 'Invalid ShortURL, file not found' });
+        }
+        res.render('success', { downloadLink, shorty });
+    } catch (error) {
+        console.error(error);
+        res.render('error', { message: 'Server Error' });
     }
-    res.render('success', { downloadLink, shorty });
 });
 
 app.get('/deleted', (req, res) => {

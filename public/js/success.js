@@ -26,7 +26,15 @@ async function deleteFile() {
         });
 
         if (response.ok) {
-            window.location.href = '/deleted' ;
+            document.getElementById('fileUploaded').innerHTML = 'File Deleted';
+            
+            // Remove all elements with class 'widget-centered'
+            let widgets = document.getElementsByClassName('widget-centered');
+            while (widgets.length > 0) {
+                widgets[0].remove();
+            }
+        
+            document.getElementById('deletesucc').innerHTML = 'Go back to Upload';
         }
         else {
             const err = await response.json();
