@@ -26,7 +26,6 @@ async function deleteFile() {
         });
 
         if (response.ok) {
-<<<<<<< HEAD
             document.getElementById('fileUploaded').innerHTML = 'File Deleted';
             
             // Remove all elements with class 'widget-centered'
@@ -37,11 +36,6 @@ async function deleteFile() {
         
             document.getElementById('deletesucc').innerHTML = 'Go back to Upload';
         }
-        
-=======
-            window.location.href = '/deleted' ;
-        }
->>>>>>> 52faa75e31e26841535c522b62eb9cd7c7e106b4
         else {
             const err = await response.json();
             alert(`Error: ${err.message || 'Failed to delete file'}`);
