@@ -1,5 +1,8 @@
+<<<<<<< HEAD
 // L
 
+=======
+>>>>>>> 52faa75e31e26841535c522b62eb9cd7c7e106b4
 (function ($) {
   "use strict";
 

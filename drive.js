@@ -92,6 +92,7 @@ app.delete('/delete/:fileId', async (req, res) => {
     }
 });
 
+<<<<<<< HEAD
 app.get('/success', async (req, res) => {
     try {
         const downloadLink = req.query.link;
@@ -110,6 +111,15 @@ app.get('/success', async (req, res) => {
         console.error(error);
         res.render('error', { message: 'Server Error' });
     }
+=======
+app.get('/success', (req, res) => {
+    const downloadLink = req.query.link;
+    const shorty = req.query.shortUrl;
+    if (!downloadLink || !shorty) {
+        return res.render('error', { message: 'Some error occurred while fetching the URLs' });
+    }
+    res.render('success', { downloadLink, shorty });
+>>>>>>> 52faa75e31e26841535c522b62eb9cd7c7e106b4
 });
 
 app.get('/deleted', (req, res) => {
