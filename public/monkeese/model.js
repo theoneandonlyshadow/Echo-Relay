@@ -13,6 +13,18 @@ const schema = mongoose.Schema({
         type: String,
         required: true
     },
+    encryptHash: {
+        type: String
+    },
+    encryptKey: {
+        type: String
+    },
+    iv : {
+        type: String
+    },
+    kiv: {
+        type: String
+    },
     url: {
         type: String,
         required: true

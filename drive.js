@@ -1,12 +1,12 @@
+require('dotenv').config();
 const { Model } = require('./public/monkeese/model.js');
 const { connect } = require('./public/monkeese/dbCon.js');
-const { driveUpload, restDelete, monitorDeletion, zip, driveDelete, shorty } = require('./public/controllers/controller.js');
-const { Readable } = require('stream')
+const { driveUpload, restDelete, monitorDeletion, zip, driveDelete, shorty, hashPass, encryptHash, decryptHash, VerifyPassword } = require('./public/controllers/controller.js');
+const { Readable } = require('stream');
 const express = require('express');
 const multer = require('multer');
 const path = require('path');
 const fs = require('fs');
-const bcrypt = require('bcrypt');
 const bodyParser = require('body-parser');
 const app = express();
 const PORT = 3000;
@@ -43,6 +43,9 @@ app.post('/upload', upload.array('files'), async (req, res) => {
 
     try {
         const files = req.files;
+        const pass = req.body.password || '';
+        const hashedpass = pass ? hashPass(pass) : pass;
+        const enc = encryptHash(hashedpass);
         const zipFileName = `ER_${Date.now()}.zip`;
         const zipFilePath = path.join(__dirname, 'uploads', zipFileName);
         const fileSizeInBytes = files.reduce((acc, file) => acc + file.size, 0);
@@ -54,11 +57,15 @@ app.post('/upload', upload.array('files'), async (req, res) => {
         const shortUrl = await shorty(req);
         const shortCode = shortUrl.split('/').pop();
 
-        const fileRecord = new Model({ 
-            name: zipFileName, 
+        const fileRecord = new Model({
+            name: zipFileName,
             size: fileSizeinMB,
-            fileid: fileId, 
-            url: downloadLink, 
+            fileid: fileId,
+            encryptHash: enc.encHash,
+            encryptKey: enc.encKey,
+            iv: enc.iv,
+            kiv: enc.kIv,
+            url: downloadLink,
             shorty: shortUrl,
             shortCode: shortCode
         });
@@ -70,10 +77,10 @@ app.post('/upload', upload.array('files'), async (req, res) => {
         const dir = path.join(__dirname, 'uploads');
         restDelete(dir);
 
-        res.redirect(`/success?link=${encodeURIComponent(downloadLink)}&shortUrl=${encodeURIComponent(shortUrl)}`); 
+        res.redirect(`/success?link=${encodeURIComponent(downloadLink)}&shortUrl=${encodeURIComponent(shortUrl)}`);
     } catch (error) {
         console.error('Upload error:', error);
-        res.render('error', { message: error.message });
+        res.render('error', { message: "Some error occurred while uploading the files." });
     }
 });
 
@@ -122,9 +129,9 @@ app.get('/receive', (req, res) => {
 
 app.post("/receive", async (req, res) => {
     try {
-        let { fileId } = req.body;
+        let { fileId, password } = req.body;
 
-        if(fileId.startsWith('http://') || fileId.startsWith('https://')) {
+        if (fileId.startsWith('http://') || fileId.startsWith('https://')) {
             fileId = fileId.split('/').pop();
         }
 
@@ -136,6 +143,16 @@ app.post("/receive", async (req, res) => {
             $or: [{ shortCode: fileId }, { fileid: fileId }]
         });
 
+        if (fileRecord && fileRecord.encryptHash && password) {
+            const hashedPassword = hashPass(password);
+            const decrypt = decryptHash(fileRecord.encryptHash, fileRecord.encryptKey, fileRecord.iv, fileRecord.kiv);
+            if (!VerifyPassword(decrypt, hashedPassword)) {
+                return res.status(401).render("error", { message: "Invalid password." });
+            }
+        } else if (fileRecord && fileRecord.encryptHash && !password) {
+            return res.status(400).render("error", { message: "Password is required to download this file." });
+        }
+
         if (!fileRecord) {
             return res.status(404).render("error", { message: "File not found" });
         }
@@ -144,7 +161,7 @@ app.post("/receive", async (req, res) => {
         const response = await fetch(downloadURL);
 
         if (!response.ok) {
-            return res.status(response.status === 404 ? 404 : 500).render("error",
+            return res.status(response.status === 404 ? 404 : 500).render("error", 
                 { message: response.status === 404 ? "File not found" : "Error fetching file" }
             );
         }
@@ -172,6 +189,7 @@ app.post("/receive", async (req, res) => {
     }
 });
 
+
 app.get('/error', (req, res) => {
     const errorMessage = req.query.message || 'An unexpected error occurred';
     return res.render('error', { message: errorMessage });
@@ -181,7 +199,7 @@ app.get('/', (req, res) => {
     return res.render('home');
 });
 
-app.use((req, res, next) => { 
+app.use((req, res, next) => {
     res.status(404).render('404');
 });
 
