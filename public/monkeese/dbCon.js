@@ -1,5 +1,4 @@
 const mongoose = require('mongoose');
-const { Model } = require('./model.js');
 
 const connect = async function(url) {
     try {
