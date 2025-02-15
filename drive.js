@@ -1,12 +1,14 @@
 require('dotenv').config();
-const { Model } = require('./public/monkeese/model.js');
+const { LinkLogger, drive } = require('./public/controllers/DefaultController.js');
+const { HandleUpload, driveUpload } = require('./public/controllers/Upload.js');
+const { HandleDelete, driveDelete, restDelete, monitorDeletion } = require('./public/controllers/Delete.js');
+const { HandleSuccess } = require('./public/controllers/Success.js');
+const { HandlePostReceive, HandleGetById, HandleQuickReceive } = require('./public/controllers/Receive.js');
+const { HandleDownload } = require('./public/controllers/Download.js');
 const { connect } = require('./public/monkeese/dbCon.js');
-const { driveUpload, restDelete, monitorDeletion, zip, driveDelete, shorty, hashPass, encryptHash, decryptHash, VerifyPassword } = require('./public/controllers/controller.js');
-const { Readable } = require('stream');
 const express = require('express');
 const multer = require('multer');
 const path = require('path');
-const fs = require('fs');
 const bodyParser = require('body-parser');
 const app = express();
 const PORT = 3000;
@@ -33,90 +35,13 @@ app.use(express.json());
 app.set('views', path.join(__dirname, 'public/views'));
 app.set('view engine', 'ejs');
 
-app.use((req, res, next) => {
-    console.log(`requested: ${req.url}`);
-    next();
-});
+app.use(LinkLogger);
 
-app.post('/upload', upload.array('files'), async (req, res) => {
-    if (!req.files || req.files.length === 0) return res.render('error');
-    try {
-        const files = req.files;
-        const pass = req.body.password || '';
-        const hashedpass = pass ? hashPass(pass) : pass;
-        const enc = encryptHash(hashedpass);
-        const zipFileName = `ER_${Date.now()}.zip`;
-        const zipFilePath = path.join(__dirname, 'uploads', zipFileName);
-        const fileSizeInBytes = files.reduce((acc, file) => acc + file.size, 0);
-        const fileSizeinMB = ((fileSizeInBytes / 1024) / 1024);
-        await zip(files, zipFilePath);
+app.post('/upload', upload.array('files'), HandleUpload);
 
-        const fileId = await driveUpload(zipFilePath, zipFileName);
-        const downloadLink = `https://drive.google.com/uc?id=${fileId}&export=download`;
-        const shortUrl = await shorty(req);
-        const shortCode = shortUrl.split('/').pop();
+app.delete('/delete/:fileId', HandleDelete);
 
-        const fileRecord = new Model({
-            name: zipFileName,
-            size: fileSizeinMB,
-            fileid: fileId,
-            encryptHash: enc.encHash,
-            encryptKey: enc.encKey,
-            iv: enc.iv,
-            kiv: enc.kIv,
-            url: downloadLink,
-            shorty: shortUrl,
-            shortCode: shortCode
-        });
-        await fileRecord.save();
-
-        fs.unlinkSync(zipFilePath);
-        files.forEach((file) => fs.unlinkSync(file.path));
-
-        const dir = path.join(__dirname, 'uploads');
-        restDelete(dir);
-
-        res.redirect(`/success?link=${encodeURIComponent(downloadLink)}&shortUrl=${encodeURIComponent(shortUrl)}`);
-    } catch (error) {
-        console.error('Upload error:', error);
-        res.render('error', { message: "Some error occurred while uploading the files." });
-    }
-});
-
-app.delete('/delete/:fileId', async (req, res) => {
-    const { fileId } = req.params;
-    try {
-        await driveDelete(fileId);
-        const fileRecord = await Model.findOneAndDelete({ fileid: fileId });
-        if (!fileRecord) {
-            res.render('error', { message: 'File not found' });
-        }
-        res.render('deleted');
-    } catch (error) {
-        console.error('Error deleting file:', error);
-        res.render('error', { message: 'Error deleting file' });
-    }
-});
-
-app.get('/success', async (req, res) => {
-    try {
-        const downloadLink = req.query.link;
-        const shorty = req.query.shortUrl;
-
-        if (!downloadLink || !shorty) {
-            return res.render('error', { message: 'ShortURL or download link was found invalid' });
-        }
-        const shortCode = shorty.slice(-6);
-        const file = await Model.findOne({ shortCode });
-        if (!file) {
-            return res.render('error', { message: 'Invalid ShortURL, file not found' });
-        }
-        res.render('success', { downloadLink, shorty });
-    } catch (error) {
-        console.error(error);
-        res.render('error', { message: 'Server Error' });
-    }
-});
+app.get('/success', HandleSuccess);
 
 app.get('/deleted', (req, res) => {
     return res.render('deleted');
@@ -126,118 +51,13 @@ app.get('/receive', (req, res) => {
     return res.render('receive');
 });
 
-app.post('/receive', async (req, res) => {
-    try {
-        let { fileId } = req.body;
-        if (fileId.startsWith('http://') || fileId.startsWith('https://')) {
-            fileId = fileId.split('/').pop();
-        }
-        if (!fileId || !/^[a-zA-Z0-9_-]+$/.test(fileId)) {
-            return res.status(400).render("error", { message: "Invalid file URL or ID." });
-        }
-        const fileRecord = await Model.findOne({
-            $or: [{ shortCode: fileId }, { fileid: fileId }]
-        });
-        if (!fileRecord) {
-            return res.status(404).render("error", { message: "File not found" });
-        }
-        return res.render('download', { ID: fileId });
-    } catch (error) {
-        console.error("Error processing file request:", error);
-        return res.status(500).render("error", { message: "An unexpected error occurred." });
-    }
-});
+app.post('/receive', HandlePostReceive);
 
-app.get('/:fileId', async (req, res) => {
-    try {
-        const { fileId } = req.params;
-        const { password } = req.body || '';
-        const fileRecord = await Model.findOne({ shortCode: fileId });
-        if (!fileRecord) {
-            return res.status(404).render("error", { message: "File not found" });
-        }
-        if (fileRecord.encryptHash) {
-            if (!password) {
-                return res.status(400).render("error", { message: "Password is required to download this file." });
-            }
-            const hashedPassword = hashPass(password);
-            const decrypt = decryptHash(fileRecord.encryptHash, fileRecord.encryptKey, fileRecord.iv, fileRecord.kiv);
-            if (!VerifyPassword(decrypt, hashedPassword)) {
-                return res.status(401).render("error", { message: "Invalid password." });
-            }
-        }
-        const downloadURL = `https://drive.google.com/uc?id=${fileRecord.fileid}&export=download`;
-        const response = await fetch(downloadURL);
-        if (!response.ok) {
-            return res.status(response.status === 404 ? 404 : 500).render("error", 
-                { message: response.status === 404 ? "File not found" : "Error fetching file" }
-            );
-        }
-        res.redirect(downloadURL);
-        /*
-        let fileName = "ER_DEFAULT";
-        const contentDisposition = response.headers.get("content-disposition");
-        const match = contentDisposition?.match(/filename\*?=(?:UTF-8'')?([^;]*)/);
-        if (match?.[1]) {
-            fileName = decodeURIComponent(match[1]).replace(/"/g, "");
-        }
-        res.set({
-            "Content-Disposition": `attachment; filename="${fileName}"`,
-            "Content-Type": response.headers.get("content-type") || "application/octet-stream",
-        });
-        return response.body
-            ? Readable.fromWeb(response.body).pipe(res)
-            : res.status(500).render("error", { message: "Unable to retrieve file stream." }); */
-    } catch (error) {
-        console.error("Error downloading file:", error);
-        return res.status(500).render("error", { message: "An unexpected error occurred while processing your request." });
-    }
-});
+app.get('/:fileId', HandleGetById);
 
-app.post('/', async (req, res) => {
-    try {
-        const { fileID } = req.body;
-        const { password } = req.body || '';
-        const fileRecord = await Model.findOne({ shortCode: fileID });
-        console.log(fileRecord);
-        if (!fileRecord) {
-            return res.status(404).render("error", { message: "File not found" });
-        }
-        if (fileRecord.encryptHash) {
-            if (!password) {
-                return res.status(400).render("error", { message: "Password is required to download this file." });
-            }
-            const hashedPassword = hashPass(password);
-            const decrypt = decryptHash(fileRecord.encryptHash, fileRecord.encryptKey, fileRecord.iv, fileRecord.kiv);
-            if (!VerifyPassword(decrypt, hashedPassword)) {
-                return res.status(401).render("error", { message: "Invalid password." });
-            }
-        }
-        const downloadURL = `https://drive.google.com/uc?id=${fileRecord.fileid}&export=download`;
-        const response = await fetch(downloadURL);
-        if (!response.ok) {
-            return res.status(response.status === 404 ? 404 : 500).render("error", 
-                { message: response.status === 404 ? "File not found" : "Error fetching file" }
-            );
-        }
-        let fileName = "ER_DEFAULT";
-        const contentDisposition = response.headers.get("content-disposition");
-        const match = contentDisposition?.match(/filename\*?=(?:UTF-8'')?([^;]*)/);
-        if (match?.[1]) {
-            fileName = decodeURIComponent(match[1]).replace(/"/g, "");
-        }
-        res.set({
-            "Content-Disposition": `attachment; filename="${fileName}"`,
-            "Content-Type": response.headers.get("content-type") || "application/octet-stream",
-        });
-        return response.body
-            ? Readable.fromWeb(response.body).pipe(res)
-            : res.status(500).render("error", { message: "Unable to retrieve file stream." });
-    } catch (error) {
-        console.error("Error downloading file:", error);
-        return res.status(500).render("error", { message: "An unexpected error occurred while processing your request." });
-    }
-});
+app.get('/q/:fileId', HandleQuickReceive);
+
+app.post('/', HandleDownload);
 
 app.get('/error', (req, res) => {
     const errorMessage = req.query.message || 'An unexpected error occurred';
