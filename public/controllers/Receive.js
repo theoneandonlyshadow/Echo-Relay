@@ -1,20 +1,21 @@
 const { hashPass, encryptHash, decryptHash, VerifyPassword } = require('./Encryption.js');
-const { ValidityCheck } = require('./FileValidation.js');
+const { ValidityCheck, shortyExtractor } = require('./FileValidation.js');
 const { Model } = require('../monkeese/model.js');
 
 const HandlePostReceive = async (req, res) => {
     try {
         let { fileId } = req.body;
-        if (!ValidityCheck(fileId)) {
+        const short = shortyExtractor(fileId);
+        if (!ValidityCheck(short)) {
             return res.status(400).render("error", { message: "Invalid file URL or ID." });
-        }
+        };
         const fileRecord = await Model.findOne({
-            $or: [{ shortCode: fileId }, { fileid: fileId }]
+            $or: [{ shortCode: short }, { fileid: short }]
         });
         if (!fileRecord) {
             return res.status(404).render("error", { message: "File not found" });
         }
-        return res.render('download', { ID: fileId });
+        return res.render('download', { ID: short });
     } catch (error) {
         console.error("Error processing file request:", error);
         return res.status(500).render("error", { message: "An unexpected error occurred." });
@@ -24,6 +25,7 @@ const HandlePostReceive = async (req, res) => {
 const HandleGetById = async (req, res) => {
     try {
         const { fileId } = req.params;
+        console.log(fileId);
         const { password } = req.body || '';
         const fileRecord = await Model.findOne({ shortCode: fileId });
         if (!fileRecord) {
