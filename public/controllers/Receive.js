@@ -23,8 +23,24 @@ const HandlePostReceive = async (req, res) => {
 }
 
 
-const HandleGetById = (req, res) => {
-    res.status(200).render("download", { downloadURL: "https://drive.google.com/uc?id=${fileRecord.fileid}&export=download", ID: req.params.fileId });
+const HandleGetById = async (req, res) => {
+    try {
+        const downloadLink = req.query.link;
+        const shorty = req.query.shortUrl;
+
+        if (!downloadLink || !shorty) {
+            return res.render('error', { message: 'ShortURL or download link was found invalid', status_code: 400 });
+        }
+        const shortCode = shorty.slice(-6);
+        const file = await Model.findOne({ shortCode });
+        if (!file) {
+            return res.render('error', { message: 'Invalid ShortURL, file not found', status_code: 400 });
+        }
+        res.status(200).render("download", { downloadURL: "https://drive.google.com/uc?id=${fileRecord.fileid}&export=download", ID: req.params.fileId });
+    } catch (error) {
+        console.error(error);
+        res.render('error', { message: 'Server Error', status_code: 500 });
+    }
 }
 
 const HandleQuickReceive = async (req, res) => {
