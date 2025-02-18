@@ -9,12 +9,12 @@ const HandleDelete = async (req, res) => {
         await driveDelete(fileId);
         const fileRecord = await Model.findOneAndDelete({ fileid: fileId });
         if (!fileRecord) {
-            res.render('error', { message: 'File not found' });
+            res.render('error', { message: 'File not found', status_code: 400 });
         }
         res.render('deleted');
     } catch (error) {
         console.error('Error deleting file:', error);
-        res.render('error', { message: 'Error deleting file' });
+        res.render('error', { message: 'Error deleting file', status_code: 500 });
     }
 }
 

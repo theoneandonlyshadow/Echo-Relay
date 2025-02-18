@@ -558,10 +558,8 @@ form textarea{
   }
 
   input.downloadlink, textarea {
-  width: auto;
-  padding: 10px;
-  padding-left: 15px;
-  padding-right: 15px;
+    justify-items: center;
+  width: 250px;
   border: none;
   outline: none;
   background-color: #222;

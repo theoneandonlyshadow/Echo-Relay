@@ -10,16 +10,16 @@ const HandleDownload = async (req, res) => {
         const fileRecord = await Model.findOne({ shortCode: fileID });
         console.log(fileRecord);
         if (!fileRecord) {
-            return res.status(404).render("error", { message: "File not found" });
+            return res.status(404).render("error", { message: "File not found", status_code: 404 });
         }
         if (fileRecord.encryptHash) {
             if (!password) {
-                return res.status(400).render("error", { message: "Password is required to download this file." });
+                return res.status(400).render("error", { message: "Password is required to download this file.", status_code: 400 });
             }
             const hashedPassword = hashPass(password);
             const decrypt = decryptHash(fileRecord.encryptHash, fileRecord.encryptKey, fileRecord.iv, fileRecord.kiv);
             if (!VerifyPassword(decrypt, hashedPassword)) {
-                return res.status(401).render("error", { message: "Invalid password." });
+                return res.status(401).render("error", { message: "Invalid password.", status_code: 401 });
             }
         }
         const downloadURL = `https://drive.google.com/uc?id=${fileRecord.fileid}&export=download`;
@@ -41,10 +41,10 @@ const HandleDownload = async (req, res) => {
         });
         return response.body
             ? Readable.fromWeb(response.body).pipe(res)
-            : res.status(500).render("error", { message: "Unable to retrieve file stream." });
+            : res.status(500).render("error", { message: "Unable to retrieve file stream.", status_code: 500 });
     } catch (error) {
         console.error("Error downloading file:", error);
-        return res.status(500).render("error", { message: "An unexpected error occurred while processing your request." });
+        return res.status(500).render("error", { message: "An error occured for this request.", status_code: 500 });
     }
 }
 
