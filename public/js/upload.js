@@ -66,3 +66,5 @@ input.addEventListener("change", function (e) {
   forminput.files = e.target.files;
 });
 
+module.exports = { formatFileSize }
+
