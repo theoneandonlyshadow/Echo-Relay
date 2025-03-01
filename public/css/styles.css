@@ -128,7 +128,7 @@
 }
 
 
-./* Slider container styles */
+/* Slider container styles */
 .slider-container {
   display: flex;
   align-items: center;
@@ -399,7 +399,7 @@
   
   
   p {
-    color: #fff);
+    color: #fff;
   }
   
   a {
@@ -531,7 +531,7 @@
   h4,
   h5,
   h6 {
-    color: #fff);
+    color: #fff;
     font-family: var(--heading-font);
     text-transform: capitalize;
     font-weight: 400;
