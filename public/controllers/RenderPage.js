@@ -8,7 +8,7 @@ const renderReceive = (req, res) => {
 
 const renderError = (req, res) => {
     const errorMessage = req.query.message || 'An unexpected error occurred';
-    return res.render('error', { message: errorMessage });
+    return res.render('error', { message: errorMessage, status_code: 404 });
 };
 
 const renderHome = (req, res) => {

@@ -37,5 +37,5 @@ app.use(renderNotFound);
 monitorDeletion();
 
 app.listen(PORT, () => {
-    console.log(`The server is running at http://localhost:${PORT}`);
+    console.log(`[INFO] The server is running at http://localhost:${PORT}`);
 });
