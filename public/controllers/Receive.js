@@ -1,4 +1,3 @@
-const { hashPass, decryptHash, VerifyPassword } = require('./Encryption.js');
 const { ValidityCheck, shortyExtractor } = require('./FileValidation.js');
 const { Model } = require('../monkeese/model.js');
 
@@ -21,29 +20,6 @@ const HandlePostReceive = async (req, res) => {
         return res.status(500).render("error", { message: "An unexpected error occurred.", status_code: 500 });
     }
 }
-
-// I have several questions, first is why and last is wtf made you write this code snippet
-/**  
-  const HandleGetById = async (req, res) => {
-    try {
-        const downloadLink = req.query.link;
-        const shorty = req.query.shortUrl;
-
-        if (!downloadLink || !shorty) {
-            return res.render('error', { message: 'ShortURL or download link was found invalid', status_code: 400 });
-        }
-        const shortCode = shorty.slice(-6);
-        const file = await Model.findOne({ shortCode });
-        if (!file) {
-            return res.render('error', { message: 'Invalid ShortURL, file not found', status_code: 400 });
-        }
-        res.status(200).render("download", { downloadURL: "https://drive.google.com/uc?id=${fileRecord.fileid}&export=download", ID: req.params.fileId });
-    } catch (error) {
-        console.error(error);
-        res.render('error', { message: 'Server Error', status_code: 500 });
-    }
-}
-*/
 
 const HandleGetById = async (req, res) => {
     try {

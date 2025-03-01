@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
   <head>
-    <title>Password Required | Echo Relay</title>
+    <title>Cache Cleared | Echo Relay</title>
     <meta charset="utf-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -89,20 +89,16 @@
     </header>
 
     <section id="about-us" class="padding-large">
-      <div class="container-fluid padding-side" data-aos="fade-up">
-        <center><p class="lead display-5 mt-4"> <%= message %></p></center>
-        <div class="widget-centered">
-        <form action="/" method="post">
-          <div class="inlinin">
-            <div>
-              <input type="hidden" name="fileID" value="<%= ID %>">
-              <input class="enterid" type="password" placeholder="Password" name="password" required/>
-            </div>
-          </div>
-          <br><br>
-          <button type="submit" class="recievebtn">Download</button>
-        </form> </div>       
-        </div>
+      <div class="text-center" data-aos="fade-up">
+        <h1 class="display-1">
+          Cache Cleared
+        </h1>
+      </div>
+      <div class="text-center" data-aos="fade-up">
+        <p class="lead display-5 mt-4">
+          Please
+          <b><span style="cursor: pointer" onclick="history.back(-1)">Go Back</span></b> or <b><a href="/">Go Home</a></b>
+        </p>
       </div>
     </section>
 
