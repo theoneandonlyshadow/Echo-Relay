@@ -1,4 +1,4 @@
-const { hashPass, encryptHash, decryptHash, VerifyPassword } = require('./Encryption.js');
+const { hashPass, decryptHash, VerifyPassword } = require('./Encryption.js');
 const { Model } = require('../monkeese/model.js');
 
 const { Readable } = require('stream');
@@ -8,13 +8,12 @@ const HandleDownload = async (req, res) => {
         const { fileID } = req.body;
         const { password } = req.body || '';
         const fileRecord = await Model.findOne({ shortCode: fileID });
-        console.log(fileRecord);
         if (!fileRecord) {
             return res.status(404).render("error", { message: "File not found", status_code: 404 });
         }
         if (fileRecord.encryptHash) {
             if (!password) {
-                return res.status(400).render("error", { message: "Password is required to download this file.", status_code: 400 });
+                res.status(400).render("password", { message: "Password is required to download this file.", ID: fileID});
             }
             const hashedPassword = hashPass(password);
             const decrypt = decryptHash(fileRecord.encryptHash, fileRecord.encryptKey, fileRecord.iv, fileRecord.kiv);
@@ -44,7 +43,7 @@ const HandleDownload = async (req, res) => {
             : res.status(500).render("error", { message: "Unable to retrieve file stream.", status_code: 500 });
     } catch (error) {
         console.error("Error downloading file:", error);
-        return res.status(500).render("error", { message: "An error occured for this request.", status_code: 500 });
+        return res.status(500).render("error", { message: "An error occurred for this request.", status_code: 500 });
     }
 }
 

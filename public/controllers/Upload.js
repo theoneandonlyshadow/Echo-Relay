@@ -1,5 +1,5 @@
-const { hashPass, encryptHash, decryptHash, VerifyPassword } = require('./Encryption.js');
-const { HandleDelete, driveDelete, restDelete, monitorDeletion } = require('./Delete.js');
+const { hashPass, encryptHash } = require('./Encryption.js');
+const { restDelete } = require('./Delete.js');
 const { zip } = require('./Zip.js');
 const { shorty } = require('./Shorty.js');
 const { Model } = require('../monkeese/model.js');
