@@ -4,11 +4,10 @@ let selectedFiles = [];
 
 // drag n drop event to accept files to drop
 function handleDragOver(event) {
-    event.preventDefault(); // prevents from opening the files in the browser
-    event.stopPropagation(); // i think this has somethin to do with firing events.
+    event.preventDefault();
+    event.stopPropagation();
 
-    document.getElementById('dropArea').classList.add('hover'); //I hope you know what you're doing.
-
+    document.getElementById('dropArea').classList.add('hover');
     document.querySelector('.uprec').classList.add('fade');
 }
 
@@ -18,7 +17,6 @@ function handleDrop(event) {
     event.stopPropagation();
 
     document.getElementById('dropArea').classList.remove('hover');
-
     document.querySelector('.uprec').classList.add('fade');
 
     const files = event.dataTransfer.files;
@@ -39,18 +37,24 @@ function addFiles(files) {
     }
 
     Array.from(files).forEach((file) => {
-        if (!selectedFiles.some((f) => f.name === file.name && f.size === file.size)) {
-            selectedFiles.push(file);
-            const fileItem = document.createElement('div');
-            fileItem.classList.add('file-item');
-            fileItem.innerHTML = `
-                <span class="file-name">${file.name}</span>
-                <span class="file-size">${formatFileSize(file.size)}</span>
-                <button class="delete-btn" onclick="removeFile('${file.name}')">❌</button>
-            `;
+        const uniqueFile = {
+            name: file.name,
+            size: file.size,
+            file: file,
+            timestamp: Date.now()
+        };
 
-            fileNamesContainer.appendChild(fileItem);
-        }
+        selectedFiles.push(uniqueFile);
+
+        const fileItem = document.createElement('div');
+        fileItem.classList.add('file-item');
+        fileItem.innerHTML = `
+            <span class="file-name">${file.name}</span>
+            <span class="file-size">${formatFileSize(file.size)}</span>
+            <button class="delete-btn" onclick="removeFile('${uniqueFile.timestamp}')">❌</button>
+        `;
+
+        fileNamesContainer.appendChild(fileItem);
     });
 
     updateFileInput();
@@ -70,12 +74,12 @@ function formatFileSize(size) {
 }
 
 // remove files using the "❌"
-function removeFile(fileName) {
-    selectedFiles = selectedFiles.filter((file) => file.name !== fileName);
+function removeFile(timestamp) {
+    selectedFiles = selectedFiles.filter((file) => file.timestamp !== parseInt(timestamp));
     const fileNamesContainer = document.getElementById('fileNames');
     const fileItems = fileNamesContainer.querySelectorAll('.file-item');
     fileItems.forEach((item) => {
-        if (item.querySelector('.file-name').textContent === fileName) {
+        if (item.querySelector('.delete-btn').getAttribute('onclick').includes(timestamp)) {
             fileNamesContainer.removeChild(item);
         }
     });
@@ -89,13 +93,16 @@ function removeFile(fileName) {
 
 function updateFileInput() {
     const fileInput = document.getElementById('fileID');
-    const dataTransfer = new DataTransfer();
+    const fileList = new DataTransfer();
 
     selectedFiles.forEach((file) => {
-        dataTransfer.items.add(file);
+        fileList.items.add(file);
     });
 
-    fileInput.files = dataTransfer.files;
+    const newFileInput = fileInput.cloneNode();
+    newFileInput.files = fileList.files;
+    fileInput.parentNode.replaceChild(newFileInput, fileInput);
+    document.querySelector('.uprec').classList.remove('fade');
 }
 
 // are you css because js or js because css
