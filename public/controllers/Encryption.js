@@ -1,7 +1,6 @@
 require('dotenv').config();
 const crypto = require('crypto');
-const { info, succ, err, warn } = require('../controllers/LoggerStyles.js');
-
+const masterKey = crypto.randomBytes(32);
 function hashPass(pass) {
     return crypto.createHash('sha256').update(pass).digest('hex');
 }
@@ -15,7 +14,6 @@ function encryptHash(hash) {
             kIv: '',
         }
     }
-    const masterKey = Buffer.from(process.env.AES_256_KEY, 'hex');
     const uniqueKey = crypto.randomBytes(32);
     const iv = crypto.randomBytes(16);
 
@@ -35,7 +33,6 @@ function decryptHash(encHash, encKey, ivHex, kIvHex) {
     if (!encHash ||!encKey ||!ivHex ||!kIvHex) {
         return '';
     }
-    const masterKey = Buffer.from(process.env.AES_256_KEY, 'hex');
     const iv = Buffer.from(ivHex, 'hex');
     const kIv = Buffer.from(kIvHex, 'hex');
 

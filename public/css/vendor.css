@@ -565,7 +565,9 @@ form textarea{
 
   input.downloadlink, textarea {
     justify-items: center;
-  width: 250px;
+  width: 255px;
+  padding: 10px 10px;
+  text-align: center;
   border: none;
   outline: none;
   background-color: #222;
@@ -602,16 +604,18 @@ form textarea{
   #coer{
     position: relative;
   }
+   .cont {
+    width: 400px;
+   }
 
-
-  .enterid {
-    width: 100px;
-    padding: 10px;
-    padding-left: 15px;
-    padding-right: 15px;
+   input.enterid {
+    width: 250px;
+    max-width: 300px;
+    padding: 10px 10px;
     border: none;
     outline: none;
-    background-color: #000;
+    text-align: center;
+    background-color: #222;
     color: #00ff00;
     margin-bottom: 0.5rem;
     border-radius: 7px;
