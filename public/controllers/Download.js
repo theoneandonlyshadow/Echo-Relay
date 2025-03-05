@@ -1,5 +1,6 @@
 const { hashPass, decryptHash, VerifyPassword } = require('./Encryption.js');
 const { Model } = require('../monkeese/model.js');
+const { info, succ, err, warn } = require('../controllers/LoggerStyles.js');
 
 const { Readable } = require('stream');
 
@@ -42,8 +43,8 @@ const HandleDownload = async (req, res) => {
             ? Readable.fromWeb(response.body).pipe(res)
             : res.status(500).render("error", { message: "Unable to retrieve file stream.", status_code: 500 });
     } catch (error) {
-        console.error("Error downloading file:", error);
-        return res.status(500).render("error", { message: "An error occurred for this request.", status_code: 500 });
+        console.error(`${err} Error downloading file:`, error);
+        return res.status(500).render("error", { message: "An error occured for this request.", status_code: 500 });
     }
 }
 

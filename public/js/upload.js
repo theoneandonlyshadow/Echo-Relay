@@ -29,7 +29,7 @@ input.addEventListener("change", function (e) {
           const fileSize = formatFileSize(file.size);
           return `<li>
                       <h4>${file.name} - ${fileSize}</h4>
-                      <button class="delete-btn" onclick="removeFile('${file.name}')">❌</button>
+                      <a class="delete-btn" onclick="removeFile('${file.name}')">❌</a>
                   </li>`;
       })
       .join("");

@@ -1,4 +1,5 @@
 const { google } = require('googleapis');
+const { info, succ, err, warn } = require('../controllers/LoggerStyles.js');
 
 const auth = new google.auth.GoogleAuth({
     keyFile: 'creds/serviceacc.json',
@@ -8,8 +9,12 @@ const auth = new google.auth.GoogleAuth({
 const drive = google.drive({ version: 'v3', auth });
 
 const LinkLogger = (req, res, next) => {
-    console.log(`requested: ${req.url}`);
+    console.log(`${info} requested: ${req.url}`);
     next();
 }
 
-module.exports = { drive, LinkLogger };
+const handleSocket = (req, res) => {
+    res.render('socket');
+}
+
+module.exports = { drive, LinkLogger, handleSocket };

@@ -2,6 +2,7 @@ const { drive } = require('./DefaultController.js');
 const { Model } = require('../monkeese/model.js');
 const fs = require('fs');
 const path = require('path');
+const { info, succ, err, warn } = require('../controllers/LoggerStyles.js');
 
 const HandleDelete = async (req, res) => {
     const { fileId } = req.params;
@@ -13,22 +14,22 @@ const HandleDelete = async (req, res) => {
         }
         res.render('deleted');
     } catch (error) {
-        console.error('Error deleting file:', error);
+        console.error(`${err} Error deleting file:`, error);
         res.render('error', { message: 'Error deleting file', status_code: 500 });
     }
 }
 
 async function driveDelete(fileId) {
-    console.log(`File ID: ${fileId}`);
+    console.log(`${info} File ID: ${fileId}`);
     try {
         const resp = await drive.files.delete({
             fileId: fileId,
         });
-        console.log(`File deleted: ${fileId}`);
+        console.log(`${info} File deleted: ${fileId}`);
         return resp;
     }
     catch (error) {
-        console.error('Error deleting file:', error);
+        console.error(`${info} Error deleting file:`, error);
         throw error;
     }
 }
@@ -37,10 +38,10 @@ function restDelete(hashDir) {
     try {
         const files = fs.readdirSync(hashDir);
         files.forEach(file => fs.unlinkSync(path.join(hashDir, file)));
-        console.log('Temporary files deleted');
+        console.log(`${info} Temporary files deleted`);
     }
     catch (error) {
-        console.error('Error deleting temporary files:', error);
+        console.error(`${err} Error deleting temporary files:`, error);
         throw error;
     }
 }
@@ -55,17 +56,17 @@ async function monitorDeletion() {
 
             if (deletedDoc && deletedDoc.fileid) {
                 await driveDelete(deletedDoc.fileid);
-                console.log(`File with ID ${deletedDoc.fileid} deleted from Google Drive.`);
+                console.log(`[INFO] File with ID ${deletedDoc.fileid} deleted from Google Drive.`);
             } else {
-                console.log(`Deleted document with ID ${deletedId} has no associated fileid.`);
+                console.log(`[INFO] Deleted document with ID ${deletedId} has no associated fileid.`);
             }
         } catch (error) {
-            console.error('Error processing deletion:', error);
+            console.error(`${err} Error processing deletion:`, error);
         }
     });
 
     changeStream.on('error', (error) => {
-        console.error('Change stream error:', error);
+        console.error(`${err} Change stream error:`, error);
     });
 }
 

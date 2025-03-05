@@ -1,22 +1,27 @@
 require('dotenv').config();
 const express = require('express');
 const path = require('path');
-const bodyParser = require('body-parser');
+const http = require('http');
 const { HandlePostReceive, HandleGetById, HandleQuickReceive } = require('./public/controllers/Receive.js');
 const { LinkLogger } = require('./public/controllers/DefaultController.js');
 const { renderNotFound } = require('./public/controllers/RenderPage.js');
 const { HandleDownload } = require('./public/controllers/Download.js');
 const { connect } = require('./public/monkeese/dbCon.js');
 const monitorDeletion = require('./public/controllers/Delete.js').monitorDeletion;
-
+const initializeWebSocketServer = require('./public/controllers/Socket.js');
+const { info } = require('./public/controllers/LoggerStyles.js');
 const app = express();
+const server = http.createServer(app);
 const PORT = 3000;
+const WS_PORT = 8090;
 const mongoURI = process.env.MONGO_URI;
 
 connect(mongoURI);
 
+initializeWebSocketServer(server);
+
 app.use(express.static(path.join(__dirname, 'public')));
-app.use(bodyParser.urlencoded({ extended: true }));
+app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
 app.set('views', path.join(__dirname, 'public/views'));
 app.set('view engine', 'ejs');
@@ -36,6 +41,10 @@ app.use(renderNotFound);
 
 monitorDeletion();
 
-app.listen(PORT, () => {
-    console.log(`[INFO] The server is running at http://localhost:${PORT}`);
+server.listen(PORT, () => {
+    console.log(`${info} ExpressRelay initialized at http://localhost:${PORT}`);
+});
+
+wssServer.listen(WS_PORT, () => {
+    console.log(`${info} WebSocket initialized at ws://localhost:${WS_PORT}`);
 });

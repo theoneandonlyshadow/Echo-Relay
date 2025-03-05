@@ -6,6 +6,7 @@ let selectedFiles = [];
 function handleDragOver(event) {
     event.preventDefault();
     event.stopPropagation();
+    document.getElementById('dropArea').classList.add('hover');
 
     document.getElementById('dropArea').classList.add('hover');
     document.querySelector('.uprec').classList.add('fade');
