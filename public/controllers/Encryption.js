@@ -1,5 +1,6 @@
 require('dotenv').config();
 const crypto = require('crypto');
+const { info, succ, err, warn } = require('../controllers/LoggerStyles.js');
 
 function hashPass(pass) {
     return crypto.createHash('sha256').update(pass).digest('hex');

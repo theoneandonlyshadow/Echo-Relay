@@ -4,12 +4,13 @@ const { zip } = require('./Zip.js');
 const { shorty } = require('./Shorty.js');
 const { Model } = require('../monkeese/model.js');
 const { drive } = require('./DefaultController.js');
+const { info, succ, err, warn } = require('../controllers/LoggerStyles.js');
 
 const fs = require('fs');
 const path = require('path');
 
 const HandleUpload = async (req, res) => {
-    if (!req.files || req.files.length === 0) return res.render('error', { status_code: 400 });
+    if (!req.files || req.files.length === 0) return res.render('error', { message: "No files selected", status_code: 400 });
     try {
         const files = req.files;
         const pass = req.body.password || '';
@@ -48,7 +49,7 @@ const HandleUpload = async (req, res) => {
 
         res.redirect(`/success?link=${encodeURIComponent(downloadLink)}&shortUrl=${encodeURIComponent(shortUrl)}`);
     } catch (error) {
-        console.error('Upload error:', error);
+        console.error(`${err} Upload error:`, error);
         res.render('error', { message: "Some error occurred while uploading the files.", status_code: 500 });
     }
 }
@@ -70,7 +71,7 @@ async function driveUpload(filePath, fileName) {
     });
 
     const fileId = response.data.id;
-    console.log(`File ID: ${fileId}`);
+    console.log(`${info} File ID: ${fileId}`);
 
     // change later
     await drive.permissions.create({

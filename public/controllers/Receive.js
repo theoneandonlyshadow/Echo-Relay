@@ -1,6 +1,7 @@
 const { hashPass, encryptHash, decryptHash, VerifyPassword } = require('./Encryption.js');
 const { ValidityCheck, shortyExtractor } = require('./FileValidation.js');
 const { Model } = require('../monkeese/model.js');
+const { info, succ, err, warn } = require('../controllers/LoggerStyles.js');
 
 const HandlePostReceive = async (req, res) => {
     try {
@@ -17,13 +18,14 @@ const HandlePostReceive = async (req, res) => {
         }
         return res.render('download', { ID: short });
     } catch (error) {
-        console.error("Error processing file request:", error);
+        console.error(`${err} Error processing file request:`, error);
         return res.status(500).render("error", { message: "An unexpected error occurred.", status_code: 500 });
     }
 }
 
 
 const HandleGetById = async (req, res) => {
+    // if the /:fileid is typed by the user in the url bar and if the file is found in the database, it will render the download page, else it will render error page.
     try {
         const downloadLink = req.query.link;
         const shorty = req.query.shortUrl;
@@ -70,7 +72,7 @@ const HandleQuickReceive = async (req, res) => {
         }
         res.redirect(downloadURL);
     } catch (error) {
-        console.error("Error downloading file:", error);
+        console.error(`${err} Error downloading file:`, error);
         return res.status(500).render("error", { message: "An unexpected error occurred while processing your request.", status_code: 500 });
     }
  }

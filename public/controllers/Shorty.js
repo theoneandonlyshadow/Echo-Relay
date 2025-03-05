@@ -1,4 +1,5 @@
 const { Model } = require('../monkeese/model.js');
+const { info, succ, err } = require('../controllers/LoggerStyles.js');
 
 const crypto = require('crypto');
 
@@ -18,7 +19,7 @@ async function shorty(req) {
 
 function shortCode() {
     random = crypto.randomBytes(20).toString('hex').substring(0,6);
-    console.log(`shortCode: ${random}`);
+    console.log(`${info} shortCode: ${random}`);
     return random;
 }
 
