@@ -18,7 +18,8 @@ const mongoURI = process.env.MONGO_URI;
 
 connect(mongoURI);
 
-initializeWebSocketServer(server);
+const wssServer = http.createServer();
+initializeWebSocketServer(wssServer);
 
 app.use(express.static(path.join(__dirname, 'public')));
 app.use(express.urlencoded({ extended: true }));
