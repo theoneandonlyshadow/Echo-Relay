@@ -1,4 +1,4 @@
-const { hashPass, encryptHash, decryptHash, VerifyPassword } = require('./Encryption.js');
+const { hashPass, decryptHash, VerifyPassword } = require('./Encryption.js');
 const { Model } = require('../monkeese/model.js');
 const { info, succ, err, warn } = require('../controllers/LoggerStyles.js');
 
@@ -9,13 +9,12 @@ const HandleDownload = async (req, res) => {
         const { fileID } = req.body;
         const { password } = req.body || '';
         const fileRecord = await Model.findOne({ shortCode: fileID });
-        console.log(fileRecord);
         if (!fileRecord) {
             return res.status(404).render("error", { message: "File not found", status_code: 404 });
         }
         if (fileRecord.encryptHash) {
             if (!password) {
-                return res.status(400).render("error", { message: "Password is required to download this file.", status_code: 400 });
+                res.status(400).render("password", { message: "Password is required to download this file.", ID: fileID});
             }
             const hashedPassword = hashPass(password);
             const decrypt = decryptHash(fileRecord.encryptHash, fileRecord.encryptKey, fileRecord.iv, fileRecord.kiv);
