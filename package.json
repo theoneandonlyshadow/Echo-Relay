@@ -35,5 +35,9 @@
   "optionalDependencies": {
     "bufferutil": "^4.0.9",
     "utf-8-validate": "^6.0.5"
+  },
+  "devDependencies": {
+    "@types/chalk": "^0.4.31",
+    "typescript": "^5.8.2"
   }
 }
