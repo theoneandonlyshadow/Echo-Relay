@@ -11,3 +11,4 @@
     setTimeout(devtoolIsOpening, 100);
 }
 devtoolIsOpening();
+*/
