@@ -11,3 +11,5 @@
     setTimeout(devtoolIsOpening, 100);
 }
 devtoolIsOpening();
+*/
+// uncomment before deployment.

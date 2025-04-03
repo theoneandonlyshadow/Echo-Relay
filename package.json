@@ -1,6 +1,7 @@
 {
   "dependencies": {
     "@google-cloud/local-auth": "^2.1.1",
+    "@tailwindcss/vite": "^4.0.17",
     "archiver": "^7.0.1",
     "bcrypt": "^5.1.1",
     "body-parser": "^1.20.3",
@@ -18,8 +19,11 @@
     "nodemon": "^3.1.7",
     "openai": "^3.2.1",
     "path": "^0.12.7",
+    "preline": "^3.0.1",
     "socket.io": "^4.8.1",
     "socket.io-p2p-server": "^1.2.0",
+    "tailwindcss": "^4.0.17",
+    "vite": "^6.2.4",
     "ws": "^8.18.1"
   },
   "name": "echo-relay-drive",
@@ -35,5 +39,8 @@
   "optionalDependencies": {
     "bufferutil": "^4.0.9",
     "utf-8-validate": "^6.0.5"
+  },
+  "devDependencies": {
+    "@tailwindcss/forms": "^0.5.10"
   }
 }
