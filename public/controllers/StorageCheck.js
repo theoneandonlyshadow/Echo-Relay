@@ -9,9 +9,6 @@ const checkStorage = async () => {
 
 const bestStorage = (accStorage, currStorage) => {
     //forEach or map or reduce??
-    // use reduce.
 };
 
 module.exports = { checkStorage, bestStorage };
-
-// rename this file to FRA200.js
