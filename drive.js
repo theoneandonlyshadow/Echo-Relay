@@ -15,7 +15,7 @@ const initializeWebSocketServer = require('./public/controllers/Socket.js');
 const { info } = require('./public/controllers/LoggerStyles.js');
 const app = express();
 const server = http.createServer(app);
-const PORT = 3000;
+const PORT = 3001;
 const WS_PORT = 8090;
 const mongoURI = process.env.MONGO_URI;
 
@@ -33,7 +33,6 @@ try {
             console.log(`worker ${worker.process.pid} died`);
         });
     } else {
-
         const wssServer = http.createServer();
         initializeWebSocketServer(wssServer);
 
@@ -48,6 +47,8 @@ try {
         app.use('/upload', require('./public/routes/uploadRouter.js'));
         app.use('/delete', require('./public/routes/deleteRouter.js'));
         app.use('/', require('./public/routes/pagesRouter.js'));
+        app.use('/update-wss', require('./public/routes/wssRouter.js'));
+
 
         app.post('/receive', HandlePostReceive);
         app.post('/', HandleDownload);

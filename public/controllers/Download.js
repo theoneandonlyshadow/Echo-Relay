@@ -14,7 +14,7 @@ const HandleDownload = async (req, res) => {
         }
         if (fileRecord.encryptHash) {
             if (!password) {
-                res.status(400).render("password", { message: "Password is required to download this file.", ID: fileID});
+                res.status(400).render("error", { message: "Password is required to download this file.", ID: fileID});
             }
             const hashedPassword = hashPass(password);
             const decrypt = decryptHash(fileRecord.encryptHash, fileRecord.encryptKey, fileRecord.iv, fileRecord.kiv);
