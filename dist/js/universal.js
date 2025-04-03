@@ -1,3 +1,4 @@
+"use strict";
 /* function devtoolIsOpening() {
     console.clear();
     let before = new Date().getTime();
@@ -11,6 +12,4 @@
     setTimeout(devtoolIsOpening, 100);
 }
 devtoolIsOpening();
-*/
-
-// uncomment before deployment.
+*/ 
