@@ -354,6 +354,11 @@
   .inputMessage {
     font-size: 100%;
   }
+
+  .msger-header.abitspace{
+    display:block;
+ margin-left:auto;
+  }
   
   .log {
     color: gray;
@@ -403,9 +408,9 @@
 
   .sf-indicator {
     --sf-indicator-size: 8px;
-    --sf-indicator-green: #0bbf0b;
-    --sf-indicator-red: #c51b1b;
-    --sf-indicator-orange: #db8719;
+    --sf-indicator-succ: #0bbf0b;
+    --sf-indicator-error: #c51b1b;
+    --sf-indicator-loading: #fff;
   }
   .sf-indicator {
       display: flex;
@@ -451,7 +456,9 @@
       }
     }
   
-    .status-green { background-color: var(--sf-indicator-green); }
+    .status-succ { background-color: var(--sf-indicator-succ); }
+    .status-error { background-color: var(--sf-indicator-error); }
+    .status-loading { background-color: var(--sf-indicator-loading); }
 
 /* Overlay styles */
 #overlay {
@@ -608,15 +615,49 @@
     background: var(--left-msg-bg);
   }
   .msg-info {
+    width: 200px;
+    float: right;
+    text-align: right;
+    justify-items: right;
     display: flex;
+  align-items: center;
+  flex-direction: row;
     justify-content: space-between;
-    align-items: center;
     margin-bottom: 10px;
   }
-  .msg-info-name {
-    margin-right: 10px;
-    font-weight: bold;
+
+  .msg-text{
+    flex-direction: row;
+    text-align: center;
+    justify-items: center;
+  align-items: center;
+    line-height: 1.4em;
+    margin: 0 0 5px 0;
+    color: #fff;
+    word-break: break-word;
+    white-space: pre-wrap; 
   }
+
+
+  .msg-info-name {
+    float: none;
+    text-align:end;
+    justify-items:flex-start;
+    width: 100px;
+    margin-left: 20px;
+    font-weight: bold;
+    display: flex;
+  align-items: center;
+  flex-direction: row;
+  }
+
+  .msg-info-name > span, 
+.msg-info-name > * {
+  display: inline;
+  white-space: nowrap;
+}
+
+
   .msg-info-time {
     font-size: 0.85em;
   }
