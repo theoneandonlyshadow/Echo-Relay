@@ -557,9 +557,19 @@ form textarea{
   }
 
   .inlinin {
-    display: flex;
+    max-width: 100%;
+    display:flex;
     align-items: center;
-    gap: 400px;
+    gap: 100px;
+    justify-content: center;
+  }
+
+  .inlinin2btns {
+    position: relative;
+    margin-left: 800px;
+    display:flex;
+    align-items: center;
+    gap: 100px;
     justify-content: center;
   }
 
@@ -577,9 +587,9 @@ form textarea{
   }
 
   .recievebtn {
-    height: 90px;
-    width: 550px;
-    background-color: #1a1a1a;
+    height: 80px;
+    width: 500px;
+    background-color: #10101a;
     color: #fff;
     box-shadow: 3px 3px #555;
     line-height: 42px;
@@ -676,6 +686,11 @@ form textarea{
 
   .copy-btn {
     height: 47px;
+  }
+
+  .copy-con {
+    margin-left: 8px;
+  flex-shrink: 0;
   }
   
   .buttcont {

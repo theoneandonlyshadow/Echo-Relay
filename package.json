@@ -35,8 +35,6 @@
     "utf-8-validate": "^6.0.5"
   },
   "devDependencies": {
-    "@types/chalk": "^0.4.31",
-    "typescript": "^5.8.2",
     "@tailwindcss/forms": "^0.5.10"
 
   }

@@ -54,3 +54,4 @@
 
 # Sources
 chat UI: [see](https://www.codepel.com/html-css/chat-box-html-code-for-website/)
+pulse anime in XPR-WSS: [see](https://codepen.io/saigowthamr/pen/PowdZqy)

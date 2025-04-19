@@ -12,3 +12,5 @@ const bestStorage = (accStorage, currStorage) => {
 };
 
 module.exports = { checkStorage, bestStorage };
+
+// rename this file to FRA200.js

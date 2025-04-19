@@ -32,6 +32,7 @@ app.use(LinkLogger);
 app.use('/upload', require('./public/routes/uploadRouter.js'));
 app.use('/delete', require('./public/routes/deleteRouter.js'));
 app.use('/', require('./public/routes/pagesRouter.js'));
+app.use('/update-wss', require('./public/routes/wssRouter.js'));
 
 app.post('/receive', HandlePostReceive);
 app.post('/', HandleDownload);
