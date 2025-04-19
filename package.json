@@ -14,7 +14,7 @@
     "mongoose": "^8.9.5",
     "multer": "^1.4.5-lts.1",
     "nodemon": "^3.1.7",
-    "openai": "^3.2.1",
+    "openai": "^4.95.1",
     "path": "^0.12.7",
     "socket.io": "^4.8.1",
     "socket.io-p2p-server": "^1.2.0",
