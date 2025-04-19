@@ -23,7 +23,7 @@
     "socket.io": "^4.8.1",
     "socket.io-p2p-server": "^1.2.0",
     "tailwindcss": "^4.0.17",
-    "vite": "^6.2.4",
+    "vite": "^6.3.2",
     "ws": "^8.18.1"
   },
   "name": "echo-relay-drive",
