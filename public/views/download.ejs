@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title>Download | Echo Relay</title>
+  <title>Download | Express Relay</title>
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -102,7 +102,7 @@
     <header class="msger-header">
         <div class="msger-header-title">
           <p class="sf-indicator" title="XPR-WSS is unmonitored. Use responsibly.">
-            <span id="statusdot" class="status-dot status-green"></span>
+            <span id="statusshi" class="status-dot status-succ"></span>
             XPR-WSS: <i id="sockdis" class="text-danger">Disconnected</i>
             <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-info-circle" viewBox="0 0 16 16" title="XPR-WSS is unmonitored.">
               <path d="M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14m0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16"/>
@@ -114,17 +114,17 @@
             <span><i class="fas fa-cog"></i></span>
         </div>
     </header>
-    <div id="overlay" style="<%= wss ? 'display: none;' : '' %>">
-      <button id="startChatBtn">Start Chat</button>
+  <div id="overlay" class="<%= wss ? 'hidden' : '' %>">
+    <button id="startChatBtn">Start Chat</button>
   </div>
     <main class="msger-chat">
         <!-- Chat messages go here -->
     </main>
 
-    <form class="msger-inputarea" javascript:void(0)>
-        <input type="text" class="msger-input" placeholder="Enter your message...">
-        <button type="submit" class="msger-send-btn btn-11">Send</button>
-    </form>
+    <form class="msger-inputarea" onsubmit="return false;">
+      <input type="text" class="msger-input" placeholder="Enter your message...">
+      <button type="button" class="msger-send-btn btn-11">Send</button>
+  </form>
 </section>
 
   <section data-aos="fade-up" class="contact" id="contact">

@@ -1,7 +1,6 @@
 require('dotenv').config();
 const crypto = require('crypto');
-const masterKey = Buffer.from(process.env.MASTERKEY.slice(0,64), 'hex');
-console.log(masterKey.length);
+const masterKey = crypto.randomBytes(32);
 function hashPass(pass) {
     return crypto.createHash('sha256').update(pass).digest('hex');
 }
