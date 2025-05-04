@@ -37,10 +37,6 @@ const schema = mongoose.Schema({
         type: String,
         required: true
     },
-    wss: {
-        type: Boolean,
-        default: false
-    },
     uploadedAt: {
         type: Date,
         default: Date.now,

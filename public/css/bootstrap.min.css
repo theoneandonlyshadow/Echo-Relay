@@ -7209,12 +7209,8 @@ textarea.form-control-lg {
     color: rgba(var(--bs-secondary-rgb), var(--bs-text-opacity))!important;
 }
 .text-success {
-    text-shadow:
-    0 0 7px #fff,
-    0 0 10px #fff,
-    0 0 21px #fff;
     --bs-text-opacity: 1;
-    color: #00ff00;
+    color: rgba(var(--bs-success-rgb), var(--bs-text-opacity))!important;
 }
 .text-info {
     --bs-text-opacity: 1;

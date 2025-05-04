@@ -12,7 +12,7 @@ const initializeWebSocketServer = require('./public/controllers/Socket.js');
 const { info } = require('./public/controllers/LoggerStyles.js');
 const app = express();
 const server = http.createServer(app);
-const PORT = 3001;
+const PORT = 3000;
 const WS_PORT = 8090;
 const mongoURI = process.env.MONGO_URI;
 

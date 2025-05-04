@@ -1,17 +1,14 @@
 {
   "dependencies": {
     "@google-cloud/local-auth": "^2.1.1",
-    "@tailwindcss/vite": "^4.0.17",
     "archiver": "^7.0.1",
     "bcrypt": "^5.1.1",
     "body-parser": "^1.20.3",
     "chalk": "^4.1.2",
     "cors": "^2.8.5",
-    "crypto": "^1.0.1",
     "dotenv": "^16.4.7",
     "ejs": "^3.1.10",
     "express": "^4.21.2",
-    "fs": "^0.0.1-security",
     "googleapis": "^105.0.0",
     "mongodb": "^6.11.0",
     "mongoose": "^8.9.5",
@@ -19,11 +16,8 @@
     "nodemon": "^3.1.7",
     "openai": "^3.2.1",
     "path": "^0.12.7",
-    "preline": "^3.0.1",
     "socket.io": "^4.8.1",
     "socket.io-p2p-server": "^1.2.0",
-    "tailwindcss": "^4.0.17",
-    "vite": "^6.2.4",
     "ws": "^8.18.1"
   },
   "name": "echo-relay-drive",
@@ -35,12 +29,13 @@
   },
   "author": "",
   "license": "ISC",
-  "description": "- make responsive website    `partial done`\r - multiple drive accs / apis\r - if block to check storage remaining in each drive accs and push files to the one with most storage\r - delete file option after uploading\r - password protection of the file\r - shorten url\r - input key\r - 7 gigs storage    `1 gigs given for now`\r - admin dashboard\r - active user count in admin dash\r - filter bots\r - unique code to allow upload size upto 50GB\r - (get 200gb discount offer once)\r - (create multiple accs and get the discount after a few users)",
+  "description": "file sharin web app",
   "optionalDependencies": {
     "bufferutil": "^4.0.9",
     "utf-8-validate": "^6.0.5"
   },
   "devDependencies": {
     "@tailwindcss/forms": "^0.5.10"
+
   }
 }
